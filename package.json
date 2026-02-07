@@ -1,0 +1,24 @@
+{
+  "name": "projet-web-gl21-chabiba",
+  "version": "1.0.0",
+  "description": "**Status:** Work In Progress (Pre-Alpha)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Adam-BH/projet-web-gl21-chabiba.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Adam-BH/projet-web-gl21-chabiba/issues"
+  },
+  "homepage": "https://github.com/Adam-BH/projet-web-gl21-chabiba#readme",
+  "dependencies": {
+    "bootstrap": "^5.3.8"
+  }
+}
