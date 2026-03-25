@@ -1,52 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css\style.css">
+    <link rel="stylesheet" href="css/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
     <title>HIKI</title>
-    <style>
-        body{
-            background-image: "./assets/StarField.png" !important;
-        }
-        .navbar-toggler{
-            font-size: 26.8;
-            font-weight: 500;
-            line-height: 135%;
-        }
-        .textCostum{
-            font-family: Sans,sans-serif;
-            font-size: 51.76 !important;
-            font-weight: 500;
-            font-style: normal;
-        }
-        .btn-glass {
-            border-width: 1.89;
-            border-color: white;
-            border-radius: 1887.87;
-            backdrop-filter: blur(5px); 
-            padding-bottom: 26.46;
-            padding-left: 47.24;
-        }
-    </style>
 </head>
-<body  data-bs-theme="dark" >
-    <div class="row">
-        <div class="col"><div class="display-1" >HIKI</div></div>
-        <div class="col"><button class="navbar-toggler" type="button">shops</button></div>
-        <div class="col"><button class="navbar-toggler" type="button">weather</button></div>
-        <div class="col"><button class="navbar-toggler" type="button">community</button></div>
-        <div class="col"><button class="navbar-toggler" type="button">availability</button></div>
-        <div class="col"><button class="navbar-toggler" type="button">saquipement</button></div>
-        <div class="col"><button class="navbar-toggler" type="button">moon</button></div>
-    </div>
-    <div class="text-center">
-        <div class="textCostum">
-            Explore Our website for a
+<body>
+    <canvas id="starCanvas" style="position:fixed;inset:0;z-index:0;pointer-events:none;"></canvas>
+    <nav class="navbar navbar-dark">
+        <div class="container">
+            <a href="#" class="navbar-brand">HIKI</a>
+            <ul class="navbar-nav nav-links">
+                <li class="nav-item">
+                    <a href="#shops" class="nav-link">shops</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#weather" class="nav-link">weather</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#community" class="nav-link">community</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#availability" class="nav-link">availabilty</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#equipement" class="nav-link">equipement</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#moon" class="nav-link">moon</a>
+                </li>
+            </ul>
         </div>
-        <img src="./assets/Better Experience.png" class="d-block mx-auto" width="1076" height="167" alt="Better Experience" top="200" left="116">
-        <img src="./assets/campfire.png" class="d-block mx-auto" width="683" height="683" alt="campfire" top="93" left="297">
-        <button class="btn btn-glass">CAMPING SITES NEAR ME</button>
-    </div>
+    </nav>
+    <section class="text-center pt-3 mt-3">
+        <p class="hero-sub">Explore Our website for a</p>
+        <p class="hero-title">Better Experience</p>
+    </section>
+    <script src="js/main.js"></script>
+
+<!-- hear is the fire and the button-->
+
+    <footer>
+        <div class="theme-toggle">
+        <input type="checkbox" id="toggle" hidden>
+        <label for="toggle" class="toggle-track">
+            <div class="toggle-thumb"></div>
+        </label>
+        </div>
+    </footer>
 </body>
 </html>
