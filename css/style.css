@@ -22,7 +22,7 @@ nav {
 }
 .navbar-brand{
     flex-shrink: 0;
-    font:bold clamp(30px,7.5vw,72px) "Rethink Sans",sans-serif;
+    font:bold clamp(30px,5.5vw,72px) "Rethink Sans",sans-serif;
 }
 @media (max-width: 768px) {
   .nav-links {
@@ -31,14 +31,14 @@ nav {
   }
 }
 .hero-sub{
-    font:clamp(20px,4vw,80px) "Rethink Sans",sans-serif;
+    font:clamp(20px,3.5vw,60px) "Rethink Sans",sans-serif;
 }
 @font-face {
     font-family: 'Righteous';
     src: url('../assets/Fonts/Righteous-Regular.ttf') format('truetype');
 }
 .hero-title{
-    font:bolder clamp(42px,8.8vw,176px) 'Righteous',sans-serif;
+    font:bolder clamp(60px,7vw,150px) 'Righteous',sans-serif;
     margin-top: clamp(-51.75px,-2.7vw,-20px);
 }
 .toggle-track {
@@ -75,3 +75,135 @@ nav {
     right: 30px;
     z-index: 100;
 }
+    .campfire {
+      position: absolute;
+      width: 420px;
+      height: 53vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    padding: 80px 50%;
+    }
+
+    /* ── GROUND GLOW ── */
+    .ground-glow {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: clamp(336px,75vw,840px);
+      height: 30%;
+      background: radial-gradient(ellipse, rgba(180, 80, 10, 0.5) 0%, transparent 75%);
+      border-radius: 50%;
+      animation: glow-pulse 2s ease-in-out infinite alternate;
+    }
+    @keyframes glow-pulse {
+      from { opacity: 0.7; }
+      to   { opacity: 1; }
+    }
+
+    /* ── PILLARS CONTAINER ── */
+    .pillars {
+      position: absolute;
+      bottom: 180px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 336px;
+      height: 336px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 0px;
+      font-size: 0;
+    }
+
+    .pillar {
+      position: relative;
+      flex-shrink: 0;
+      animation: pillar-flicker var(--dur, 2s) var(--delay, 0s) ease-in-out infinite alternate;
+      transform-origin: bottom center;
+    }
+
+    .section {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+    }
+
+    .section.top {
+      height: 61.5%;
+      z-index: 4;
+      border-radius: 100px 100px 100px 100px;
+      background: linear-gradient(to top, #ffffff, #fbf3d1);
+      box-shadow: 0 4px 14px rgba(255, 200, 150, 0.8);
+    }
+
+    .section.mid1 {
+      height: 74.1%;
+      z-index: 3;
+      border-radius: 100px 100px 100px 100px;
+      background: linear-gradient(to top, #fbf3d1, #fee372);
+      box-shadow: 0 4px 14px rgba(255, 180, 100, 0.6);
+    }
+
+    .section.mid2 {
+      height: 71.6%;
+      z-index: 2;
+      border-radius: 100px 100px 100px 100px;
+      background: linear-gradient(to top, #fee372, #fdac1e);
+         box-shadow: 0 4px 14px rgba(255, 160, 80, 0.4);
+    }
+
+    .section.bottom {
+      height: 100%;
+      z-index: 1;
+      border-radius: 100px 100px 100px 100px;
+      background: linear-gradient(to top, #f3af00, #f32e00);
+        box-shadow: 0 4px 14px rgba(255, 140, 60, 0.2);
+    }
+
+    @keyframes pillar-flicker {
+      0%   { transform: scaleY(1);    }
+      50%  { transform: scaleY(1.04); }
+      100% { transform: scaleY(0.97); }
+    }
+
+.p1 {
+  width: 48.564px;
+  height: 18.84vh;
+  --dur: 2.1s;
+  --delay: 0.1s;
+}    .p2 { width: 48.564px; height: 26.52vh; --dur: 1.8s; --delay: 0.4s; }
+    .p3 { width: 48.564px; height: 32.64vh; --dur: 2.3s; --delay: 0.0s; }
+.p4 {
+  width: 48.564px;
+  height: 45.6vh;
+  --dur: 2.0s;
+  --delay: 0.5s;
+}    
+    .p5 { width: 48.564px; height: 37.92vh; --dur: 2.0s; --delay: 0.5s; }
+    .p6 { width: 48.564px; height: 30vh; --dur: 1.9s; --delay: 0.3s; }
+    .p7 { width: 48.564px; height:24.24vh; --dur: 2.2s; --delay: 0.7s; }
+
+    /* ── LOGS ── */
+    .logs {
+      position: absolute;
+      bottom: -60px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 320px;
+      height: 120px;
+    }
+
+    .log {
+      position: absolute;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 14px rgba(160, 50, 10, 0.6));
+    }
+
+    .log-1 { width: 180px; bottom: 55px; left: 20px;  transform: rotate(-30deg); z-index: 2; }
+    .log-2 { width: 168px; bottom: 55px; right: 15px;  transform: rotate(28deg) scaleX(-1); z-index: 2; }
+    .log-3 { width: 156px; bottom: 30px; left: 50%;    transform: translateX(-50%) rotate(-8deg); z-index: 3; }
+    .log-4 { width: 144px; bottom: 10px; left: 10px;   transform: rotate(-15deg); z-index: 4; }
+    .log-5 { width: 132px; bottom: 5px;  right: 10px;  transform: rotate(20deg) scaleX(-1); z-index: 4; }
+    .log-6 { width: 120px; bottom: 0px;  left: 50%;    transform: translateX(-40%) rotate(8deg); z-index: 5; }
