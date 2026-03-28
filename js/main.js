@@ -6,7 +6,7 @@ function resize() {
     canvas.height = window.innerHeight;
 }
 
-function initStars(n = 500) {
+function initStars(n = canvas.width*canvas.height/1500) {
     stars = Array.from({ length: n }, () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,

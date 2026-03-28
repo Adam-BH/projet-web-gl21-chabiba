@@ -75,15 +75,7 @@ nav {
     right: 30px;
     z-index: 100;
 }
-    .campfire {
-      position: absolute;
-      width: 420px;
-      height: 53vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    padding: 80px 50%;
-    }
+
 
     /* ── GROUND GLOW ── */
     .ground-glow {
@@ -101,20 +93,6 @@ nav {
       to   { opacity: 1; }
     }
 
-    /* ── PILLARS CONTAINER ── */
-    .pillars {
-      position: absolute;
-      bottom: 180px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 336px;
-      height: 336px;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      gap: 0px;
-      font-size: 0;
-    }
 
     .pillar {
       position: relative;
@@ -123,6 +101,20 @@ nav {
       transform-origin: bottom center;
     }
 
+.spillar {
+  position: absolute;
+  bottom: 115px;
+  right:-40px;
+  transform: translateX(-50%);
+  width: 145.692px;
+  height: 18.84vh;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 0px;
+  font-size: 0;
+  z-index: 4;
+}
     .section {
       position: absolute;
       bottom: 0;
@@ -184,16 +176,25 @@ nav {
     .p5 { width: 48.564px; height: 37.92vh; --dur: 2.0s; --delay: 0.5s; }
     .p6 { width: 48.564px; height: 30vh; --dur: 1.9s; --delay: 0.3s; }
     .p7 { width: 48.564px; height:24.24vh; --dur: 2.2s; --delay: 0.7s; }
+    .ps1 {      position: relative;
+      flex-shrink: 0;
+      animation: pillar-flicker var(--dur, 2s) var(--delay, 0s) ease-in-out infinite alternate;
+      transform-origin: bottom center; width: 48.564px; height:13.26vh; --dur: 2.2s; --delay: 0.7s; }
+    .ps2 {
+            position: relative;
+      flex-shrink: 0;
+      animation: pillar-flicker var(--dur, 2s) var(--delay, 0s) ease-in-out infinite alternate;
+      transform-origin: bottom center;
+       width: 48.564px; height:18.84vh; --dur: 2.2s; --delay: 0.7s; }
+    .ps3 {
+            position: relative;
+      flex-shrink: 0;
+      animation: pillar-flicker var(--dur, 2s) var(--delay, 0s) ease-in-out infinite alternate;
+      transform-origin: bottom center;
+       width: 48.564px; height:14.13vh; --dur: 2.2s; --delay: 0.7s; }
 
     /* ── LOGS ── */
-    .logs {
-      position: absolute;
-      bottom: -60px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 320px;
-      height: 120px;
-    }
+
 
     .log {
       position: absolute;
@@ -201,9 +202,47 @@ nav {
       filter: drop-shadow(0 4px 14px rgba(160, 50, 10, 0.6));
     }
 
-    .log-1 { width: 180px; bottom: 55px; left: 20px;  transform: rotate(-30deg); z-index: 2; }
-    .log-2 { width: 168px; bottom: 55px; right: 15px;  transform: rotate(28deg) scaleX(-1); z-index: 2; }
-    .log-3 { width: 156px; bottom: 30px; left: 50%;    transform: translateX(-50%) rotate(-8deg); z-index: 3; }
-    .log-4 { width: 144px; bottom: 10px; left: 10px;   transform: rotate(-15deg); z-index: 4; }
-    .log-5 { width: 132px; bottom: 5px;  right: 10px;  transform: rotate(20deg) scaleX(-1); z-index: 4; }
-    .log-6 { width: 120px; bottom: 0px;  left: 50%;    transform: translateX(-40%) rotate(8deg); z-index: 5; }
+    .log-1 { width: 185px; bottom: 20px; left: -22px;  transform: rotate(-3deg); z-index: 2; }
+    .log-2 { width: 175px; bottom: 55px; right: 40px;  transform: rotate(0deg) scaleX(-1); z-index: 2; }
+    .log-3 { width: 156px; bottom: 30px; left: 45%;    transform: translateX(-50%) rotate(-8deg); z-index: 3; }
+    .log-4 { width: 165px; bottom: 10px; left: 35px;   transform: rotate(deg); z-index: 4; }
+    .log-5 { width: 170px; bottom: 20px;  right: 30px;  transform: rotate(-30deg) scaleX(-1); z-index: 5; }
+    /* this is the one ^^^ */
+    .log-6 { width: 120px; bottom: 10px;  left: 50%;    transform: translateX(-40%) rotate(8deg); z-index: 3; }
+    .log-7 { width: 225px; bottom: -20px;  left: 66%;    transform: translateX(-40%) rotate(30deg); z-index: ; }
+  .campfire {
+  width: 420px;
+  height: 57vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+    position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.pillars {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 336px;
+  height: 336px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 0px;
+  font-size: 0;
+  z-index: 1;
+}
+
+.logs {
+  position: absolute;
+  bottom: 0;           /* anchored to bottom of campfire */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 420px;
+  height: 300px;
+  z-index: 2;          /* logs appear over pillars base */
+}
