@@ -1,1 +1,77 @@
-@import "./node_modules/bootstrap/dist/css/bootstrap.css";
+body{
+    background-color: #0b0f1f;
+    background-image: radial-gradient(ellipse at 50% 50%,#12193a 0%,#0b0f1f);
+}
+nav {
+  display: flex;
+  align-items: center;
+  flex-wrap:nowrap;
+  gap: 20px;
+  padding: 20px 13%;
+}
+.nav-links {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: clamp(6px,2vw,40px);
+  list-style: none;
+  margin-left: auto;
+}
+.nav-links a{
+  font:clamp(12px,2vw,36px) "Rethink Sans", sans-serif;
+}
+.navbar-brand{
+    flex-shrink: 0;
+    font:bold clamp(30px,7.5vw,72px) "Rethink Sans",sans-serif;
+}
+@media (max-width: 768px) {
+  .nav-links {
+    gap: 10px;
+    font-size: 0.8rem;
+  }
+}
+.hero-sub{
+    font:clamp(20px,4vw,80px) "Rethink Sans",sans-serif;
+}
+@font-face {
+    font-family: 'Righteous';
+    src: url('../assets/Fonts/Righteous-Regular.ttf') format('truetype');
+}
+.hero-title{
+    font:bolder clamp(42px,8.8vw,176px) 'Righteous',sans-serif;
+    margin-top: clamp(-51.75px,-2.7vw,-20px);
+}
+.toggle-track {
+  display: flex;
+  align-items: center;
+  width: 78px;
+  height: 35.1px;
+  background-image: url('../assets/Images/LandSwitch-Dark.png');
+  border-radius: 100px;
+  cursor: pointer;
+  padding: 4px;
+  transition: url('../assets/Images/LandSwitch-Dark.png') 0.3s;
+  backdrop-filter: blur(16px);
+}
+
+.toggle-thumb {
+  width: 30px;
+  height: 30px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.3s;
+}
+
+#toggle:checked + .toggle-track .toggle-thumb {
+  transform: translateX(42px);
+}
+
+#toggle:checked + .toggle-track {
+  background: #1a1a2e;
+}
+.theme-toggle{
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 100;
+}
