@@ -1,6 +1,7 @@
 body{
-    background-color: #0b0f1f;
-    background-image: radial-gradient(ellipse at 50% 50%,#12193a 0%,#0b0f1f);
+    background-color: #0b001b;
+    height:100vh;
+    overflow: hidden;
 }
 nav {
   display: flex;
@@ -206,10 +207,9 @@ nav {
     .log-2 { width: 175px; bottom: 55px; right: 40px;  transform: rotate(0deg) scaleX(-1); z-index: 2; }
     .log-3 { width: 156px; bottom: 30px; left: 45%;    transform: translateX(-50%) rotate(-8deg); z-index: 3; }
     .log-4 { width: 165px; bottom: 10px; left: 35px;   transform: rotate(deg); z-index: 4; }
-    .log-5 { width: 170px; bottom: 20px;  right: 30px;  transform: rotate(-30deg) scaleX(-1); z-index: 5; }
-    /* this is the one ^^^ */
-    .log-6 { width: 120px; bottom: 10px;  left: 50%;    transform: translateX(-40%) rotate(8deg); z-index: 3; }
-    .log-7 { width: 225px; bottom: -20px;  left: 66%;    transform: translateX(-40%) rotate(30deg); z-index: ; }
+    .log-5 { width: 170px; bottom: 20px;  right: 40px;  transform: rotate(-15deg) scaleX(-1); z-index: 5; }
+    .log-6 { width: 130px; bottom: 40px;  left: 80%;    transform: translateX(-40%) rotate(8deg); z-index: 5; }
+    .log-7 { width: 225px; bottom: -20px;  left: 66%;    transform: translateX(-40%) rotate(30deg); z-index: 1; }
   .campfire {
   width: 420px;
   height: 57vh;
@@ -245,4 +245,48 @@ nav {
   width: 420px;
   height: 300px;
   z-index: 2;          /* logs appear over pillars base */
+}
+.button {
+  display: block;
+  margin: 200px auto;
+  padding:12px 32px;
+
+  /* glassy effect */
+  background: radial-gradient(ellipse 60% 120% at center, rgba(193, 117,75, 0.8) 0%,rgba(50,17,23,0) 50%,transparent 70%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  
+  /* rounded corners */
+  border-radius: 1887.78px;
+  
+  /* scales with window */
+  width: fit-content;
+  max-width: 90%;
+  font-size: clamp(14px, 2vw, 26px);
+  
+  /* cosmetic */
+  font-family:'Nunito',sans-serif ;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 180px;  /* negative = overlaps campfire by 20px */
+  z-index: 10;
+  position: relative;
+}
+
+.button:hover {
+  background: radial-gradient(ellipse 40% 80% at center, rgba(193, 117,75, 0.8) 0%, transparent 70%);
+  transform: scale(1.05);
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@font-face {
+    font-family: 'Nunito';
+    src: url('../assets/Fonts/Nunito.ttf') format('truetype');
 }
