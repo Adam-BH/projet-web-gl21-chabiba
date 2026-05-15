@@ -290,3 +290,10 @@ nav {
     font-family: 'Nunito';
     src: url('../assets/Fonts/Nunito.ttf') format('truetype');
 }
+@keyframes fadeIn{
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+.hero-sub,.hero-title{
+    animation: fadeIn 2s ease-in-out;
+}
