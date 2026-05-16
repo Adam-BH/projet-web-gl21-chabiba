@@ -12,7 +12,7 @@ abstract class Repository implements IRepository{
     }
 
     public function findById($id){
-        $response=$this->db->prepare("select * from {$this->tableName} where email = ? ;");
+        $response=$this->db->prepare("select * from {$this->tableName} where id = ? ;");
         $response->execute([$id]);
         return $response->fetch(PDO::FETCH_OBJ);
     }
