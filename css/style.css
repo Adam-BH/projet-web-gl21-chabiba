@@ -246,7 +246,8 @@ nav {
   height: 300px;
   z-index: 2;          /* logs appear over pillars base */
 }
-.button {
+.login {
+  text-decoration:none;
   display: block;
   margin: 200px auto;
   padding:12px 32px;
@@ -277,7 +278,7 @@ nav {
   position: relative;
 }
 
-.button:hover {
+.login:hover {
   background: radial-gradient(ellipse 40% 80% at center, rgba(193, 117,75, 0.8) 0%, transparent 70%);
   transform: scale(1.05);
 }
