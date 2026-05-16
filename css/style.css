@@ -19,7 +19,7 @@ nav {
   margin-left: auto;
 }
 .nav-links a{
-  font:clamp(12px,2vw,36px) "Rethink Sans", sans-serif;
+  font:clamp(1px,2.5vw,40px) "Rethink Sans", sans-serif;
 }
 .navbar-brand{
     flex-shrink: 0;
@@ -296,4 +296,35 @@ nav {
 }
 .hero-sub,.hero-title{
     animation: fadeIn 2s ease-in-out;
+}
+.sparky-mascot {
+  position: absolute;
+  align-items: center;
+  bottom: 30px;
+  left: 5vw;
+  width: 75px;
+  height: 75px;
+  background:  linear-gradient(to top,#FD7C00,#F33400); ;
+  border: var(--sticker-border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--sticker-shadow);
+  cursor: pointer;
+  z-index: 60;
+  animation: float 3s ease-in-out infinite;
+  overflow: hidden;
+  
+}
+:root {
+  /* Colors */
+  --color-white: #F9F9F9;
+  --sticker-border: 3px solid var(--color-white);
+  --sticker-shadow: 6px 6px 0px rgba(0, 0, 0, 0.4);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }

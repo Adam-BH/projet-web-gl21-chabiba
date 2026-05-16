@@ -34,3 +34,28 @@ resize();
 initStars();
 drawStars();
 window.addEventListener('resize', () => { resize(); initStars(); });
+
+
+/* HIKI Website - Global Interactions */
+
+document.addEventListener("DOMContentLoaded", () => {
+    const sparkyMascot = document.querySelector('.sparky-mascot');
+    
+    // Array of helpful hiking tips from Sparky(better be replaced later by tips that comes from a database that can be fetched using PHP to flex a bit xd)
+    const sparkyTips = [
+        "Sparky says: Keep your camping area clean!",
+        "Sparky says: Always pack an extra pair of socks!",
+        "Sparky says: Stargazing is best at 2 AM!",
+        "Sparky says: Stay hydrated on the trails!",
+        "Sparky says: Don't feed the wild animals!"
+    ];
+
+    if (sparkyMascot) {
+        sparkyMascot.addEventListener('click', () => {
+          // Pick a random tip
+          const randomTip = sparkyTips[Math.floor(Math.random() * sparkyTips.length)];
+          alert(randomTip);
+          
+        });
+    }
+});
