@@ -5,11 +5,11 @@ abstract class Repository implements IRepository{
         $this->db=ConnexionDB::getInstance();
     }
 
-    public function findAll(){
-        $response=$this->db->prepare("select * from {$this->tableName}");
-        $elements=$response->fetchAll(PDO::FETCH_OBJ);
-        return $elements;
-    }
+public function findAll() {
+    $query = "SELECT * FROM {$this->tableName}";
+    $res = $this->db->query($query);
+    return $res->fetchAll(PDO::FETCH_OBJ);
+}
 
     public function findById($id){
         $response=$this->db->prepare("select * from {$this->tableName} where id = ? ;");

@@ -41,6 +41,8 @@ nav {
 .hero-title{
     font:bolder clamp(60px,9vw,200px) 'Righteous',sans-serif;
     margin-top: clamp(-51.75px,-5vw,-20px);
+    width: 75vw;
+    margin: 0 auto;
 }
 .toggle-track {
   display: flex;
