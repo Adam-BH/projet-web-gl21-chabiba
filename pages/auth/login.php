@@ -10,6 +10,7 @@
 	</head>
 	<body>
 		<canvas id="starCanvas" style="position:fixed;inset:0;z-index:0;pointer-events:none;"></canvas>
+		<a href="../../../" class="navbar-brand">HIKI</a>
 		<div class="container">
 			<p class="login-title">Welcome Back</p>
 			<p class="login-sub">Sign in to your account</p>

@@ -28,6 +28,13 @@ if (!$posts || count($posts) === 0) {
                     <div class="phone">
                         To restore it call: <?= htmlspecialchars(strtoupper($post->phone)) ?>
                     </div>
+                    <?php if ($post->finder == $_SESSION["user"]): ?>
+                        <form action="delete_post.php" class="delete-form" method="POST"
+                            onsubmit="return confirm('Are you sure you want to delete this post? This cannot be undone.');">
+                            <input type="hidden" name="post_id" value="<?=$post->id ?>">
+                            <button type="submit" class="glowy-btn">Remove Post</button>
+                        </form>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

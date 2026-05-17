@@ -17,7 +17,7 @@ public function findAll() {
         return $response->fetch(PDO::FETCH_OBJ);
     }
     public function delete($id) {
-        $response = $this->db->prepare(query: "delete from {$this->tableName} where email = ?");
+        $response = $this->db->prepare(query: "delete from {$this->tableName} where id = ?");
         $response->execute([$id]);
     }
 

@@ -14,6 +14,7 @@ $name = isset($_SESSION["user"]) ? $_SESSION["user"] : "";
 
 <body>
     <canvas id="starCanvas" style="position:fixed;inset:0;z-index:0;pointer-events:none;"></canvas>
+    <a href="../../../" class="navbar-brand">HIKI</a>
     <div class="hero-title">Welcome <?= htmlspecialchars($name) ?>! Did you lost something?</div>
     <div class="frame">
         <div class="posts-wrapper">
