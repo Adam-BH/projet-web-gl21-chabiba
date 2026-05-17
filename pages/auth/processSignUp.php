@@ -53,7 +53,7 @@ if ($pwd == $pwd2) {
             'phone' => $phone,
             'city' => $city
         ]);
-        if (!isset($findLocation) && $city != 'unknown') {
+        if ($findLocation == false && $city != 'unknown' && $city != 'localhost') {
             $adrRepository->create([
                 'id' => $city,
                 'lat' => $lat,
