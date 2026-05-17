@@ -1,5 +1,5 @@
 <?php session_start();
-$name = isset($_SESSION["user"]) ? $_SESSION["user"] :"";
+$name = isset($_SESSION["user"]) ? $_SESSION["user"] : "";
 ?>
 <!doctype html>
 <html lang="en" data-bs-theme="dark">
@@ -16,7 +16,9 @@ $name = isset($_SESSION["user"]) ? $_SESSION["user"] :"";
     <canvas id="starCanvas" style="position:fixed;inset:0;z-index:0;pointer-events:none;"></canvas>
     <div class="hero-title">Welcome <?= htmlspecialchars($name) ?>! Did you lost something?</div>
     <div class="frame">
-        <?php include_once "itemlist.php";?>
+        <div class="posts-wrapper">
+            <?php include_once "itemlist.php"; ?>
+        </div>
     </div>
     <script src="../../js/l&f.js"></script>
     <script src="../../js/main.js"></script>
