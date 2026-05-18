@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <title>HIKI - Home</title>
 </head>
 <body>
     <canvas id="starCanvas" style="position:fixed;inset:0;z-index:0;pointer-events:none;"></canvas>
-    <nav class="navbar navbar-dark">
+    <nav class="navbar navbar-dark" role="navigation" aria-label="Main navigation">
         <div class="container">
             <a href="." class="navbar-brand">HIKI</a>
             <ul class="navbar-nav nav-links">
@@ -34,9 +34,20 @@
             </ul>
         </div>
     </nav>
-    <section class="text-center pt-3 mt-3 style="position:relative;z-index:0;">
+    <section class="hero-section text-center pt-3 mt-3">
         <p class="hero-sub">Explore Our website for a</p>
         <p class="hero-title">Better Experience</p>
+        <div class="hero-overlay" aria-hidden="false">
+            <form class="search-box" action="pages/sites/sites.html" method="get" role="search">
+                <input type="search" name="q" placeholder="Search campsites, trails or regions" aria-label="Search campsites"/>
+                <button type="submit" class="btn btn-primary">Search</button>
+            </form>
+            <div class="hero-features">
+                <div class="feature-card"> <strong>Live Weather</strong><span>Up-to-date forecast</span></div>
+                <div class="feature-card"> <strong>Top Sites</strong><span>Curated camping spots</span></div>
+                <div class="feature-card"> <strong>Safety Tips</strong><span>Guides & manuals</span></div>
+            </div>
+        </div>
     </section>
     <div class="wrapper">
     <div class="campfire">
@@ -115,10 +126,41 @@
       <img class="log log-7" src="assets/Images/piecesOfWood.png" alt="log"/>
     </div>
 </div>
-<a href="pages/auth/login.php" class="login">CAMPING SITES NEAR ME</a>
+<a href="pages/auth/login.php" class="login" aria-label="Explore camping sites">
+    <span class="cta-icon" aria-hidden="true">🔥</span>
+    <span class="cta-text">EXPLORE CAMPING SITES</span>
+</a>
+        <section class="featured-section">
+            <div class="container featured-container">
+                <h3 class="section-title">Featured camping spots</h3>
+                <div class="featured-grid">
+                    <article class="site-card">
+                        <div class="site-media"></div>
+                        <div class="site-body">
+                            <h4>Ocean View Camp</h4>
+                            <p>Easy access, beautiful sunset views.</p>
+                        </div>
+                    </article>
+                    <article class="site-card">
+                        <div class="site-media"></div>
+                        <div class="site-body">
+                            <h4>Pine Ridge Base</h4>
+                            <p>Shaded campsites and nearby trails.</p>
+                        </div>
+                    </article>
+                    <article class="site-card">
+                        <div class="site-media"></div>
+                        <div class="site-body">
+                            <h4>Stargazer's Field</h4>
+                            <p>Minimal light pollution — ideal for astronomy.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
     </div>
-   <footer>
-<button class="sparky-mascot">
+    <footer>
+<button class="sparky-mascot" aria-label="Sparky tips">
   <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36 "
        viewBox="0 0 24 24" fill="none" stroke="black"
        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -131,6 +173,7 @@
                 <div class="toggle-thumb"></div>
             </label>
         </div>
+        <div class="footer-bar">Built with ❤️ · HIKI</div>
     </footer>
     <script src="js/main.js"></script>
 </body>
