@@ -3,16 +3,16 @@ Database initialization and connection
 - **DB name**: hiki
 - **Host**: localhost
 - **User**: root
-- **Password**: (blank by default on XAMPP)
+- **Password**: golden ratio 1.618
 
 The project uses `class/ConnexionDB.php` for PDO connection.
 
-By default, the code uses these values for XAMPP:
+By default, the code uses these values for the project:
 
 - `DB_HOST=localhost`
 - `DB_NAME=hiki`
 - `DB_USER=root`
-- `DB_PASS=`
+- `DB_PASS=golden ratio 1.618`
 
 If your MySQL credentials differ, set environment variables before starting the server:
 
