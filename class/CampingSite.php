@@ -9,6 +9,7 @@ class CampingSite{
         public ?float $lat = null,
         public ?float $lon = null,
         public ?string $image = null,
+        public array $images = [],
         public ?string $created_at = null,
     ){}
 
@@ -23,6 +24,7 @@ class CampingSite{
             lat: isset($row->lat) ? (float)$row->lat : null,
             lon: isset($row->lon) ? (float)$row->lon : null,
             image: $row->image ?? null,
+            images: $row->images ?? [],
             created_at: $row->created_at ?? null,
         );
     }
