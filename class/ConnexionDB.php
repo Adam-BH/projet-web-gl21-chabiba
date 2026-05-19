@@ -1,7 +1,7 @@
 <?php
 class ConnexionDB{
     private static $_dbname = "hiki";
-    private static $_user = "root";
+    private static $_user = "userHiki";
     private static $_pwd = "golden ratio 1.618";
     private static $_host = "localhost";
 

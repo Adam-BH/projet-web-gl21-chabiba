@@ -2,10 +2,6 @@
 CREATE DATABASE IF NOT EXISTS `hiki` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE `hiki`;
 
--- set root password for localhost if running as root
-ALTER USER 'root'@'localhost' IDENTIFIED BY 'golden ratio 1.618';
-FLUSH PRIVILEGES;
-
 -- adresses
 CREATE TABLE IF NOT EXISTS `adresses` (
   `id` VARCHAR(50) PRIMARY KEY,
@@ -52,4 +48,8 @@ CREATE TABLE IF NOT EXISTS `camping_sites` (
 -- sample data
 INSERT INTO `camping_sites` (`name`, `description`, `capacity`, `city`, `lat`, `lon`, `image`) VALUES
 ('Lake View Camp', 'Nice campsite by the lake.', 60, 'Lakecity', 45.123, 3.123, ''),
-('Pine Forest Camp', 'Shaded tentsites among pines.', 40, 'Forestville', 46.234, 4.234, '');
+('Pine Forest Camp', 'Shaded tentsites among pines.', 40, 'Forestville', 46.234, 4.234, ''),
+('Riverside Meadow', 'Open meadow sites next to a slow river, great for families.', 80, 'Meadowville', 45.532, 3.432, ''),
+('Highland Ridge', 'Quiet ridge-top sites with panoramic views and wind-sheltered pitches.', 30, 'Ridgeton', 46.001, 4.001, ''),
+('Sunny Glen', 'South-facing glen with easy access to walking trails.', 50, 'Glenburg', 44.981, 3.987, ''),
+('Oak Hollow Camp', 'Under oak canopy with picnic areas and fire rings.', 35, 'Oaktown', 45.221, 3.554, '');
