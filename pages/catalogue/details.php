@@ -71,7 +71,7 @@ if (!$id) {
                     <?php endif; ?></p>
 
                     <div style="margin-top:14px;">
-                        <a href="#" class="site-card-button">Book Now</a>
+                        <a href="#" class="site-card-button book-now-btn" data-site-id="<?= htmlspecialchars($site->id) ?>">Book Now</a>
                     </div>
                 </div>
             </div>
