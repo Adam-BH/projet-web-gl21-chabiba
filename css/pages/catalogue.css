@@ -13,19 +13,10 @@
     --catalogue-shadow: 0 24px 70px rgba(0, 0, 0, 0.38);
 }
 
+
 html,
 body {
     min-height: 100%;
-}
-
-/* Match background / body used by Lost & Found page for consistency */
-body {
-    margin: 0;
-    background-color: #0a0a0a;
-    color: #f0ffff;
-    overflow-x: hidden;
-    overflow-y: auto;
-    font-family: 'Segoe UI', Arial, sans-serif;
 }
 
 #starCanvas {

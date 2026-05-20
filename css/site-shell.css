@@ -12,17 +12,27 @@
     --accent-cool: #9de7f3;
     --surface-border: rgba(255, 255, 255, 0.16);
     --color-white: #f9f9f9;
+    --surface-bg: rgba(12, 8, 22, 0.7);
+    --button-bg: rgba(255, 255, 255, 0.05);
+    --button-border: rgba(255, 255, 255, 0.16);
+    --button-hover: rgba(143, 211, 255, 0.12);
+    --button-accent: linear-gradient(135deg, #8fd3ff 0%, #ffa86d 100%);
+    --button-accent-hover: linear-gradient(135deg, #a1e0ff 0%, #ffbc87 100%);
 }
 
 html, body {
     min-height: 100%;
+    height: auto !important;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 body {
     background: radial-gradient(circle at 50% -10%, var(--bg-night-soft) 0%, var(--bg-night) 52%, #070012 100%);
     color: var(--text-primary);
     min-height: 100vh;
-    overflow-x: hidden;
+    margin: 0;
+    font-family: 'Rethink Sans', sans-serif;
 }
 
 #starCanvas {
@@ -95,6 +105,82 @@ body {
     backdrop-filter: blur(12px);
     box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
     padding: 24px;
+}
+
+.panel,
+.highlight-card,
+.step,
+.content-card,
+.site-card {
+    border: 1px solid var(--surface-border);
+    border-radius: 18px;
+    background: var(--surface-bg);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+}
+.btn,
+.button,
+.step-btn,
+.view-toggle,
+.filter-button,
+.site-card-button,
+.btn-search {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0 18px;
+    border-radius: 999px;
+    border: 1px solid var(--button-border);
+    background: var(--button-bg);
+    color: var(--text-primary);
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 700;
+    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+.btn:hover,
+.button:hover,
+.step-btn:hover,
+.view-toggle:hover,
+.filter-button:hover,
+.site-card-button:hover,
+.btn-search:hover,
+.btn:focus-visible,
+.button:focus-visible,
+.step-btn:focus-visible,
+.view-toggle:focus-visible,
+.filter-button:focus-visible,
+.site-card-button:focus-visible,
+.btn-search:focus-visible {
+    transform: translateY(-1px);
+    background: var(--button-hover);
+}
+.btn-primary,
+.button.primary,
+.btn-search {
+    border-color: transparent;
+    background: var(--button-accent);
+    color: #0d0f16;
+    box-shadow: 0 14px 30px rgba(143, 211, 255, 0.18);
+}
+
+.step-btn.active {
+    background: linear-gradient(135deg, rgba(143,211,255,0.18), rgba(255,166,109,0.18));
+    border-color: rgba(143,211,255,0.6);
+    color: #fff;
+}
+.btn-primary:hover,
+.button.primary:hover,
+.btn-search:hover,
+.btn-search:focus-visible {
+    background: var(--button-accent-hover);
+}
+.btn-secondary,
+.button.secondary {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: var(--surface-border);
+    color: var(--text-primary);
 }
 
 .content-grid {
