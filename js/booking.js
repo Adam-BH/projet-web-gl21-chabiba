@@ -15,6 +15,22 @@
 	const availabilityDiv = qs('#bookingAvailability');
 	const cancelBtn = qs('#bookingCancel');
 
+	function formatDate(date) {
+		return date.toISOString().slice(0, 10);
+	}
+
+	function updateDateConstraints() {
+		const today = formatDate(new Date());
+		startInput.min = today;
+		if (startInput.value && startInput.value < today) {
+			startInput.value = today;
+		}
+		endInput.min = startInput.value || today;
+		if (endInput.value && endInput.value < endInput.min) {
+			endInput.value = endInput.min;
+		}
+	}
+
 	function showModal(siteId, siteName, capacity) {
 		siteIdInput.value = siteId;
 		qs('#bookingModalTitle').textContent = 'Book: ' + (siteName || 'site');
@@ -25,6 +41,7 @@
 		endInput.value = '';
 		peopleInput.value = 1;
 		availabilityDiv.textContent = '';
+		updateDateConstraints();
 	}
 
 	function hideModal() {
@@ -59,7 +76,10 @@
 			});
 	}
 
-	startInput?.addEventListener('change', updateAvailability);
+	startInput?.addEventListener('change', function () {
+		updateDateConstraints();
+		updateAvailability();
+	});
 	endInput?.addEventListener('change', updateAvailability);
 	peopleInput?.addEventListener('change', function () {
 		if (Number(this.value) < 1) this.value = 1;
@@ -96,6 +116,18 @@
 		const people = Number(peopleInput.value) || 1;
 		if (!siteId || !start || !end) {
 			alert('Please choose dates');
+			return;
+		}
+		const startDate = new Date(start);
+		const endDate = new Date(end);
+		const today = new Date();
+		today.setHours(0, 0, 0, 0);
+		if (startDate < today || endDate < today) {
+			alert('Booking dates cannot be in the past.');
+			return;
+		}
+		if (endDate < startDate) {
+			alert('End date cannot be before the start date.');
 			return;
 		}
 		fetch(

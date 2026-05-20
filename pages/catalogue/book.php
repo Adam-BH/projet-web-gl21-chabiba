@@ -19,6 +19,28 @@ if (!$siteId || !$start || !$end || $people <= 0){
     exit();
 }
 
+$startDate = DateTime::createFromFormat('Y-m-d', $start);
+$endDate = DateTime::createFromFormat('Y-m-d', $end);
+$today = new DateTime('today');
+
+if (!$startDate || !$endDate || $startDate->format('Y-m-d') !== $start || $endDate->format('Y-m-d') !== $end) {
+    http_response_code(400);
+    echo 'Invalid date format';
+    exit();
+}
+
+if ($endDate < $startDate) {
+    http_response_code(400);
+    echo 'Invalid booking dates: end date cannot be before start date';
+    exit();
+}
+
+if ($startDate < $today || $endDate < $today) {
+    http_response_code(400);
+    echo 'Booking dates cannot be in the past';
+    exit();
+}
+
 // ensure the session user maps to a valid users.id
 $userRepo = new UserRepository();
 $userRow = $userRepo->findById($userId);
