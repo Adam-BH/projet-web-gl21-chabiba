@@ -7,7 +7,7 @@ $navItems = [
     ['key' => 'home', 'label' => 'home', 'href' => '/projet-web-gl21-chabiba/index.html'],
     ['key' => 'weather', 'label' => 'weather', 'href' => '/projet-web-gl21-chabiba/pages/weather.html'],
     ['key' => 'guide', 'label' => 'hiking guide', 'href' => '/projet-web-gl21-chabiba/pages/hiking-guide.php'],
-    ['key' => 'equipment', 'label' => 'equipment', 'href' => '/projet-web-gl21-chabiba/pages/equipment.html'],
+    ['key' => 'equipment', 'label' => 'equipment', 'href' => '/projet-web-gl21-chabiba/pages/equipment.php'],
     ['key' => 'moon', 'label' => 'moon', 'href' => '/projet-web-gl21-chabiba/pages/moon.html'],
     ['key' => 'shops', 'label' => 'shops', 'href' => '/projet-web-gl21-chabiba/pages/shops.html'],
     ['key' => 'lostfound', 'label' => 'Lost & found', 'href' => '/projet-web-gl21-chabiba/pages/lost&found/lost&found.php'],
