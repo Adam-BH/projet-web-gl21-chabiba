@@ -26,4 +26,14 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // Scroll down functionality
+    const scrollBtn = document.getElementById('scrollDownBtn');
+    if (scrollBtn && filterContainer) {
+        scrollBtn.addEventListener('click', () => {
+            const yOffset = -20;
+            const y = filterContainer.getBoundingClientRect().top + window.scrollY + yOffset;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+        });
+    }
 });
