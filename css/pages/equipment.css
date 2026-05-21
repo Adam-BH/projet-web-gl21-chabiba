@@ -41,6 +41,65 @@
     line-height: 1.75;
 }
 
+/* ── Scroll Indicator Bar ── */
+.scroll-indicator-wrap {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 32px;
+    cursor: pointer;
+    gap: 12px;
+    user-select: none;
+    transition: transform 0.2s ease;
+}
+
+.scroll-indicator-wrap:hover {
+    transform: translateY(2px);
+}
+
+.scroll-text {
+    font-size: 0.76rem;
+    color: rgba(143, 211, 255, 0.55);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+.scroll-indicator-wrap:hover .scroll-text {
+    color: #8fd3ff;
+}
+
+.scroll-bar {
+    position: relative;
+    width: 2px;
+    height: 48px;
+    background: linear-gradient(to bottom, rgba(143, 211, 255, 0.3), rgba(143, 211, 255, 0.02));
+    border-radius: 1px;
+    overflow: hidden;
+}
+
+.scroll-dot {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 16px;
+    background: linear-gradient(to bottom, #8fd3ff, rgba(143, 211, 255, 0));
+    border-radius: 1px;
+    animation: scrollMove 2.2s infinite cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+@keyframes scrollMove {
+    0% {
+        transform: translateY(-100%);
+    }
+    70%, 100% {
+        transform: translateY(300%);
+    }
+}
+
 /* ── Category Filter Chips ── */
 .category-filters {
     display: flex;
