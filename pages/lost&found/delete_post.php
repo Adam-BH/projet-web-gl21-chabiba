@@ -28,7 +28,10 @@ if ($_SESSION['user'] !==  $post->finder) {
     http_response_code(403);
     die('You are not authorized to delete this post.');
 }
-
+$image_path = $postRepository->findById($post_id)->picture;
+if (file_exists($image_path)) {
+    unlink($image_path);
+}
 $postRepository->delete($post_id);
 header('Location: lost&found.php?deleted=1');
 exit;
