@@ -1,3 +1,10 @@
+<?php
+session_start();
+$login_url = 'pages/auth/login.php';
+$search_url = 'pages/search.php';
+$is_logged = isset($_SESSION['is_logged']) && $_SESSION['is_logged'] === true;
+$link_url = $is_logged ? $search_url : $login_url;
+?>
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="dark">
 <head>
@@ -18,16 +25,16 @@
                     <a href="." class="nav-link active">home</a>
                 </li>
                 <li class="nav-item">
-                    <a href="pages/weather.html" class="nav-link">weather</a>
+                    <a href="pages/weather.php" class="nav-link">weather</a>
                 </li>
                 <li class="nav-item">
                     <a href="pages/hiking-guide.php" class="nav-link">hiking guide</a>
                 </li>
                 <li class="nav-item">
-                    <a href="pages/equipment.html" class="nav-link">equipment</a>
+                    <a href="pages/equipment.php" class="nav-link">equipment</a>
                 </li>
                 <li class="nav-item">
-                    <a href="pages/moon.html" class="nav-link">moon</a>
+                    <a href="pages/moon.php" class="nav-link">moon</a>
                 </li>
                 <li class="nav-item">
                     <a href="pages/shops.html" class="nav-link">shops</a>
@@ -120,14 +127,12 @@
       <img class="log log-7" src="assets/Images/piecesOfWood.png" alt="log"/>
     </div>
 </div>
-<a href="pages/auth/login.php" class="login" aria-label="Explore camping sites">
-    <span class="cta-icon" aria-hidden="true">🔥</span>
-    <span class="cta-text">EXPLORE CAMPING SITES</span>
+<a href="<?= htmlspecialchars($link_url) ?>" class="glowy-btn">
+    CAMPING SITES NEAR ME
 </a>
         <!-- featured section removed to keep existing components only -->
     </div>
     <footer>
-<!-- Sparky mascot removed -->
         <div class="theme-toggle">
             <input type="checkbox" id="toggle" hidden>
             <label for="toggle" class="toggle-track">

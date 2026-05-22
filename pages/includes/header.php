@@ -4,11 +4,11 @@ $pageActive = $pageActive ?? '';
 $extraStyles = $extraStyles ?? [];
 
 $navItems = [
-    ['key' => 'home', 'label' => 'home', 'href' => '/projet-web-gl21-chabiba/index.html'],
-    ['key' => 'weather', 'label' => 'weather', 'href' => '/projet-web-gl21-chabiba/pages/weather.html'],
+    ['key' => 'home', 'label' => 'home', 'href' => '/projet-web-gl21-chabiba/index.php'],
+    ['key' => 'weather', 'label' => 'weather', 'href' => '/projet-web-gl21-chabiba/pages/weather.php'],
     ['key' => 'guide', 'label' => 'hiking guide', 'href' => '/projet-web-gl21-chabiba/pages/hiking-guide.php'],
     ['key' => 'equipment', 'label' => 'equipment', 'href' => '/projet-web-gl21-chabiba/pages/equipment.php'],
-    ['key' => 'moon', 'label' => 'moon', 'href' => '/projet-web-gl21-chabiba/pages/moon.html'],
+    ['key' => 'moon', 'label' => 'moon', 'href' => '/projet-web-gl21-chabiba/pages/moon.php'],
     ['key' => 'shops', 'label' => 'shops', 'href' => '/projet-web-gl21-chabiba/pages/shops.html'],
     ['key' => 'lostfound', 'label' => 'Lost & found', 'href' => '/projet-web-gl21-chabiba/pages/lost&found/lost&found.php'],
 ];
@@ -29,7 +29,7 @@ $navItems = [
     <canvas id="starCanvas" aria-hidden="true"></canvas>
     <nav class="navbar navbar-dark" role="navigation" aria-label="Main navigation">
         <div class="container">
-            <a href="/projet-web-gl21-chabiba/index.html" class="navbar-brand">HIKI</a>
+            <a href="/projet-web-gl21-chabiba/index.php" class="navbar-brand">HIKI</a>
             <ul class="navbar-nav nav-links">
                 <?php foreach ($navItems as $item): ?>
                     <li class="nav-item">

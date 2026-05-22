@@ -7,6 +7,8 @@ $extraStyles = ['css/pages/l&f.css'];
 include __DIR__ . '/../includes/header.php';
 ?>
 
+
+
     <div class="hero-title">Welcome <?= htmlspecialchars($name) ?>! Did you lost something?</div>
     <div class="frame">
         <div class="posts-wrapper">

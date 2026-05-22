@@ -8,7 +8,6 @@
     --border-cyan-dim: rgba(240, 255, 255, 0.1);
     --border-cyan-hover: rgba(0, 255, 255, 0.3);
     --bg-card: #121212;
-    --bg-body: #0a0a0a;
 }
 
 * {
@@ -18,11 +17,11 @@
 }
 
 body {
-    background-color: var(--bg-body);
     color: var(--azure);
     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     line-height: 1.5;
     overflow-x: hidden;
+    overflow-y: visible;
 }
 
 .hero-title {
@@ -140,4 +139,10 @@ body {
     .posts-wrapper {
         grid-template-columns: 1fr;
     }
+}
+
+.glowy-btn {
+    margin: 0 auto;
+    padding: 5px auto;
+    font-size: 0.7rem;
 }
