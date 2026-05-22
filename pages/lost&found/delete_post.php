@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once("../autoloader.php");
+include_once(__DIR__ . "/../autoloader.php");
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
     die('Method not allowed.');
