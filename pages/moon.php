@@ -8,33 +8,12 @@ if ($selectedIndex < 0 || $selectedIndex >= count($week)) {
     $selectedIndex = 0;
 }
 $selected = $week[$selectedIndex];
+$pageTitle = 'HIKI — Moon';
+$pageActive = 'moon';
+$bodyClass = 'hiki-page';
+$extraStyles = ['css/shared/hiki-page.css', 'css/pages/moon-page.css'];
+include __DIR__ . '/includes/header.php';
 ?>
-<!DOCTYPE html>
-<html lang="en" data-bs-theme="dark">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HIKI — Moon</title>
-    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/shared/hiki-page.css">
-    <link rel="stylesheet" href="../css/pages/moon-page.css">
-</head>
-<body class="hiki-page">
-    <canvas id="starCanvas" class="star-canvas"></canvas>
-
-    <nav class="navbar navbar-dark hiki-nav">
-        <div class="container">
-            <a href="../index.php" class="navbar-brand">HIKI</a>
-            <ul class="navbar-nav nav-links">
-                <li class="nav-item"><a href="shops.html" class="nav-link">shops</a></li>
-                <li class="nav-item"><a href="weather.php" class="nav-link">weather</a></li>
-                <li class="nav-item"><a href="community.html" class="nav-link">community</a></li>
-                <li class="nav-item"><a href="availability.html" class="nav-link">availability</a></li>
-                <li class="nav-item"><a href="equipment.html" class="nav-link">equipement</a></li>
-                <li class="nav-item"><a href="moon.php" class="nav-link is-active">moon</a></li>
-            </ul>
-        </div>
-    </nav>
 
     <main class="moon-main">
         <h1 class="moon-title">The Moon</h1>
@@ -89,7 +68,8 @@ $selected = $week[$selectedIndex];
         </label>
     </div>
 
-    <script src="../js/stars-bg.js"></script>
+    <script src="../js/main.js"></script>
     <script src="../js/moon-page.js"></script>
+    </div>
 </body>
 </html>
