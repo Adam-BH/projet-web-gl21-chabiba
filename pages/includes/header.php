@@ -27,6 +27,7 @@ $navItems = [
 </head>
 <body class="<?= htmlspecialchars($bodyClass ?? '') ?>">
     <canvas id="starCanvas" aria-hidden="true"></canvas>
+    <?php if (!isset($hideNavbar) || !$hideNavbar): ?>
     <nav class="navbar navbar-dark" role="navigation" aria-label="Main navigation">
         <div class="container d-flex align-items-center justify-content-between">
             <div class="d-flex align-items-center" style="gap: 2rem;">
@@ -42,12 +43,13 @@ $navItems = [
             <div class="nav-auth ms-3 d-flex align-items-center">
                 <?php if (isset($_SESSION['is_logged']) && $_SESSION['is_logged'] === true): ?>
                     <span class="text-light me-3">Hi, <?= htmlspecialchars($_SESSION['user'] ?? 'User') ?></span>
-                    <a href="/projet-web-gl21-chabiba/pages/auth/logout.php" class="btn btn-outline-light btn-sm">Logout</a>
+                    <a href="/projet-web-gl21-chabiba/pages/auth/logout.php" class="nav-btn outline">Logout</a>
                 <?php else: ?>
-                    <a href="/projet-web-gl21-chabiba/pages/auth/login.php" class="btn btn-outline-light btn-sm me-2">Login</a>
-                    <a href="/projet-web-gl21-chabiba/pages/auth/signup.php" class="btn btn-primary btn-sm" style="background-color: var(--accent-warm); border-color: var(--accent-warm);">Sign Up</a>
+                    <a href="/projet-web-gl21-chabiba/pages/auth/login.php" class="nav-btn outline me-2">Login</a>
+                    <a href="/projet-web-gl21-chabiba/pages/auth/signup.php" class="nav-btn primary">Sign Up</a>
                 <?php endif; ?>
             </div>
         </div>
     </nav>
+    <?php endif; ?>
     <div class="page-shell">

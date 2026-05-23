@@ -71,6 +71,43 @@ body {
     padding-bottom: 4px;
 }
 
+.nav-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 18px;
+    border-radius: 999px;
+    font: 600 0.85rem "Rethink Sans", sans-serif;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    cursor: pointer;
+}
+
+.nav-btn.primary {
+    background: linear-gradient(135deg, var(--accent-warm), #ff5100);
+    color: var(--color-white);
+    border: 1px solid transparent;
+    box-shadow: 0 4px 14px rgba(193, 117, 75, 0.35);
+}
+
+.nav-btn.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(193, 117, 75, 0.5);
+    color: var(--color-white);
+}
+
+.nav-btn.outline {
+    background: transparent;
+    color: var(--text-muted);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.nav-btn.outline:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
 .navbar-brand {
     flex-shrink: 0;
     font: 800 clamp(22px, 3.8vw, 44px) "Rethink Sans", sans-serif;
