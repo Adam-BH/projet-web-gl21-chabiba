@@ -7,7 +7,12 @@ $extraStyles = ['css/pages/l&f.css'];
 include __DIR__ . '/../includes/header.php';
 ?>
 
+
+
     <div class="hero-title">Welcome <?= htmlspecialchars($name) ?>! Did you lost something?</div>
+    <?php if (isset($_SESSION["is_logged"]) && $_SESSION["is_logged"]): ?>
+        <a href="add_post.php" class="add-btn glowy-btn">+ Post New Item</a>
+    <?php endif; ?>
     <div class="frame">
         <div class="posts-wrapper">
             <?php include_once "itemlist.php"; ?>

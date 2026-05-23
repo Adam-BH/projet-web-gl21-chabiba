@@ -4,15 +4,13 @@
 :root {
     --border-color: rgba(255, 255, 255, 0.16);
 }
-
-.btn-login {
-    width: 250px;
-    height: 40px;
-    border-radius: 8px;
-}
-
-.btn-login:hover {
-    opacity: 0.92;
+body{
+    margin: 0;
+    min-height: 100vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Rethink Sans', sans-serif;
 }
 
 .container {
@@ -22,31 +20,39 @@
 input{
     width:100%;
     padding: 12px;
-    background-color: transparent;
-    border:2px solid var(--border-color);
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--surface-border);
     outline:none;
-    color: white;
+    color: var(--text-primary);
     font-size: 16px;
     border-radius: 8px;
     margin-bottom: 1rem;
+    transition: 0.3s ease;
+}
+input:focus {
+    border-color: var(--accent-cool);
+    background-color: rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 10px rgba(157, 231, 243, 0.2);
 }
 label{
     position: absolute;
     left:12px;
     top:12px;
-    color:#94a3b8;
+    color: var(--text-muted);
     pointer-events: none;
     transition: 0.3s;
-    background-color: #0b001b;
+    background-color: transparent;
     padding: 0 5px;
 }
 input:focus+label,input:valid+label{
-    top:-8px;
+    top:-10px;
+    left:10px;
     font-size: 12px;
-    background-color: transparent;
+    color: var(--accent-cool);
+    background-color: #0b001b; /* Matches page background to break line */
+    border-radius: 4px;
 }
 .container{
-    min-height: 75vh;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -57,6 +63,9 @@ input:focus+label,input:valid+label{
     border-radius: 18px;
     width: 100%;
     max-width: 450px;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
 @font-face {
     font-family: 'Righteous';
@@ -72,17 +81,45 @@ input:focus+label,input:valid+label{
     margin: 0 0 2rem;
 }
 .btn-login { 
-    width: 250px;
-    height: 40px;
-    border-radius: 8px;
+    width: 100%;
+    padding: 12px;
+    background: radial-gradient(ellipse 60% 120% at center, rgba(193, 117,75, 0.8) 0%,rgba(50,17,23,0) 50%,transparent 70%);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: 'Nunito', sans-serif;
+    color: var(--text-primary);
+    cursor: pointer;
+    letter-spacing: 0.06em;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 8px 34px rgba(0, 0, 0, 0.35);
+}
+.btn-login:hover {
+    background: radial-gradient(ellipse 40% 80% at center, rgba(193, 117,75, 0.8) 0%, transparent 70%);
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 
+      0 0 10px rgb(162, 84, 23),
+      0 0 20px rgb(162, 84, 23),
+      0 0 40px rgb(162, 84, 23);
 }
 .signup-row {
     text-align: center;
     margin-top: 1.5rem;
     font-size: 14px;
+    color: var(--text-muted);
 }
 .signup-row a {
-    font-weight: 500;
+    font-weight: 600;
     text-decoration: none;
+    color: var(--accent-cool);
+    transition: color 0.2s ease, text-shadow 0.2s ease;
 }
-.signup-row a:hover { text-decoration: underline; }
+.signup-row a:hover { 
+    text-decoration: none; 
+    color: var(--text-primary);
+    text-shadow: 0 0 14px rgba(157, 231, 243, 0.45);
+}
+.error    { color: #dc2626; font-size: 0.82rem; margin-top: 3px; }

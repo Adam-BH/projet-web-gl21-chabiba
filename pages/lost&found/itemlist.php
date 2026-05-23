@@ -1,8 +1,12 @@
 <?php
-require_once '../autoloader.php';
+require_once __DIR__ . '/../autoloader.php';
 
-$postRepository = new PostRepository();
-$posts = $postRepository->findAll();
+try {
+    $postRepository = new PostRepository();
+    $posts = $postRepository->findAll();
+} catch (Throwable $e) {
+    $posts = [];
+}
 
 if (!$posts || count($posts) === 0) {
     echo 'No Found Items Here.';
@@ -10,7 +14,7 @@ if (!$posts || count($posts) === 0) {
     foreach ($posts as $post): ?>
         <div class="post-card">
             <?php
-            $photoPath = "uploads/" . $post->picture;
+            $photoPath =  $post->picture;
             ?>
 
             <img src="<?= htmlspecialchars($photoPath) ?>" alt="Item Picture">
@@ -28,6 +32,13 @@ if (!$posts || count($posts) === 0) {
                     <div class="phone">
                         To restore it call: <?= htmlspecialchars(strtoupper($post->phone)) ?>
                     </div>
+                    <?php if ($post->finder == $_SESSION["user"]): ?>
+                        <form action="delete_post.php" class="delete-form" method="POST"
+                            onsubmit="return confirm('Are you sure you want to delete this post? This cannot be undone.');">
+                            <input type="hidden" name="post_id" value="<?=$post->id ?>">
+                            <button type="submit" class="glowy-btn">Remove Post</button>
+                        </form>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
