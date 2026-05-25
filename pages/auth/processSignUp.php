@@ -14,7 +14,7 @@ if ($pwd == $pwd2) {
         $userRepository->create([
             'username' => $user,
             'email' => $email,
-            'password' => $pwd,
+            'password' => password_hash($pwd, PASSWORD_DEFAULT),
             'phone'=> $phone
         ]);
         header('location:search.php');
