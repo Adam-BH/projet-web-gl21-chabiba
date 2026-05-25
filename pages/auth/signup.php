@@ -23,6 +23,10 @@
 					<label>Username</label>
 				</div>
 				<div class="input-box">
+					<input type="text" name="phone" required>
+					<label>Phone Number</label>
+				</div>
+				<div class="input-box">
 					<input type="password" name="password" required>
 					<label>Password</label>
 				</div>

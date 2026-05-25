@@ -6,14 +6,16 @@ $email = $_POST['email'];
 $user = $_POST['username'];
 $pwd = $_POST['password'];
 $pwd2 = $_POST['password2'];
+$phone = $_POST['phone'];
 $testing = $userRepository->findById($email);
-if (isset($email) && isset($pwd) && isset($user) && isset($pwd2) && $pwd == $pwd2) {
+if ($pwd == $pwd2) {
     if ($testing == false) {
         $_SESSION['user'] = $email;
         $userRepository->create([
             'username' => $user,
             'email' => $email,
-            'password' => $pwd
+            'password' => $pwd,
+            'phone'=> $phone
         ]);
         header('location:search.php');
     } else {
