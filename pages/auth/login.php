@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!doctype html>
 <html lang="en" data-bs-theme="dark">
 	<head>
@@ -12,17 +13,22 @@
 		<div class="container">
 			<p class="login-title">Welcome Back</p>
 			<p class="login-sub">Sign in to your account</p>
-			<div class="input-box">
-				<input type="text" required>
-				<label>Username</label>
-			</div>
-			<div class="input-box">
-				<input type="password" required>
-				<label>Password</label>
-			</div>
-			<button class="btn-login">Sign in</button>
-		    <div class="signup-row">
-      Don't have an account? <a href="/pages/auth/signup.html">Sign up</a>
+			<form action="processLogin.php" method="POST">
+				<div class="input-box">
+					<input type="text" name="email" required>
+					<label>Email</label>
+				</div>
+				<div class="input-box">
+					<input type="password" name="password" required>
+					<label>Password</label>
+				</div>
+				<button class="btn-login">Sign in</button>
+			</form>
+			<div class="signup-row">
+      Don't have an account? <a href="/pages/auth/signup.php">Sign up</a>
+	  <?php if (isset($_GET['error'])): ?>
+		  <p style="color:red;">Invalid username or password.</p>
+	  <?php endif; ?>
     		</div>
 		</div>
 		<script src="../../js/auth.js"></script>

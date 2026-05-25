@@ -32,15 +32,15 @@ nav {
   }
 }
 .hero-sub{
-    font:clamp(20px,3.5vw,60px) "Rethink Sans",sans-serif;
+    font:clamp(20px,3vw,60px) "Rethink Sans",sans-serif;
 }
 @font-face {
     font-family: 'Righteous';
     src: url('../assets/Fonts/Righteous-Regular.ttf') format('truetype');
 }
 .hero-title{
-    font:bolder clamp(60px,7vw,150px) 'Righteous',sans-serif;
-    margin-top: clamp(-51.75px,-2.7vw,-20px);
+    font:bolder clamp(60px,9vw,200px) 'Righteous',sans-serif;
+    margin-top: clamp(-51.75px,-5vw,-20px);
 }
 .toggle-track {
   display: flex;
@@ -281,6 +281,10 @@ nav {
 .login:hover {
   background: radial-gradient(ellipse 40% 80% at center, rgba(193, 117,75, 0.8) 0%, transparent 70%);
   transform: scale(1.05);
+  box-shadow: 
+  0 0 10px rgb(162, 84, 23),
+  0 0 20px rgb(162, 84, 23),
+  0 0 40px rgb(162, 84, 23);
 }
 .wrapper {
   display: flex;
