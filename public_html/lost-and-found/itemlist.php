@@ -9,7 +9,7 @@ try {
 }
 
 if (!$posts || count($posts) === 0) {
-    echo '<p style="text-align:center; color: var(--text-muted); padding: 40px 0;">No found items yet. Be the first to post!</p>';
+    echo '<p class="empty-state-text">No found items yet. Be the first to post!</p>';
 } else {
     foreach ($posts as $post): ?>
         <div class="post-card">

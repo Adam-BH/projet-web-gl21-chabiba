@@ -23,8 +23,8 @@ if (!$id) {
 }
 ?>
 
-<main class="catalogue-shell" style="max-width:980px;margin:24px auto;padding:0 16px;">
-    <a href="/projet-web-gl21-chabiba/public_html/catalogue/index.php" style="display:inline-block;margin-bottom:12px;">← Back to catalogue</a>
+<main class="catalogue-shell site-details-shell">
+    <a href="/projet-web-gl21-chabiba/public_html/catalogue/index.php" class="back-link">← Back to catalogue</a>
 
     <?php if ($error): ?>
         <div class="error-message"><strong>Error:</strong> <?= htmlspecialchars($error) ?></div>
@@ -33,8 +33,8 @@ if (!$id) {
             <h1><?= htmlspecialchars($site->name ?? 'Untitled') ?></h1>
             <p class="muted"><?= htmlspecialchars($site->city ?? '') ?> · Capacity: <?= htmlspecialchars($site->capacity ?? '-') ?></p>
 
-            <div class="site-media" style="display:flex;gap:12px;margin-top:18px;">
-                <div class="media-carousel" style="flex:1;min-width:260px;">
+            <div class="site-media">
+                <div class="media-carousel">
                     <?php
                     $images = [];
                     if (!empty($site->images) && is_array($site->images) && count($site->images)) {
@@ -45,22 +45,22 @@ if (!$id) {
                     ?>
 
                     <?php if (count($images)): ?>
-                        <div class="carousel-main" style="border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.06);">
-                            <img id="mainImage" src="<?= htmlspecialchars($images[0]) ?>" alt="<?= htmlspecialchars($site->name) ?>" style="width:100%;height:auto;display:block;">
+                        <div class="carousel-main">
+                            <img id="mainImage" src="<?= htmlspecialchars($images[0]) ?>" alt="<?= htmlspecialchars($site->name) ?>">
                         </div>
-                        <div class="carousel-thumbs" style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap;">
+                        <div class="carousel-thumbs">
                             <?php foreach($images as $img): ?>
-                                <button class="thumb" type="button" data-src="<?= htmlspecialchars($img) ?>" style="border:0;background:transparent;padding:0;cursor:pointer;">
-                                    <img src="<?= htmlspecialchars($img) ?>" alt="thumb" style="width:80px;height:60px;object-fit:cover;border-radius:6px;border:1px solid rgba(255,255,255,0.04);">
+                                <button class="thumb" type="button" data-src="<?= htmlspecialchars($img) ?>">
+                                    <img src="<?= htmlspecialchars($img) ?>" alt="thumb">
                                 </button>
                             <?php endforeach; ?>
                         </div>
                     <?php else: ?>
-                        <div style="padding:36px;border-radius:12px;border:1px solid rgba(255,255,255,0.06);">No images available</div>
+                        <div class="carousel-empty">No images available</div>
                     <?php endif; ?>
                 </div>
 
-                <div class="site-info" style="flex:1;min-width:260px;">
+                <div class="site-info">
                     <h2>Description</h2>
                     <p><?= nl2br(htmlspecialchars($site->description ?? 'No description available')) ?></p>
 
@@ -70,7 +70,7 @@ if (!$id) {
                         <br>Coordinates: <?= htmlspecialchars($site->lat) ?>, <?= htmlspecialchars($site->lon) ?>
                     <?php endif; ?></p>
 
-                    <div style="margin-top:14px;">
+                    <div class="site-details-actions">
                         <a href="#" class="site-card-button book-now-btn" data-site-id="<?= htmlspecialchars($site->id) ?>">Book Now</a>
                     </div>
                 </div>
@@ -80,13 +80,20 @@ if (!$id) {
         <script>
             (function(){
                 const main = document.getElementById('mainImage');
-                document.querySelectorAll('.thumb').forEach(btn => {
+                const thumbs = document.querySelectorAll('.thumb');
+                if (thumbs.length) thumbs[0].classList.add('is-active');
+                thumbs.forEach(btn => {
                     btn.addEventListener('click', function(){
                         const src = this.dataset.src;
                         if (src && main) main.src = src;
+                        thumbs.forEach(t => t.classList.remove('is-active'));
+                        this.classList.add('is-active');
                     });
                 });
             })();
         </script>
     <?php endif; ?>
 </main>
+</div>
+</body>
+</html>

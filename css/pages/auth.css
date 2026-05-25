@@ -1,9 +1,5 @@
 @import url('../style.css');
-/* Auth pages preserve shared background and font from site-shell.css */
 
-:root {
-    --border-color: rgba(255, 255, 255, 0.16);
-}
 body{
     margin: 0;
     min-height: 100vh;
@@ -93,10 +89,6 @@ select option {
     box-shadow: 0 18px 50px rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-}
-@font-face {
-    font-family: 'Righteous';
-    src: url('../assets/Fonts/Righteous-Regular.ttf') format('truetype');
 }
 .login-title { 
     font:400 40px 'Righteous',sans-serif;

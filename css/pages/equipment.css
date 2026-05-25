@@ -1,11 +1,9 @@
 @import url('../style.css');
 
 body {
-    background: radial-gradient(circle at top, rgba(40, 58, 92, 0.26), transparent 42%), linear-gradient(180deg, #08101e 0%, #04070f 100%);
     color: #eef5ff;
     overflow-x: hidden;
     overflow-y: auto;
-    font-family: 'Rethink Sans', 'Segoe UI', Arial, sans-serif;
 }
 
 /* ── Equipment Shell ── */

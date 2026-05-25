@@ -40,7 +40,7 @@ function updateStepper() {
 		);
 	});
 	steps.forEach((step, index) => {
-		step.style.display = state.currentStep === index + 1 ? 'block' : 'none';
+		step.classList.toggle('step-hidden', state.currentStep !== index + 1);
 	});
 }
 
@@ -268,13 +268,13 @@ function handleBookClick(siteId) {
 }
 
 function showPlaceholder() {
-	resultsContainer.style.display = 'none';
-	searchPlaceholder.style.display = 'block';
+	resultsContainer.classList.add('step-hidden');
+	searchPlaceholder.classList.remove('step-hidden');
 }
 
 function hidePlaceholder() {
-	searchPlaceholder.style.display = 'none';
-	resultsContainer.style.display = 'block';
+	searchPlaceholder.classList.add('step-hidden');
+	resultsContainer.classList.remove('step-hidden');
 }
 
 function searchSites() {

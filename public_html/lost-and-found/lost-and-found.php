@@ -10,10 +10,10 @@ include __DIR__ . '/../../src/Includes/header.php';
 <main class="lost-found-shell">
     <section class="hero text-center">
         <p class="eyebrow">Community</p>
-        <h1 class="page-title" style="font-size: clamp(2rem, 5vw, 3.5rem);">Lost &amp; Found</h1>
+        <h1 class="page-title">Lost &amp; Found</h1>
         <p class="page-subtitle">Welcome <?= htmlspecialchars($name) ?>! Found something at a campsite? Help it get back to its owner.</p>
         <?php if (isset($_SESSION["is_logged"]) && $_SESSION["is_logged"]): ?>
-            <div style="margin-top: 20px;">
+            <div class="hero-actions">
                 <a href="add_post.php" class="btn btn-primary">+ Post New Item</a>
             </div>
         <?php endif; ?>
