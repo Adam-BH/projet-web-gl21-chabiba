@@ -1,7 +1,7 @@
 <?php
 session_start();
 header('Content-Type: application/json');
-require_once __DIR__ . '/../../pages/autoloader.php';
+require_once __DIR__ . '/../autoloader.php';
 
 // expects POST: site_id, start, end, people
 if ($_SERVER['REQUEST_METHOD'] !== 'POST'){

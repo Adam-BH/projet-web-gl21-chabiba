@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: application/json');
-require_once __DIR__ . '/../../pages/autoloader.php';
+require_once __DIR__ . '/../autoloader.php';
 
 $lat = isset($_GET['lat']) ? floatval($_GET['lat']) : null;
 $lon = isset($_GET['lon']) ? floatval($_GET['lon']) : null;

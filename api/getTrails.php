@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../pages/autoloader.php';
+require_once __DIR__ . '/../autoloader.php';
 
 $level = $_GET['level'] ?? $_GET['difficulty'] ?? 'all';
 $age = $_GET['age'] ?? '';
