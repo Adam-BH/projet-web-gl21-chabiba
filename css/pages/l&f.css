@@ -1,0 +1,12 @@
+@import url('../style.css');
+.hero-title {
+    font:bolder clamp(27px,3vw,90px) 'Righteous',sans-serif;
+    padding-top: 5vh;
+}
+
+.frame {
+    border: 2px solid azure;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 5vw;
+}

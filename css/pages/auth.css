@@ -1,10 +1,8 @@
+@import url('../style.css');
 :root{
     --border-color:#05504b;
 }
 body{
-    background-color: #0b001b;
-    height:100vh;
-    overflow: hidden;
     margin: 0;
     height: 100vh;
     display:flex;
