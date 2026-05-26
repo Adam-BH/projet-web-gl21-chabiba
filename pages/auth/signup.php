@@ -1,17 +1,11 @@
-<?php session_start(); ?>
-<!doctype html>
-<html lang="en" data-bs-theme="dark">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>HIKI - Sign Up</title>
-		<link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
-		<link rel="stylesheet" href="../../css/pages/auth.css" />
-	</head>
-	<body>
-		<canvas id="starCanvas" style="position:fixed;inset:0;z-index:0;pointer-events:none;"></canvas>
+<?php session_start();
+$pageTitle = 'HIKI - Sign Up';
+$pageActive = '';
+$extraStyles = ['css/pages/auth.css'];
+include __DIR__ . '/../includes/header.php';
+?>
 		<div class="container">
-			<p class="login-title">Wecome</p>
+			<p class="login-title">Welcome</p>
 			<p class="login-sub">Sign up to your account</p>
 			<form action="processSignUp.php" method="POST">
 				<div class="input-box">
@@ -40,9 +34,10 @@
 	  <?php if (isset($_GET['error'])): ?>
 		  <p style="color:red;"><?php echo $_GET['error'] ?></p>
 	  <?php endif; ?>
-    		</div>
+	    	</div>
 		</div>
-		<script src="../../js/auth.js"></script>
-		<script src="../../js/main.js"></script>
-	</body>
+		<script src="/projet-web-gl21-chabiba/js/auth.js"></script>
+		<script src="/projet-web-gl21-chabiba/js/main.js"></script>
+	</div>
+</body>
 </html>

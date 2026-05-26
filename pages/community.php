@@ -1,0 +1,1 @@
+<?php header('Location: hiking-guide.php'); exit; ?>
