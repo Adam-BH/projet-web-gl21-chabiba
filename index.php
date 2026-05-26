@@ -1,3 +1,10 @@
+<?php
+session_start();
+$login_url = 'pages/auth/login.php';
+$search_url = 'pages/search.php';
+$is_logged = isset($_SESSION['is_logged']) && $_SESSION['is_logged'] === true;
+$link_url = $is_logged ? $search_url : $login_url;
+?>
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="dark">
 <head>
@@ -115,8 +122,9 @@
       <img class="log log-7" src="assets/Images/piecesOfWood.png" alt="log"/>
     </div>
 </div>
-<a href="pages/auth/login.php" class="login">CAMPING SITES NEAR ME</a>
-    </div>
+<a href="<?= htmlspecialchars($link_url) ?>" class="glowy-btn">
+    CAMPING SITES NEAR ME
+</a>
    <footer>
 <button class="sparky-mascot">
   <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36 "

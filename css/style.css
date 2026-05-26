@@ -24,6 +24,9 @@ nav {
 .navbar-brand{
     flex-shrink: 0;
     font:bold clamp(30px,5.5vw,72px) "Rethink Sans",sans-serif;
+    position: absolute;
+    left: 20px;
+    top: 20px;
 }
 @media (max-width: 768px) {
   .nav-links {
@@ -248,7 +251,7 @@ nav {
   height: 300px;
   z-index: 2;          /* logs appear over pillars base */
 }
-.login {
+.glowy-btn {
   text-decoration:none;
   display: block;
   margin: 200px auto;
@@ -280,7 +283,7 @@ nav {
   position: relative;
 }
 
-.login:hover {
+.glowy-btn:hover {
   background: radial-gradient(ellipse 40% 80% at center, rgba(193, 117,75, 0.8) 0%, transparent 70%);
   transform: scale(1.05);
   box-shadow: 
