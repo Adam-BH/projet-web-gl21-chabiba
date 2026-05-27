@@ -67,6 +67,19 @@ CREATE TABLE IF NOT EXISTS `bookings` (
   CONSTRAINT `fk_bookings_user` FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- hiking guide trails (kept empty; the application falls back to built-in sample data if needed)
+CREATE TABLE IF NOT EXISTS `trails` (
+  `id` INT AUTO_INCREMENT PRIMARY KEY,
+  `name` VARCHAR(150) NOT NULL,
+  `level` VARCHAR(20) NOT NULL,
+  `min_age` INT DEFAULT 0,
+  `max_group_size` INT DEFAULT NULL,
+  `video_url` VARCHAR(255),
+  `details` TEXT,
+  `tips` TEXT,
+  `checklist` TEXT,
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- sample data
 INSERT INTO `camping_sites` (`name`, `description`, `capacity`, `city`, `lat`, `lon`, `image`) VALUES
