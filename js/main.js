@@ -77,4 +77,21 @@ document.addEventListener("DOMContentLoaded", () => {
           
         });
     }
+
+    // ── Dark Mode Toggle ──
+    const toggle = document.getElementById('toggle');
+    if (toggle) {
+        const html = document.documentElement;
+
+        // Restore saved theme or default to dark
+        const savedTheme = localStorage.getItem('hiki-theme') || 'dark';
+        html.setAttribute('data-bs-theme', savedTheme);
+        toggle.checked = savedTheme === 'light';
+
+        toggle.addEventListener('change', () => {
+            const theme = toggle.checked ? 'light' : 'dark';
+            html.setAttribute('data-bs-theme', theme);
+            localStorage.setItem('hiki-theme', theme);
+        });
+    }
 });

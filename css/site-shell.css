@@ -32,6 +32,77 @@
     --card-radius: 18px;
 }
 
+[data-bs-theme="light"] {
+    --bg-night: #e8e4f0;
+    --bg-night-soft: #d9d3e5;
+    --text-primary: #1a1a2e;
+    --text-muted: #4a4a6a;
+    --accent-warm: #c1754b;
+    --accent-cool: #1a8fa8;
+    --surface-border: rgba(0, 0, 0, 0.12);
+    --color-white: #1a1a2e;
+    --surface-bg: rgba(255, 255, 255, 0.8);
+    --button-bg: rgba(0, 0, 0, 0.05);
+    --button-border: rgba(0, 0, 0, 0.15);
+    --button-hover: rgba(143, 211, 255, 0.2);
+    --button-accent: linear-gradient(135deg, #1a8fa8 0%, #c1754b 100%);
+    --button-accent-hover: linear-gradient(135deg, #1e9fbb 0%, #d1855b 100%);
+}
+
+[data-bs-theme="light"] body {
+    background: radial-gradient(circle at 50% -10%, #d9d3e5 0%, #e8e4f0 52%, #f0ecf5 100%);
+}
+
+[data-bs-theme="light"] .navbar {
+    background: linear-gradient(180deg, rgba(232, 228, 240, 0.92) 0%, rgba(232, 228, 240, 0.76) 100%);
+}
+
+[data-bs-theme="light"] .navbar-toggler {
+    border-color: rgba(0, 0, 0, 0.15);
+}
+
+[data-bs-theme="light"] .navbar-toggler-bar {
+    background: var(--text-primary);
+}
+
+[data-bs-theme="light"] .navbar-collapse.is-open {
+    background: rgba(232, 228, 240, 0.97);
+}
+
+[data-bs-theme="light"] .nav-btn.outline {
+    color: var(--text-muted);
+    border-color: rgba(0, 0, 0, 0.2);
+}
+
+[data-bs-theme="light"] .nav-btn.outline:hover {
+    background: rgba(0, 0, 0, 0.05);
+    color: var(--text-primary);
+    border-color: rgba(0, 0, 0, 0.35);
+}
+
+[data-bs-theme="light"] .content-card,
+[data-bs-theme="light"] .panel,
+[data-bs-theme="light"] .highlight-card,
+[data-bs-theme="light"] .step,
+[data-bs-theme="light"] .site-card {
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.1);
+}
+
+[data-bs-theme="light"] .form-input {
+    background: rgba(255, 255, 255, 0.7);
+    border-color: rgba(0, 0, 0, 0.15);
+    color: var(--text-primary);
+}
+
+[data-bs-theme="light"] .form-input::placeholder {
+    color: rgba(0, 0, 0, 0.35);
+}
+
+[data-bs-theme="light"] .booking-modal-panel {
+    background: #f5f2fa;
+}
+
 html, body {
     min-height: 100%;
     height: auto !important;

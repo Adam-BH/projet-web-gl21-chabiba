@@ -28,6 +28,12 @@ $navItems[] = ['key' => 'lostfound', 'label' => 'Lost & found', 'href' => '/proj
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title><?= htmlspecialchars($pageTitle) ?></title>
+    <script>
+        (function() {
+            var t = localStorage.getItem('hiki-theme');
+            if (t) document.documentElement.setAttribute('data-bs-theme', t);
+        })();
+    </script>
     <link rel="stylesheet" href="/projet-web-gl21-chabiba/node_modules/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/projet-web-gl21-chabiba/css/site-shell.css" />
     <?php foreach ($extraStyles as $style): ?>
