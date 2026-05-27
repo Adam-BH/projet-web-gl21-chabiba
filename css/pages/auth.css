@@ -89,3 +89,4 @@ input:focus+label,input:valid+label{
     text-decoration: none;
 }
 .signup-row a:hover { text-decoration: underline; }
+.error    { color: #dc2626; font-size: 0.82rem; margin-top: 3px; }

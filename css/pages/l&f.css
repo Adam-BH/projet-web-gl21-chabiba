@@ -144,5 +144,42 @@ body {
 .glowy-btn {
     margin: 0 auto;
     padding: 5px auto;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
+}
+
+.add-btn {
+  --forest-green: #2d5a27;
+  --dirt-brown: #4a3728;
+  --leaf-green: #4f772d;
+  
+  appearance: none;
+  background-color: var(--forest-green);
+  border: none;
+  border-radius: 12px;
+  
+  border-bottom: 5px solid var(--dirt-brown);
+  
+  color: #f1f1e6;
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.9rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  padding: 12px 24px;
+  text-transform: uppercase;
+  transition: all 0.1s ease;
+  user-select: none;
+  margin: 2% auto;
+  width: 200px;
+}
+
+.add-btn:hover {
+  background-color: var(--leaf-green);
+  transform: translateY(-1px);
+}
+
+.add-btn :active {
+  border-bottom-width: 0;
+  transform: translateY(5px);
 }

@@ -10,7 +10,7 @@ if (!$posts || count($posts) === 0) {
     foreach ($posts as $post): ?>
         <div class="post-card">
             <?php
-            $photoPath = "uploads/" . $post->picture;
+            $photoPath =  $post->picture;
             ?>
 
             <img src="<?= htmlspecialchars($photoPath) ?>" alt="Item Picture">

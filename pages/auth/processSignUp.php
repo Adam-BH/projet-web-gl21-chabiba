@@ -1,4 +1,5 @@
 <?php
+session_set_cookie_params(0);
 session_start();
 require_once('../autoloader.php');
 $userRepository = new UserRepository();
@@ -46,6 +47,7 @@ $findLocation = $adrRepository->findById($city);
 if ($pwd == $pwd2) {
     if ($testing == false) {
         $_SESSION['user'] = $user;
+        $_SESSION['email'] = $email;
         $userRepository->create([
             'username' => $user,
             'id' => $email,

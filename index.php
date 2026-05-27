@@ -122,7 +122,7 @@ $link_url = $is_logged ? $search_url : $login_url;
       <img class="log log-7" src="assets/Images/piecesOfWood.png" alt="log"/>
     </div>
 </div>
-<a href="<?= htmlspecialchars($link_url) ?>" class="glowy-btn">
+<a href="<?= $link_url ?>" class="glowy-btn">
     CAMPING SITES NEAR ME
 </a>
    <footer>
