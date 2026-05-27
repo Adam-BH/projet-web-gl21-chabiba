@@ -60,7 +60,7 @@
 		const end = endInput.value;
 		if (!siteId || !start || !end) return;
 		fetch(
-			`/projet-web-gl21-chabiba/pages/catalogue/availability.php?site_id=${encodeURIComponent(siteId)}&start_date=${encodeURIComponent(start)}&end_date=${encodeURIComponent(end)}`,
+			`/projet-web-gl21-chabiba/public_html/catalogue/availability.php?site_id=${encodeURIComponent(siteId)}&start_date=${encodeURIComponent(start)}&end_date=${encodeURIComponent(end)}`,
 		)
 			.then((r) => r.json())
 			.then((data) => {
@@ -131,7 +131,7 @@
 			return;
 		}
 		fetch(
-			`/projet-web-gl21-chabiba/pages/catalogue/availability.php?site_id=${encodeURIComponent(siteId)}&start_date=${encodeURIComponent(start)}&end_date=${encodeURIComponent(end)}`,
+			`/projet-web-gl21-chabiba/public_html/catalogue/availability.php?site_id=${encodeURIComponent(siteId)}&start_date=${encodeURIComponent(start)}&end_date=${encodeURIComponent(end)}`,
 		)
 			.then((r) => r.json())
 			.then((data) => {

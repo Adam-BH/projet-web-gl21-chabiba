@@ -99,7 +99,7 @@ function initMap() {
 			}
 		});
 	}
-	fetch('/projet-web-gl21-chabiba/search-engine/api/sites.php')
+	fetch('/projet-web-gl21-chabiba/api/sites.php')
 		.then((res) => res.json())
 		.then((data) => {
 			state.sites = data;
@@ -183,7 +183,7 @@ function renderResults(sites) {
 		.querySelectorAll('.btn-outline-primary')
 		.forEach((button) => {
 			button.addEventListener('click', () => {
-				window.location.href = `/projet-web-gl21-chabiba/pages/catalogue/details.php?id=${button.dataset.siteId}`;
+				window.location.href = `/projet-web-gl21-chabiba/public_html/catalogue/details.php?id=${button.dataset.siteId}`;
 			});
 		});
 }
@@ -236,14 +236,14 @@ function handleBookClick(siteId) {
 	formData.append('end', end);
 	formData.append('people', people);
 
-	fetch('/projet-web-gl21-chabiba/search-engine/api/book.php', {
+	fetch('/projet-web-gl21-chabiba/api/book.php', {
 		method: 'POST',
 		body: formData,
 	})
 		.then((res) => res.json())
 		.then((data) => {
 			if (data.needLogin) {
-				window.location.href = '/projet-web-gl21-chabiba/pages/auth/login.php';
+				window.location.href = '/projet-web-gl21-chabiba/public_html/auth/login.php';
 				return;
 			}
 			if (data.success) {
@@ -252,7 +252,7 @@ function handleBookClick(siteId) {
 					renderMessage(
 						'success',
 						'Booking confirmed! Your camping site has been reserved.',
-						`<p><a class="btn btn-sm btn-outline-secondary" href="/projet-web-gl21-chabiba/pages/equipment.html">Need equipments? Browse equipment</a></p>`,
+						`<p><a class="btn btn-sm btn-outline-secondary" href="/projet-web-gl21-chabiba/public_html/equipment.php">Need equipments? Browse equipment</a></p>`,
 					),
 				);
 			} else {
@@ -289,7 +289,7 @@ function searchSites() {
 	});
 
 	fetch(
-		`/projet-web-gl21-chabiba/search-engine/api/search.php?${params.toString()}`,
+		`/projet-web-gl21-chabiba/api/search.php?${params.toString()}`,
 	)
 		.then((res) => res.json())
 		.then((data) => {

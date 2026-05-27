@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../autoloader.php';
+require_once __DIR__ . '/../../autoloader.php';
 header('Content-Type: application/json');
 
 $siteId = isset($_GET['site_id']) ? (int)$_GET['site_id'] : null;

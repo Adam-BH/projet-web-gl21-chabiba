@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             </label>
                         </li>`).join('')}
                     </ul>
-                    <a href="/projet-web-gl21-chabiba/pages/equipment.php" class="button secondary mt-3" style="display: inline-block; width: 100%; text-align: center;">🛒 Buy Equipment</a>
+                    <a href="/projet-web-gl21-chabiba/public_html/equipment.php" class="button secondary mt-3" style="display: inline-block; width: 100%; text-align: center;">🛒 Buy Equipment</a>
                 </div>` : '';
 
             let videoHtml = '';
