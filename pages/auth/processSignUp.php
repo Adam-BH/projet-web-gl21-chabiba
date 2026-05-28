@@ -45,7 +45,7 @@ if ($ip === '127.0.0.1' || $ip === '::1') {
 $findLocation = $adrRepository->findById($city);
 if ($pwd == $pwd2) {
     if ($testing == false) {
-        $_SESSION['user'] = $email;
+        $_SESSION['user'] = $user;
         $userRepository->create([
             'username' => $user,
             'id' => $email,
@@ -60,7 +60,8 @@ if ($pwd == $pwd2) {
                 'lon' => $lon
             ]);
         }
-        header('location:search.php');
+        $_SESSION['is_logged']=true;
+        header('location:../../');
     } else {
         header('location:signup.php?error=existant_account');
         exit();
