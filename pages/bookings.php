@@ -10,13 +10,20 @@ if (empty($_SESSION['is_logged'])) {
 $bookingRepo = new BookingRepository();
 $userId = $_SESSION['email'];
 $deletedBooking = false;
+$deleteError = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_booking_id'])) {
     $bookingId = intval($_POST['delete_booking_id']);
     $booking = $bookingRepo->findById($bookingId);
     if ($booking && $booking->user_id === $userId) {
-        $bookingRepo->deleteById($bookingId);
-        $deletedBooking = true;
+        $bookingEnd = DateTime::createFromFormat('Y-m-d', $booking->end_date);
+        $today = new DateTime('today');
+        if ($bookingEnd && $bookingEnd < $today) {
+            $deleteError = 'You cannot delete a booking that has already passed.';
+        } else {
+            $bookingRepo->deleteById($bookingId);
+            $deletedBooking = true;
+        }
     }
 }
 
@@ -33,6 +40,11 @@ include __DIR__ . '/includes/header.php';
                 <?php if ($deletedBooking): ?>
                     <div class="alert alert-success" role="alert">
                         Booking removed successfully.
+                    </div>
+                <?php endif; ?>
+                <?php if (!empty($deleteError)): ?>
+                    <div class="alert alert-danger" role="alert">
+                        <?= htmlspecialchars($deleteError) ?>
                     </div>
                 <?php endif; ?>
 
