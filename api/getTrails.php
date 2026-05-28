@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/../pages/autoloader.php';
 
-$level = $_GET['level'] ?? 'all';
+$level = $_GET['level'] ?? $_GET['difficulty'] ?? 'all';
 $age = $_GET['age'] ?? '';
 $group_size = $_GET['group_size'] ?? '';
 
