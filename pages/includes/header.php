@@ -25,7 +25,7 @@ $navItems = [
         <link rel="stylesheet" href="/projet-web-gl21-chabiba/<?= htmlspecialchars($style) ?>" />
     <?php endforeach; ?>
 </head>
-<body>
+<body class="<?= htmlspecialchars($bodyClass ?? '') ?>">
     <canvas id="starCanvas" aria-hidden="true"></canvas>
     <nav class="navbar navbar-dark" role="navigation" aria-label="Main navigation">
         <div class="container">

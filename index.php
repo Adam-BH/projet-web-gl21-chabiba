@@ -4,47 +4,12 @@ $login_url = 'pages/auth/login.php';
 $search_url = 'pages/search.php';
 $is_logged = isset($_SESSION['is_logged']) && $_SESSION['is_logged'] === true;
 $link_url = $is_logged ? $search_url : $login_url;
+
+$pageTitle = 'HIKI - Home';
+$pageActive = 'home';
+$extraStyles = ['css/style.css'];
+include 'pages/includes/header.php';
 ?>
-<!DOCTYPE html>
-<html lang="en" data-bs-theme="dark">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/site-shell.css">
-    <link rel="stylesheet" href="css/style.css">
-    <title>HIKI - Home</title>
-</head>
-<body>
-    <canvas id="starCanvas" style="position:fixed;inset:0;z-index:0;pointer-events:none;"></canvas>
-    <nav class="navbar navbar-dark" role="navigation" aria-label="Main navigation">
-        <div class="container">
-            <a href="." class="navbar-brand">HIKI</a>
-            <ul class="navbar-nav nav-links">
-                <li class="nav-item">
-                    <a href="." class="nav-link active">home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="pages/weather.php" class="nav-link">weather</a>
-                </li>
-                <li class="nav-item">
-                    <a href="pages/hiking-guide.php" class="nav-link">hiking guide</a>
-                </li>
-                <li class="nav-item">
-                    <a href="pages/equipment.php" class="nav-link">equipment</a>
-                </li>
-                <li class="nav-item">
-                    <a href="pages/moon.php" class="nav-link">moon</a>
-                </li>
-                <li class="nav-item">
-                    <a href="pages/shops.html" class="nav-link">shops</a>
-                </li>
-                <li class="nav-item">
-                    <a href="pages/lost&found/lost&found.php" class="nav-link">Lost & found</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
     <section class="hero-section text-center pt-3 mt-3">
         <p class="hero-sub">Explore Our website for a</p>
         <p class="hero-title">Better Experience</p>
@@ -142,5 +107,6 @@ $link_url = $is_logged ? $search_url : $login_url;
         
     </footer>
     <script src="js/main.js"></script>
+    </div>
 </body>
 </html>

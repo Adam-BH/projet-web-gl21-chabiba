@@ -17,33 +17,12 @@ foreach ($forecast['days'] as $day) {
 if ($selectedDay === null) {
     $selectedDay = $forecast['days'][0];
 }
+$pageTitle = 'HIKI — Weather';
+$pageActive = 'weather';
+$bodyClass = 'hiki-page';
+$extraStyles = ['css/shared/hiki-page.css', 'css/pages/weather-page.css'];
+include __DIR__ . '/includes/header.php';
 ?>
-<!DOCTYPE html>
-<html lang="en" data-bs-theme="dark">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HIKI — Weather</title>
-    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/shared/hiki-page.css">
-    <link rel="stylesheet" href="../css/pages/weather-page.css">
-</head>
-<body class="hiki-page">
-    <canvas id="starCanvas" class="star-canvas"></canvas>
-
-    <nav class="navbar navbar-dark hiki-nav">
-        <div class="container">
-            <a href="../index.php" class="navbar-brand">HIKI</a>
-            <ul class="navbar-nav nav-links">
-                <li class="nav-item"><a href="shops.html" class="nav-link">shops</a></li>
-                <li class="nav-item"><a href="weather.php" class="nav-link is-active">weather</a></li>
-                <li class="nav-item"><a href="community.html" class="nav-link">community</a></li>
-                <li class="nav-item"><a href="availability.html" class="nav-link">availability</a></li>
-                <li class="nav-item"><a href="equipment.html" class="nav-link">equipement</a></li>
-                <li class="nav-item"><a href="moon.php" class="nav-link">moon</a></li>
-            </ul>
-        </div>
-    </nav>
 
     <main class="weather-main">
         <h1 class="weather-title">The Weather</h1>
@@ -99,6 +78,7 @@ if ($selectedDay === null) {
         </label>
     </div>
 
-    <script src="../js/stars-bg.js"></script>
+    <script src="../js/main.js"></script>
+    </div>
 </body>
 </html>
