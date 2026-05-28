@@ -3,6 +3,7 @@
 if (!isset($site)) return;
 ?>
 <article class="site-card" 
+    data-id="<?= htmlspecialchars($site->id) ?>"
     data-name="<?= htmlspecialchars($site->name ?? '') ?>"
     data-city="<?= htmlspecialchars($site->city ?? '') ?>"
     data-capacity="<?= (int)($site->capacity ?? 0) ?>"
@@ -39,7 +40,7 @@ if (!isset($site)) return;
         <p class="site-card-description"><?= nl2br(htmlspecialchars($site->description ?? 'No description available')) ?></p>
         <div class="site-card-actions">
             <a href="/projet-web-gl21-chabiba/pages/catalogue/details.php?id=<?= urlencode($site->id) ?>" class="site-card-button">View Details</a>
-            <a href="#" class="site-card-button">Book Now</a>
+            <a href="#" class="site-card-button book-now-btn" data-site-id="<?= htmlspecialchars($site->id) ?>">Book Now</a>
         </div>
     </div>
 </article>

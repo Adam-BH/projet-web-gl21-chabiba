@@ -54,6 +54,20 @@ CREATE TABLE IF NOT EXISTS `camping_site_images` (
   CONSTRAINT `fk_csi_site` FOREIGN KEY (`site_id`) REFERENCES `camping_sites`(`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- bookings table: stores reservations for camping sites
+CREATE TABLE IF NOT EXISTS `bookings` (
+  `id` INT AUTO_INCREMENT PRIMARY KEY,
+  `site_id` INT NOT NULL,
+  `user_id` VARCHAR(50) NOT NULL,
+  `start_date` DATE NOT NULL,
+  `end_date` DATE NOT NULL,
+  `people` INT NOT NULL DEFAULT 1,
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT `fk_bookings_site` FOREIGN KEY (`site_id`) REFERENCES `camping_sites`(`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_bookings_user` FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
 -- sample data
 INSERT INTO `camping_sites` (`name`, `description`, `capacity`, `city`, `lat`, `lon`, `image`) VALUES
 ('Lake View Camp', 'Nice campsite by the lake.', 60, 'Lakecity', 45.123, 3.123, ''),

@@ -41,3 +41,4 @@ $navItems = [
         </div>
     </nav>
     <div class="page-shell">
+        <?php include __DIR__ . '/booking-popup.php'; ?>
