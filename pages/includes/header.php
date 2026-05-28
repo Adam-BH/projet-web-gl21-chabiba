@@ -3,6 +3,10 @@ $pageTitle = $pageTitle ?? 'HIKI';
 $pageActive = $pageActive ?? '';
 $extraStyles = $extraStyles ?? [];
 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 $navItems = [
     ['key' => 'home', 'label' => 'home', 'href' => '/projet-web-gl21-chabiba/index.html'],
     ['key' => 'weather', 'label' => 'weather', 'href' => '/projet-web-gl21-chabiba/pages/weather.html'],
@@ -11,8 +15,13 @@ $navItems = [
     ['key' => 'moon', 'label' => 'moon', 'href' => '/projet-web-gl21-chabiba/pages/moon.html'],
     ['key' => 'shops', 'label' => 'shops', 'href' => '/projet-web-gl21-chabiba/pages/shops.html'],
     ['key' => 'catalogue', 'label' => 'camping sites', 'href' => '/projet-web-gl21-chabiba/pages/catalogue/index.php'],
-    ['key' => 'lostfound', 'label' => 'Lost & found', 'href' => '/projet-web-gl21-chabiba/pages/lost&found/lost&found.php'],
 ];
+
+if (!empty($_SESSION['is_logged'])) {
+    $navItems[] = ['key' => 'bookings', 'label' => 'my bookings', 'href' => '/projet-web-gl21-chabiba/pages/bookings.php'];
+}
+
+$navItems[] = ['key' => 'lostfound', 'label' => 'Lost & found', 'href' => '/projet-web-gl21-chabiba/pages/lost&found/lost&found.php'];
 ?>
 <!doctype html>
 <html lang="en" data-bs-theme="dark">

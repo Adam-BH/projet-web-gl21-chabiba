@@ -1,4 +1,5 @@
 <?php
+session_set_cookie_params(0);
 session_start();
 require_once('../autoloader.php');
 $userRepository = new UserRepository();
@@ -43,24 +44,29 @@ if ($ip === '127.0.0.1' || $ip === '::1') {
     }
 }
 $findLocation = $adrRepository->findById($city);
+$isValidCity = !in_array(strtolower($city), ['unknown', 'localhost']);
+$cityReference = $isValidCity ? $city : null;
 if ($pwd == $pwd2) {
     if ($testing == false) {
-        $_SESSION['user'] = $email;
-        $userRepository->create([
-            'username' => $user,
-            'id' => $email,
-            'password' => password_hash($pwd, PASSWORD_DEFAULT),
-            'phone' => $phone,
-            'city' => $city
-        ]);
-        if ($findLocation == false && $city != 'unknown' && $city != 'localhost') {
+        if ($findLocation == false && $isValidCity) {
             $adrRepository->create([
                 'id' => $city,
                 'lat' => $lat,
                 'lon' => $lon
             ]);
         }
-        header('location:search.php');
+
+        $_SESSION['user'] = $user;
+        $_SESSION['email'] = $email;
+        $userRepository->create([
+            'username' => $user,
+            'id' => $email,
+            'password' => password_hash($pwd, PASSWORD_DEFAULT),
+            'phone' => $phone,
+            'city' => $cityReference
+        ]);
+        $_SESSION['is_logged']=true;
+        header('location:../../');
     } else {
         header('location:signup.php?error=existant_account');
         exit();
