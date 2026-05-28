@@ -18,15 +18,6 @@ body {
     min-height: 100%;
 }
 
-body {
-    margin: 0;
-    background: var(--guide-bg);
-    color: var(--guide-text);
-    overflow-x: hidden;
-    overflow-y: auto;
-    font-family: 'Rethink Sans', 'Segoe UI', Arial, sans-serif;
-}
-
 #starCanvas {
     position: fixed;
     inset: 0;
@@ -83,34 +74,6 @@ body {
     margin-top: 28px;
 }
 
-.button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 48px;
-    padding: 0 18px;
-    border-radius: 999px;
-    border: 1px solid transparent;
-    text-decoration: none;
-    font-weight: 700;
-    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
-}
-
-.button:hover,
-.button:focus-visible {
-    transform: translateY(-2px);
-}
-
-.button.primary {
-    color: #06111f;
-    background: linear-gradient(135deg, var(--guide-accent) 0%, #d8f2ff 100%);
-}
-
-.button.secondary {
-    color: var(--guide-text);
-    background: rgba(255, 255, 255, 0.04);
-    border-color: var(--guide-border);
-}
 
 .intro-grid,
 .summary-grid,
@@ -245,24 +208,6 @@ body {
     margin-bottom: 18px;
 }
 
-.filter-button {
-    border: 1px solid var(--guide-border);
-    background: rgba(255, 255, 255, 0.04);
-    color: var(--guide-text);
-    border-radius: 999px;
-    padding: 10px 14px;
-    cursor: pointer;
-    font-weight: 700;
-    transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
-}
-
-.filter-button:hover,
-.filter-button:focus-visible,
-.filter-button.is-active {
-    background: rgba(143, 211, 255, 0.16);
-    border-color: rgba(143, 211, 255, 0.45);
-    transform: translateY(-1px);
-}
 
 .activity-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));

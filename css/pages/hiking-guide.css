@@ -7,37 +7,6 @@
     --frame-radius: 12px;
     --border-cyan-dim: rgba(240, 255, 255, 0.1);
     --border-cyan-hover: rgba(0, 255, 255, 0.3);
-    --bg-card: #121212;
-    --bg-body: #0a0a0a;
-}
-
-body {
-    background: radial-gradient(circle at top, rgba(40, 58, 92, 0.26), transparent 42%), linear-gradient(180deg, #08101e 0%, #04070f 100%);
-    color: #eef5ff;
-    overflow-x: hidden;
-    overflow-y: auto;
-    font-family: 'Rethink Sans', 'Segoe UI', Arial, sans-serif;
-}
-
-.hero-title {
-    font-family: 'Righteous', sans-serif;
-    font-size: clamp(20px, 2.5vw, 32px);
-    font-weight: 700;
-    line-height: 1.1;
-    padding-top: 2rem;
-    margin-bottom: 1.5rem;
-    text-align: center;
-    color: #eef5ff;
-    text-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
-}
-
-.hero-title span {
-    display: block;
-    font-size: 0.5em;
-    opacity: 0.7;
-    font-weight: 400;
-}
-
 .guide-shell {
     width: min(1180px, calc(100vw - 32px));
     margin: 0 auto;

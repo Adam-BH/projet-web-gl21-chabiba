@@ -40,8 +40,8 @@ $loggedIn = isset($_SESSION['user']);
 .booking-modal-panel{position:relative;background:#0b0b0b;padding:18px;border-radius:8px;min-width:300px;max-width:520px;border:1px solid rgba(255,255,255,0.04)}
 .booking-modal-panel label{display:block;font-size:13px;margin-bottom:4px}
 .booking-modal-panel input[type=date],.booking-modal-panel input[type=number]{width:100%;padding:8px;border-radius:6px;border:1px solid rgba(255,255,255,0.06);background:#0b0b0b;color:#fff}
-.booking-modal-panel .btn{padding:8px 12px;border-radius:6px;border:0;background:#333;color:#fff;text-decoration:none}
-.btn-primary{background:#0d6efd}
+.booking-modal-panel .btn{padding:8px 12px;border-radius:6px;border:1px solid rgba(255,255,255,0.16);background:rgba(255,255,255,0.05);color:#f9f9f9;text-decoration:none}
+.btn-primary{background: linear-gradient(135deg, #8fd3ff 0%, #ffa86d 100%); color: #0d0f16;}
 </style>
 
 <script src="/projet-web-gl21-chabiba/js/booking.js"></script>
