@@ -1,8 +1,12 @@
 <?php
-require_once '../autoloader.php';
+require_once __DIR__ . '/../autoloader.php';
 
-$postRepository = new PostRepository();
-$posts = $postRepository->findAll();
+try {
+    $postRepository = new PostRepository();
+    $posts = $postRepository->findAll();
+} catch (Throwable $e) {
+    $posts = [];
+}
 
 if (!$posts || count($posts) === 0) {
     echo 'No Found Items Here.';

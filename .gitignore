@@ -15,3 +15,7 @@ build/
 # IDE
 .vscode/
 .idea/
+
+# Cache
+class/cache/
+
