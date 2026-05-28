@@ -10,9 +10,12 @@ include __DIR__ . '/includes/header.php';
             <p class="eyebrow">Gear Up</p>
             <h1>Equipment Catalogue</h1>
             <p class="lead">Find the best gear for your next adventure. High-quality recommendations with links to trusted retailers.</p>
-            <button id="scrollDownBtn" class="button primary mt-4" style="margin-top: 24px; padding: 12px 24px; border-radius: 999px; font-weight: bold; cursor: pointer; border: none; background: linear-gradient(135deg, #8fd3ff 0%, #d8f2ff 100%); color: #06111f; transition: transform 0.2s;">
-                Browse Catalogue ↓
-            </button>
+            <div id="scrollIndicator" class="scroll-indicator-wrap">
+                <span class="scroll-text">Scroll to explore</span>
+                <div class="scroll-bar">
+                    <div class="scroll-dot"></div>
+                </div>
+            </div>
         </section>
 
         <!-- Category Filters -->
