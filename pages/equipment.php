@@ -10,6 +10,9 @@ include __DIR__ . '/includes/header.php';
             <p class="eyebrow">Gear Up</p>
             <h1>Equipment Catalogue</h1>
             <p class="lead">Find the best gear for your next adventure. High-quality recommendations with links to trusted retailers.</p>
+            <button id="scrollDownBtn" class="button primary mt-4" style="margin-top: 24px; padding: 12px 24px; border-radius: 999px; font-weight: bold; cursor: pointer; border: none; background: linear-gradient(135deg, #8fd3ff 0%, #d8f2ff 100%); color: #06111f; transition: transform 0.2s;">
+                Browse Catalogue ↓
+            </button>
         </section>
 
         <!-- Category Filters -->
@@ -38,7 +41,7 @@ include __DIR__ . '/includes/header.php';
                         <p class="desc">Waterproof and breathable boots with ankle support for maximum comfort on rough terrain.</p>
                         <div class="buy-links">
                             <a href="https://www.amazon.com/s?k=hiking+boots+waterproof" target="_blank" rel="noopener" class="buy-btn amazon">Buy on Amazon</a>
-                            <a href="https://www.decathlon.com/collections/hiking-boots" target="_blank" rel="noopener" class="buy-btn decathlon">Buy on Decathlon</a>
+                            <a href="https://www.decathlon.com/search?q=hiking+boots" target="_blank" rel="noopener" class="buy-btn decathlon">Buy on Decathlon</a>
                         </div>
                     </div>
                 </article>
@@ -56,7 +59,7 @@ include __DIR__ . '/includes/header.php';
                         <p class="desc">Lightweight pack with multiple compartments, hydration bladder support and rain cover.</p>
                         <div class="buy-links">
                             <a href="https://www.amazon.com/s?k=hiking+backpack+40L" target="_blank" rel="noopener" class="buy-btn amazon">Buy on Amazon</a>
-                            <a href="https://www.decathlon.com/collections/hiking-backpacks" target="_blank" rel="noopener" class="buy-btn decathlon">Buy on Decathlon</a>
+                            <a href="https://www.decathlon.com/search?q=hiking+backpack" target="_blank" rel="noopener" class="buy-btn decathlon">Buy on Decathlon</a>
                         </div>
                     </div>
                 </article>
@@ -74,7 +77,7 @@ include __DIR__ . '/includes/header.php';
                         <p class="desc">Ultra-light collapsible poles with ergonomic cork grips, adjustable length.</p>
                         <div class="buy-links">
                             <a href="https://www.amazon.com/s?k=carbon+fiber+trekking+poles" target="_blank" rel="noopener" class="buy-btn amazon">Buy on Amazon</a>
-                            <a href="https://www.decathlon.com/collections/trekking-poles" target="_blank" rel="noopener" class="buy-btn decathlon">Buy on Decathlon</a>
+                            <a href="https://www.decathlon.com/search?q=trekking+poles" target="_blank" rel="noopener" class="buy-btn decathlon">Buy on Decathlon</a>
                         </div>
                     </div>
                 </article>
@@ -92,7 +95,7 @@ include __DIR__ . '/includes/header.php';
                         <p class="desc">1000-lumen USB-C rechargeable headlamp with red-light mode for night hiking.</p>
                         <div class="buy-links">
                             <a href="https://www.amazon.com/s?k=rechargeable+led+headlamp+hiking" target="_blank" rel="noopener" class="buy-btn amazon">Buy on Amazon</a>
-                            <a href="https://www.decathlon.com/collections/headlamps" target="_blank" rel="noopener" class="buy-btn decathlon">Buy on Decathlon</a>
+                            <a href="https://www.decathlon.com/search?q=headlamp" target="_blank" rel="noopener" class="buy-btn decathlon">Buy on Decathlon</a>
                         </div>
                     </div>
                 </article>
@@ -110,7 +113,7 @@ include __DIR__ . '/includes/header.php';
                         <p class="desc">Double-wall vacuum insulated – keeps water cold 24 hrs or hot 12 hrs on the trail.</p>
                         <div class="buy-links">
                             <a href="https://www.amazon.com/s?k=insulated+hiking+water+bottle" target="_blank" rel="noopener" class="buy-btn amazon">Buy on Amazon</a>
-                            <a href="https://www.decathlon.com/collections/water-bottles" target="_blank" rel="noopener" class="buy-btn decathlon">Buy on Decathlon</a>
+                            <a href="https://www.decathlon.com/search?q=water+bottle" target="_blank" rel="noopener" class="buy-btn decathlon">Buy on Decathlon</a>
                         </div>
                     </div>
                 </article>
@@ -128,7 +131,7 @@ include __DIR__ . '/includes/header.php';
                         <p class="desc">Lightweight 120-piece kit with bandages, antiseptic, emergency blanket and whistle.</p>
                         <div class="buy-links">
                             <a href="https://www.amazon.com/s?k=hiking+first+aid+kit" target="_blank" rel="noopener" class="buy-btn amazon">Buy on Amazon</a>
-                            <a href="https://www.decathlon.com/collections/first-aid" target="_blank" rel="noopener" class="buy-btn decathlon">Buy on Decathlon</a>
+                            <a href="https://www.decathlon.com/search?q=first+aid+kit" target="_blank" rel="noopener" class="buy-btn decathlon">Buy on Decathlon</a>
                         </div>
                     </div>
                 </article>
@@ -146,7 +149,7 @@ include __DIR__ . '/includes/header.php';
                         <p class="desc">Packable waterproof shell that folds into its own pocket. Breathable and seam-sealed.</p>
                         <div class="buy-links">
                             <a href="https://www.amazon.com/s?k=ultralight+waterproof+hiking+jacket" target="_blank" rel="noopener" class="buy-btn amazon">Buy on Amazon</a>
-                            <a href="https://www.decathlon.com/collections/rain-jackets" target="_blank" rel="noopener" class="buy-btn decathlon">Buy on Decathlon</a>
+                            <a href="https://www.decathlon.com/search?q=rain+jacket" target="_blank" rel="noopener" class="buy-btn decathlon">Buy on Decathlon</a>
                         </div>
                     </div>
                 </article>
@@ -164,7 +167,7 @@ include __DIR__ . '/includes/header.php';
                         <p class="desc">Rugged satellite GPS with preloaded topo maps, 16 h battery, and SOS beacon.</p>
                         <div class="buy-links">
                             <a href="https://www.amazon.com/s?k=handheld+hiking+GPS" target="_blank" rel="noopener" class="buy-btn amazon">Buy on Amazon</a>
-                            <a href="https://www.decathlon.com/collections/gps-devices" target="_blank" rel="noopener" class="buy-btn decathlon">Buy on Decathlon</a>
+                            <a href="https://www.decathlon.com/search?q=gps" target="_blank" rel="noopener" class="buy-btn decathlon">Buy on Decathlon</a>
                         </div>
                     </div>
                 </article>
