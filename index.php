@@ -92,7 +92,7 @@ include 'pages/includes/header.php';
       <img class="log log-7" src="assets/Images/piecesOfWood.png" alt="log"/>
     </div>
 </div>
-<a href="<?= htmlspecialchars($link_url) ?>" class="glowy-btn">
+<a href="<?= $link_url ?>" class="glowy-btn">
     CAMPING SITES NEAR ME
 </a>
         <!-- featured section removed to keep existing components only -->

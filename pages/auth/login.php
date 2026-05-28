@@ -21,7 +21,7 @@ include __DIR__ . '/../includes/header.php';
 			<div class="signup-row">
       Don't have an account? <a href="/projet-web-gl21-chabiba/pages/auth/signup.php">Sign up</a>
 	  <?php if (isset($_GET['error'])): ?>
-		  <p style="color:red;">Invalid username or password.</p>
+		  <p class="error">Invalid username or password.</p>
 	  <?php endif; ?>
 	    	</div>
 		</div>
