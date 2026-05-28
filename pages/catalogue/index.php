@@ -20,50 +20,44 @@ try{
  * @param object $site The site object
  * @param bool $listView Whether to render in list view
  */
-function renderSiteCard($site, $listView = false) {
-    $classModifier = $listView ? 'list-view' : '';
-    $dataName = htmlspecialchars($site->name ?? '');
-    $dataCity = htmlspecialchars($site->city ?? '');
-    $dataCapacity = (int)($site->capacity ?? 0);
-    $dataLat = is_numeric($site->lat) ? $site->lat : '';
-    $dataLon = is_numeric($site->lon) ? $site->lon : '';
-    $dataDesc = htmlspecialchars($site->description ?? '');
-    ?>
-    <article class="site-card <?php echo htmlspecialchars($classModifier); ?>" 
-        data-name="<?php echo $dataName; ?>" 
-        data-city="<?php echo $dataCity; ?>" 
-        data-capacity="<?php echo $dataCapacity; ?>" 
-        data-lat="<?php echo $dataLat; ?>" 
-        data-lon="<?php echo $dataLon; ?>" 
-        data-description="<?php echo $dataDesc; ?>">
-        <div class="site-card-image">
-            <?php if ($site->image): ?>
-                <img src="<?php echo htmlspecialchars($site->image); ?>" alt="<?php echo htmlspecialchars($site->name); ?>">
-            <?php else: ?>
-                <span>No image available</span>
-            <?php endif; ?>
-        </div>
-        <div class="site-card-content">
-            <div class="site-card-header">
-                <h2 class="site-card-title"><?php echo htmlspecialchars($site->name ?? 'Untitled'); ?></h2>
-                <p class="site-card-city"><?php echo htmlspecialchars($site->city ?? 'Location unavailable'); ?></p>
+// Render via partials for modularity. Partials expect $site in scope.
+$gridPartial = __DIR__ . '/gridItem.php';
+$listPartial = __DIR__ . '/listItem.php';
+
+// If partials are missing, keep an inline fallback function to avoid breaking the page.
+if (!file_exists($gridPartial) || !file_exists($listPartial)) {
+    function renderSiteCard($site, $listView = false) {
+        $classModifier = $listView ? 'list-view' : '';
+        ?>
+        <article class="site-card <?php echo htmlspecialchars($classModifier); ?>">
+            <div class="site-card-image">
+                <?php if (!empty($site->image)): ?>
+                    <img src="<?php echo htmlspecialchars($site->image); ?>" alt="<?php echo htmlspecialchars($site->name); ?>">
+                <?php else: ?>
+                    <span>No image available</span>
+                <?php endif; ?>
             </div>
-            <div class="site-card-meta">
-                <div class="site-meta-item">
-                    <span class="site-meta-label">Capacity:</span>
-                    <span><?php echo htmlspecialchars($site->capacity ?? '-'); ?></span>
+            <div class="site-card-content">
+                <div class="site-card-header">
+                    <h2 class="site-card-title"><?php echo htmlspecialchars($site->name ?? 'Untitled'); ?></h2>
+                    <p class="site-card-city"><?php echo htmlspecialchars($site->city ?? 'Location unavailable'); ?></p>
+                    <p class="site-distance" aria-hidden="true"></p>
+                </div>
+                <div class="site-card-meta">
+                    <div class="site-meta-item">
+                        <span class="site-meta-label">Capacity:</span>
+                        <span><?php echo htmlspecialchars($site->capacity ?? '-'); ?></span>
+                    </div>
+                </div>
+                <p class="site-card-description"><?php echo nl2br(htmlspecialchars($site->description ?? 'No description available')); ?></p>
+                <div class="site-card-actions">
+                    <a href="#" class="site-card-button">View Details</a>
+                    <a href="#" class="site-card-button">Book Now</a>
                 </div>
             </div>
-            <p class="site-card-description">
-                <?php echo nl2br(htmlspecialchars($site->description ?? 'No description available')); ?>
-            </p>
-            <div class="site-card-actions">
-                <a href="#" class="site-card-button">View Details</a>
-                <a href="#" class="site-card-button">Book Now</a>
-            </div>
-        </div>
-    </article>
-    <?php
+        </article>
+        <?php
+    }
 }
 ?>
 
@@ -111,13 +105,13 @@ function renderSiteCard($site, $listView = false) {
         <?php else: ?>
             <div class="sites-grid" id="sitesContainer">
                 <?php foreach($sites as $site): ?>
-                    <?php renderSiteCard($site, false); ?>
+                    <?php if (file_exists($gridPartial)) { $siteLocal = $site; include $gridPartial; } else { renderSiteCard($site, false); } ?>
                 <?php endforeach; ?>
             </div>
 
             <div class="sites-list hidden" id="sitesListContainer">
                 <?php foreach($sites as $site): ?>
-                    <?php renderSiteCard($site, true); ?>
+                    <?php if (file_exists($listPartial)) { $siteLocal = $site; include $listPartial; } else { renderSiteCard($site, true); } ?>
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
@@ -184,7 +178,7 @@ function renderSiteCard($site, $listView = false) {
                     const listCards = readCards(listContainer);
                     const allCards = gridCards.concat(listCards);
 
-                    // compute filtering
+                    // compute filtering and distance calculation
                     allCards.forEach(card => {
                         const name = (card.dataset.name || '').toLowerCase();
                         const city = (card.dataset.city || '').toLowerCase();
@@ -194,16 +188,40 @@ function renderSiteCard($site, $listView = false) {
                             matches = name.includes(q) || city.includes(q) || desc.includes(q);
                         }
 
-                        // distance computation if user location known
-                        if (userLocation && card.dataset.lat && card.dataset.lon){
-                            const d = haversine(userLocation.lat, userLocation.lon, parseFloat(card.dataset.lat), parseFloat(card.dataset.lon));
-                            card.dataset.distanceKm = d.toFixed(2);
+                        // distance computation if user location known and card has coords
+                        const hasCoords = card.dataset.lat !== undefined && card.dataset.lon !== undefined && card.dataset.lat !== '' && card.dataset.lon !== '';
+                        if (userLocation && hasCoords){
+                            const lat = parseFloat(card.dataset.lat);
+                            const lon = parseFloat(card.dataset.lon);
+                            if (!Number.isNaN(lat) && !Number.isNaN(lon)){
+                                const d = haversine(userLocation.lat, userLocation.lon, lat, lon);
+                                card.dataset.distanceKm = d.toFixed(3);
+                                const distEl = card.querySelector('.site-distance');
+                                if (distEl){
+                                    if (d < 1) {
+                                        distEl.textContent = Math.round(d*1000) + ' m';
+                                    } else {
+                                        distEl.textContent = d.toFixed(1) + ' km';
+                                    }
+                                }
+                            } else {
+                                delete card.dataset.distanceKm;
+                            }
                         } else {
                             delete card.dataset.distanceKm;
+                            const distEl = card.querySelector('.site-distance');
+                            if (distEl) distEl.textContent = '';
                         }
 
                         card.style.display = matches ? '' : 'none';
                     });
+
+                    // debugging: log how many visible cards and how many have distance set
+                    try{
+                        const visible = allCards.filter(c=> c.style.display !== 'none').length;
+                        const withDist = allCards.filter(c=> c.dataset.distanceKm !== undefined).length;
+                        console.debug('filterAndSort:', {query:q, sort:sort, visible, withDist});
+                    }catch(e){console.debug(e);}
 
                     // sorting within visible cards in each container
                     function sortContainer(container){
@@ -214,10 +232,12 @@ function renderSiteCard($site, $listView = false) {
                             sorted.sort((a,b)=> parseInt(b.dataset.capacity||0)-parseInt(a.dataset.capacity||0));
                         } else if (sort === 'capacity-asc'){
                             sorted.sort((a,b)=> parseInt(a.dataset.capacity||0)-parseInt(b.dataset.capacity||0));
-                        } else if (sort === 'distance-asc' && userLocation){
-                            sorted.sort((a,b)=> (parseFloat(a.dataset.distanceKm||1e9)-parseFloat(b.dataset.distanceKm||1e9)));
-                        } else if (sort === 'distance-desc' && userLocation){
-                            sorted.sort((a,b)=> (parseFloat(b.dataset.distanceKm||0)-parseFloat(a.dataset.distanceKm||0)));
+                        } else if ((sort === 'distance-asc' || sort === 'distance-desc') && userLocation){
+                            sorted.sort((a,b)=> {
+                                const da = parseFloat(a.dataset.distanceKm || '1e9');
+                                const db = parseFloat(b.dataset.distanceKm || '1e9');
+                                return sort === 'distance-asc' ? da - db : db - da;
+                            });
                         } else {
                             // recommended: by capacity desc then name
                             sorted.sort((a,b)=> (parseInt(b.dataset.capacity||0)-parseInt(a.dataset.capacity||0)) || a.dataset.name.localeCompare(b.dataset.name));
@@ -244,11 +264,13 @@ function renderSiteCard($site, $listView = false) {
                     locateBtn.textContent = 'Locating...';
                     navigator.geolocation.getCurrentPosition(function(pos){
                         userLocation = {lat: pos.coords.latitude, lon: pos.coords.longitude};
+                        console.debug('User location obtained', userLocation);
                         locateBtn.textContent = 'Location set';
                         locateBtn.classList.add('active');
                         filterAndSort();
                         locateBtn.disabled = false;
                     }, function(err){
+                        console.warn('Geolocation error', err);
                         alert('Unable to get location: ' + (err.message || err.code));
                         locateBtn.textContent = 'Use my location';
                         locateBtn.disabled = false;

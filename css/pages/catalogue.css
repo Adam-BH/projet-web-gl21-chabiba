@@ -18,13 +18,14 @@ body {
     min-height: 100%;
 }
 
+/* Match background / body used by Lost & Found page for consistency */
 body {
     margin: 0;
-    background: var(--catalogue-bg);
-    color: var(--catalogue-text);
+    background-color: #0a0a0a;
+    color: #f0ffff;
     overflow-x: hidden;
     overflow-y: auto;
-    font-family: 'Rethink Sans', 'Segoe UI', Arial, sans-serif;
+    font-family: 'Segoe UI', Arial, sans-serif;
 }
 
 #starCanvas {
@@ -211,6 +212,13 @@ body {
     font-size: 0.95rem;
     line-height: 1.6;
     flex-grow: 1;
+}
+
+.site-distance {
+    margin: 6px 0 0;
+    font-size: 0.9rem;
+    color: var(--catalogue-accent);
+    font-weight: 700;
 }
 
 .site-card-actions {
