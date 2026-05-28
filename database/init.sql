@@ -2,6 +2,10 @@
 CREATE DATABASE IF NOT EXISTS `hiki` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE `hiki`;
 
+-- set root password for localhost if running as root
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'golden ratio 1.618';
+FLUSH PRIVILEGES;
+
 -- adresses
 CREATE TABLE IF NOT EXISTS `adresses` (
   `id` VARCHAR(50) PRIMARY KEY,
