@@ -2,6 +2,7 @@
 $pageTitle = 'HIKI - Login';
 $pageActive = '';
 $extraStyles = ['css/pages/auth.css'];
+$hideNavbar = true;
 include __DIR__ . '/../includes/header.php';
 ?>
 		<div class="container">
