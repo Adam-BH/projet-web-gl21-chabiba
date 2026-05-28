@@ -29,3 +29,25 @@ table posts (
     phone varchar(15) not null,
     picture varchar(50)
 )
+
+table trails (
+    id int auto_increment primary key,
+    name varchar(100) not null,
+    level varchar(20) not null,
+    min_age int default 0,
+    max_group_size int,
+    video_url varchar(255),
+    tips text,
+    checklist text,
+    details text,
+    created_at timestamp default current_timestamp
+)
+
+table trail_reviews (
+    id int auto_increment primary key,
+    trail_id int not null references trails(id),
+    user_id varchar(50) not null references users(id),
+    rating int not null,
+    comment text,
+    created_at timestamp default current_timestamp
+)
