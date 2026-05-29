@@ -48,13 +48,24 @@ $isValidCity = !in_array(strtolower($city), ['unknown', 'localhost']);
 $cityReference = $isValidCity ? $city : null;
 if ($pwd == $pwd2) {
     if ($testing == false) {
-        if ($findLocation == false && $isValidCity) {
+        $_SESSION['user'] = $user;
+        $_SESSION['email'] = $email;
+        $userRepository->create([
+            'username' => $user,
+            'id' => $email,
+            'password' => password_hash($pwd, PASSWORD_DEFAULT),
+            'phone' => $phone,
+            'city' => $city
+        ]);
+        if ($findLocation == false && $city != 'unknown' && $city != 'localhost') {
             $adrRepository->create([
                 'id' => $city,
                 'lat' => $lat,
                 'lon' => $lon
             ]);
         }
+        $_SESSION['is_logged']=true;
+        header('location:../../');
 
         $_SESSION['user'] = $user;
         $_SESSION['email'] = $email;

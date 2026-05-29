@@ -373,7 +373,7 @@ nav {
   height: 300px;
   z-index: 2;          /* logs appear over pillars base */
 }
-.login {
+.glowy-btn {
   text-decoration:none;
   display: block;
   padding: 12px 34px;
@@ -407,7 +407,7 @@ nav {
   box-shadow: 0 8px 34px rgba(0, 0, 0, 0.35);
 }
 
-.login:hover {
+.glowy-btn:hover {
   background: radial-gradient(ellipse 40% 80% at center, rgba(193, 117,75, 0.8) 0%, transparent 70%);
   transform: translateX(-50%) translateY(-2px) scale(1.03);
   box-shadow: 
