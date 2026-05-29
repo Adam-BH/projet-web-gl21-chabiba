@@ -8,3 +8,6 @@
 @import url("./pages/manual.css");
 @import url("./pages/weather.css");
 @import url("./pages/auth.css");
+@import url("./pages/catalogue.css");
+/* import shared shell so pages receive the unified variables */
+@import url("./site-shell.css");

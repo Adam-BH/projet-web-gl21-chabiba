@@ -44,6 +44,8 @@ if ($ip === '127.0.0.1' || $ip === '::1') {
     }
 }
 $findLocation = $adrRepository->findById($city);
+$isValidCity = !in_array(strtolower($city), ['unknown', 'localhost']);
+$cityReference = $isValidCity ? $city : null;
 if ($pwd == $pwd2) {
     if ($testing == false) {
         $_SESSION['user'] = $user;
@@ -62,6 +64,18 @@ if ($pwd == $pwd2) {
                 'lon' => $lon
             ]);
         }
+        $_SESSION['is_logged']=true;
+        header('location:../../');
+
+        $_SESSION['user'] = $user;
+        $_SESSION['email'] = $email;
+        $userRepository->create([
+            'username' => $user,
+            'id' => $email,
+            'password' => password_hash($pwd, PASSWORD_DEFAULT),
+            'phone' => $phone,
+            'city' => $cityReference
+        ]);
         $_SESSION['is_logged']=true;
         header('location:../../');
     } else {

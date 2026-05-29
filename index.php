@@ -1,7 +1,7 @@
 <?php
 session_start();
 $login_url = 'pages/auth/login.php';
-$search_url = 'pages/search.php';
+$search_url = 'pages/search-engine';
 $is_logged = isset($_SESSION['is_logged']) && $_SESSION['is_logged'] === true;
 $link_url = $is_logged ? $search_url : $login_url;
 
@@ -25,7 +25,7 @@ include 'pages/includes/header.php';
         <div class="section mid1"></div>
         <div class="section top"></div>
         </div>
-        <div class="pillar p2">
+        <div class="pillar p2"> 
         <div class="section bottom"></div>
         <div class="section mid2"></div>
         <div class="section mid1"></div>
