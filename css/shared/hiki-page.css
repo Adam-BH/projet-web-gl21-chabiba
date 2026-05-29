@@ -93,7 +93,8 @@ html, body {
     font-weight: 700;
 }
 
-/* Theme toggle (matches home page placement) */
+/* Theme toggle (pure CSS — the bundled LandSwitch-Dark.png has a thumb baked
+   in, so we draw the pill from scratch to avoid a double-thumb glitch). */
 .theme-toggle {
     position: fixed;
     bottom: 28px;
@@ -102,26 +103,36 @@ html, body {
 }
 
 .toggle-track {
-    display: flex;
-    align-items: center;
+    display: block;
+    position: relative;
     width: 78px;
     height: 35px;
-    background-image: url('../../assets/Images/LandSwitch-Dark.png');
-    background-size: cover;
     border-radius: 100px;
     cursor: pointer;
-    padding: 4px;
-    backdrop-filter: blur(16px);
+    background: linear-gradient(90deg, #1a0a3e 0%, #371728 45%, #ff7a3a 100%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow:
+        inset 0 2px 4px rgba(0, 0, 0, 0.45),
+        0 4px 10px rgba(0, 0, 0, 0.25);
 }
 
 .toggle-thumb {
-    width: 28px;
-    height: 28px;
-    background: #fff;
+    position: absolute;
+    top: 50%;
+    left: 4px;
+    transform: translateY(-50%);
+    width: 27px;
+    height: 27px;
+    background: #ffffff;
     border-radius: 50%;
-    transition: transform 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.35);
+    transition: left 0.3s ease, background 0.3s ease;
+}
+
+#toggle:checked + .toggle-track {
+    background: linear-gradient(90deg, #ff7a3a 0%, #5c1f3c 55%, #1a0a3e 100%);
 }
 
 #toggle:checked + .toggle-track .toggle-thumb {
-    transform: translateX(40px);
+    left: 47px;
 }

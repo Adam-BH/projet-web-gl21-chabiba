@@ -50,13 +50,13 @@ if ($selectedDay === null) {
 
         <div class="weather-grid">
             <section class="weather-card" aria-label="Selected day">
-                <img class="weather-card__moon" src="../assets/Images/night-moon-component.png" alt="">
+                <img class="weather-card__moon" src="../assets/Images/moon.png" alt="">
                 <div class="weather-card__info">
-                    <p class="weather-card__temp"><?= htmlspecialchars((string)$selectedDay['temp']) ?>&deg;</p>
+                    <p class="weather-card__temp" data-temp><?= htmlspecialchars((string)$selectedDay['temp']) ?>&deg;</p>
                     <p class="weather-card__country"><?= htmlspecialchars($forecast['country'] ?: 'Tunisia') ?></p>
-                    <p class="weather-card__city">CUN, <?= htmlspecialchars($forecast['city']) ?></p>
-                    <p class="weather-card__wind">
-                        <?= htmlspecialchars($selectedDay['wind']) ?> km/h Wind
+                    <p class="weather-card__city"><?= htmlspecialchars($forecast['city']) ?></p>
+                    <p class="weather-card__wind" data-wind>
+                        <?= htmlspecialchars((string)$selectedDay['wind']) ?> km/h Wind
                     </p>
                 </div>
             </section>
@@ -66,9 +66,12 @@ if ($selectedDay === null) {
                     <?php foreach ($forecast['days'] as $day): ?>
                         <?php $isActive = $day['short'] === $selectedDay['short']; ?>
                         <li class="forecast-pill <?= $isActive ? 'is-active' : '' ?>">
-                            <a class="forecast-pill__link"
+                            <a class="forecast-pill__link js-day-pill"
                                href="?city=<?= urlencode($forecast['city']) ?>&amp;day=<?= urlencode($day['short']) ?>"
-                               title="<?= htmlspecialchars($day['label']) ?>">
+                               title="<?= htmlspecialchars($day['label']) ?>"
+                               data-day="<?= htmlspecialchars($day['short']) ?>"
+                               data-temp="<?= htmlspecialchars((string)$day['temp']) ?>"
+                               data-wind="<?= htmlspecialchars((string)$day['wind']) ?>">
                                 <span class="forecast-pill__day"><?= htmlspecialchars($day['short']) ?></span>
                                 <img class="forecast-pill__icon"
                                      src="../assets/Images/<?= htmlspecialchars($day['icon']) ?>" alt="">
@@ -100,5 +103,6 @@ if ($selectedDay === null) {
     </div>
 
     <script src="../js/stars-bg.js"></script>
+    <script src="../js/weather-page.js"></script>
 </body>
 </html>

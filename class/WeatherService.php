@@ -182,88 +182,47 @@ class WeatherService
     }
 
     /**
-     * FIX: The original method returned the same PNG for virtually every
-     * condition. Now each weather category maps to its own icon file.
-     *
-     * Expected icon files in your assets folder:
-     *   clear-day.png
-     *   partly-cloudy.png
-     *   cloudy.png
-     *   fog.png
-     *   drizzle.png
-     *   freezing-drizzle.png
-     *   rain.png
-     *   freezing-rain.png
-     *   snow.png
-     *   snow-showers.png
-     *   showers.png
-     *   thunderstorm.png
-     *   thunderstorm-hail.png
+     * Maps WMO weather codes to the icon PNGs that actually exist in
+     * assets/Images/. Only three weather icons are shipped right now, so
+     * codes group into three families:
+     *   moon-cloud-fast-wind.png    — clouds / fog / overcast / snow (no rain in image)
+     *   sun-cloud-mid-rain.png      — sun + light rain (drizzle, light rain, mostly clear)
+     *   sun-cloud-angled-rain.png   — sun + heavy slanted rain (showers, storms, freezing rain)
      */
     private function codeIcon(int $code): string
     {
-        // Clear / mostly clear
+        // Clear / mostly clear — best match in the available set is the
+        // sun-forward icon, which is the only one with a visible sun.
         if ($code === 0 || $code === 1) {
-            return 'clear-day.png';
+            return 'sun-cloud-mid-rain.png';
         }
 
-        // Partly / fully cloudy
-        if ($code === 2) {
-            return 'partly-cloudy.png';
-        }
-        if ($code === 3) {
-            return 'cloudy.png';
+        // Cloudy, overcast, fog — no-rain cloud icon.
+        if ($code === 2 || $code === 3 || $code === 45 || $code === 48) {
+            return 'moon-cloud-fast-wind.png';
         }
 
-        // Fog
-        if ($code === 45 || $code === 48) {
-            return 'fog.png';
+        // Drizzle + light rain — sun + mid rain.
+        if (in_array($code, [51, 53, 55, 56, 57, 61], true)) {
+            return 'sun-cloud-mid-rain.png';
         }
 
-        // Drizzle
-        if ($code === 51 || $code === 53 || $code === 55) {
-            return 'drizzle.png';
+        // Heavier rain + showers + freezing rain — angled rain icon.
+        if (in_array($code, [63, 65, 66, 67, 80, 81, 82], true)) {
+            return 'sun-cloud-angled-rain.png';
         }
 
-        // Freezing drizzle
-        if ($code === 56 || $code === 57) {
-            return 'freezing-drizzle.png';
+        // Snow / snow grains / snow showers — cloud-only icon (closest neutral cold look).
+        if (in_array($code, [71, 73, 75, 77, 85, 86], true)) {
+            return 'moon-cloud-fast-wind.png';
         }
 
-        // Rain
-        if ($code === 61 || $code === 63 || $code === 65) {
-            return 'rain.png';
+        // Thunderstorms (with/without hail) — heaviest rain icon available.
+        if ($code === 95 || $code === 96 || $code === 99) {
+            return 'sun-cloud-angled-rain.png';
         }
 
-        // Freezing rain
-        if ($code === 66 || $code === 67) {
-            return 'freezing-rain.png';
-        }
-
-        // Snow
-        if ($code === 71 || $code === 73 || $code === 75 || $code === 77) {
-            return 'snow.png';
-        }
-
-        // Rain showers
-        if ($code === 80 || $code === 81 || $code === 82) {
-            return 'showers.png';
-        }
-
-        // Snow showers
-        if ($code === 85 || $code === 86) {
-            return 'snow-showers.png';
-        }
-
-        // Thunderstorms
-        if ($code === 95) {
-            return 'thunderstorm.png';
-        }
-        if ($code === 96 || $code === 99) {
-            return 'thunderstorm-hail.png';
-        }
-
-        return 'cloudy.png'; // safe default
+        return 'moon-cloud-fast-wind.png';
     }
 
     // -------------------------------------------------------------------------

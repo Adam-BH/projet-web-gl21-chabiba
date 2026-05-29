@@ -72,9 +72,7 @@
 }
 
 .weather-card__wind {
-    position: absolute;
-    right: 0;
-    bottom: -6px;
+    margin: 6px 0 0;
     font-size: 14px;
     font-weight: 600;
     opacity: 0.95;
