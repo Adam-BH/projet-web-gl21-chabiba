@@ -1,28 +1,11 @@
 @import url('../style.css');
 
-:root {
-    --cyan: #00ffff;
-    --azure: #f0ffff;
-    --card-radius: 8px;
-    --frame-radius: 12px;
-    --border-cyan-dim: rgba(240, 255, 255, 0.1);
-    --border-cyan-hover: rgba(0, 255, 255, 0.3);
-    --bg-card: #121212;
-}
+/* Lost & Found page styles */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html,
-body {
-    color: var(--azure);
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    line-height: 1.5;
-    overflow-x: hidden;
-    overflow-y: visible;
+.lost-found-shell {
+    width: min(1180px, calc(100vw - 32px));
+    margin: 0 auto;
+    padding: 24px 0 64px;
 }
 
 .hero-title {
@@ -33,8 +16,7 @@ body {
     padding-top: 2rem;
     margin-bottom: 1.5rem;
     text-align: center;
-    color: var(--azure);
-    text-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+    color: var(--text-primary);
 }
 
 .hero-title span {
@@ -45,33 +27,29 @@ body {
 }
 
 .frame {
-    border: 1px solid var(--border-cyan-dim);
+    border: 1px solid var(--surface-border);
     padding: 1.5rem;
     margin: 1rem auto 3rem auto;
-    width: 75%;
-    background: rgba(255, 255, 255, 0.01);
-    backdrop-filter: blur(10px);
-    border-radius: var(--frame-radius);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    background: var(--surface-bg);
+    backdrop-filter: blur(12px);
+    border-radius: 18px;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
 }
 
 .posts-wrapper {
     display: grid;
-    grid-template-columns: repeat(auto-fill, 250px); 
-    gap: 2rem;
-    justify-content: start; 
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.5rem;
     width: 100%;
 }
 
 .post-card {
-    width: 18vw;
-    height: 1050px;
-    flex-shrink: 0;
     display: flex;
     flex-direction: column;
-    background: var(--bg-card);
-    border: 1px solid var(--border-cyan-dim);
-    border-radius: var(--card-radius);
+    background: rgba(10, 15, 25, 0.82);
+    border: 1px solid var(--surface-border);
+    border-radius: 18px;
     overflow: hidden;
     transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
     height: 100%;
@@ -79,16 +57,16 @@ body {
 
 .post-card:hover {
     transform: translateY(-5px);
-    border-color: var(--border-cyan-hover);
-    box-shadow: 0 8px 20px rgba(0, 255, 255, 0.15);
+    border-color: rgba(143, 211, 255, 0.4);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
 .post-card img {
     width: 100%;
-    height: 160px;
+    height: 180px;
     object-fit: cover;
     filter: brightness(0.85);
-    border-bottom: 1px solid var(--border-cyan-dim);
+    border-bottom: 1px solid var(--surface-border);
     transition: filter 0.3s ease;
 }
 
@@ -96,91 +74,72 @@ body {
     filter: brightness(1);
 }
 
-.post-card img {
-    height: 150px;
-    width: 100%;
-    object-fit: cover;
-}
-
 .post-content {
     overflow: hidden;
     display: flex;
     flex-direction: column;
     flex: 1;
+    padding: 16px;
 }
 
 .item {
     font-family: 'Righteous', sans-serif;
     font-size: 0.85rem;
-    color: var(--cyan);
+    color: var(--accent-cool);
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    margin-bottom: 0.2rem;
+    margin-bottom: 0.4rem;
 }
 
 .place, .date {
     font-size: 0.8rem;
-    color: #b0b0b0;
-    display: flex;
-    align-items: center;
+    color: var(--text-muted);
+    margin-bottom: 0.2rem;
 }
 
 .phone {
-    margin-top: auto; 
+    margin-top: auto;
     padding-top: 12px;
     font-size: 0.85rem;
     font-weight: 600;
-    color: var(--azure);
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.text-center { text-align: center; }
+.delete-form {
+    margin-top: 10px;
+}
+
+.delete-form .btn-delete {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 38px;
+    padding: 0 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(220, 38, 38, 0.3);
+    background: rgba(220, 38, 38, 0.1);
+    color: #fca5a5;
+    cursor: pointer;
+    font-size: 0.78rem;
+    font-weight: 700;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.delete-form .btn-delete:hover {
+    background: rgba(220, 38, 38, 0.2);
+    border-color: rgba(220, 38, 38, 0.5);
+    transform: translateY(-1px);
+}
+
+.error {
+    color: #fca5a5;
+    font-size: 0.82rem;
+    margin-top: 6px;
+}
 
 @media (max-width: 480px) {
     .posts-wrapper {
         grid-template-columns: 1fr;
     }
-}
-
-.glowy-btn {
-    margin: 0 auto;
-    padding: 5px auto;
-    font-size: 0.8rem;
-}
-
-.add-btn {
-  --forest-green: #2d5a27;
-  --dirt-brown: #4a3728;
-  --leaf-green: #4f772d;
-  
-  appearance: none;
-  background-color: var(--forest-green);
-  border: none;
-  border-radius: 12px;
-  
-  border-bottom: 5px solid var(--dirt-brown);
-  
-  color: #f1f1e6;
-  cursor: pointer;
-  display: inline-block;
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 0.9rem;
-  font-weight: bold;
-  letter-spacing: 1px;
-  padding: 12px 24px;
-  text-transform: uppercase;
-  transition: all 0.1s ease;
-  user-select: none;
-  margin: 2% auto;
-  width: 200px;
-}
-
-.add-btn:hover {
-  background-color: var(--leaf-green);
-  transform: translateY(-1px);
-}
-
-.add-btn :active {
-  border-bottom-width: 0;
-  transform: translateY(5px);
 }
