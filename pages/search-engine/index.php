@@ -1,10 +1,10 @@
 <?php
-require_once __DIR__ . '/../pages/autoloader.php';
+require_once __DIR__ . '/../autoloader.php';
 
 $pageTitle = 'HIKI - Camping Sites Explorer';
 $pageActive = 'catalogue';
 $extraStyles = ['css/pages/catalogue.css', 'css/pages/search-engine.css'];
-include __DIR__ . '/../pages/includes/header.php';
+include __DIR__ . '/../includes/header.php';
 ?>
 
 <main class="catalogue-shell search-engine-shell">
