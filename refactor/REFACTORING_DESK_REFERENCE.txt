@@ -1,0 +1,196 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                   HIKI REFACTORING: DESK REFERENCE CARD                       ║
+║                              (Print This Page)                                ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ NEW DIRECTORY STRUCTURE                                                       │
+├──────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│ /src/Classes/                  ← All PHP logic (moved from /class/)          │
+│ /src/Includes/                 ← header.php, booking-popup.php              │
+│ /public_html/                  ← All user-facing routes (moved from /pages/) │
+│   ├─ auth/                     ← Auth pages                                  │
+│   ├─ catalogue/                ← Catalog pages                              │
+│   └─ lost-and-found/           ← Renamed from lost&found                    │
+│ /api/                          ← All API endpoints (consolidated)            │
+│ /config/                       ← NEW: paths.php for constants               │
+│ /index.php                     ← NEW: Redirects to /public_html/index.php   │
+│ /autoloader.php                ← NEW: Global PSR-4 autoloader               │
+│                                                                              │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ PATH CONVERSION QUICK PATTERNS                                               │
+├──────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│ CLASSES:                                                                     │
+│   OLD: require_once __DIR__ . '/../class/WeatherService.php';               │
+│   NEW: require_once __DIR__ . '/../src/Classes/WeatherService.php';         │
+│                                                                              │
+│ INCLUDES:                                                                    │
+│   OLD: include __DIR__ . '/includes/header.php';                            │
+│   NEW: include __DIR__ . '/../src/Includes/header.php';                     │
+│                                                                              │
+│ NAVIGATION LINKS:                                                            │
+│   OLD: href="/projet-web-gl21-chabiba/pages/weather.php"                   │
+│   NEW: href="/projet-web-gl21-chabiba/public_html/weather.php"             │
+│                                                                              │
+│ API FORMS:                                                                   │
+│   OLD: action="/projet-web-gl21-chabiba/pages/catalogue/book.php"          │
+│   NEW: action="/projet-web-gl21-chabiba/api/booking.php"                   │
+│                                                                              │
+│ ASSETS (no change):                                                          │
+│   STAYS: <img src="/projet-web-gl21-chabiba/assets/Images/icon.png">        │
+│   STAYS: <link rel="stylesheet" href="/projet-web-gl21-chabiba/css/...">    │
+│                                                                              │
+│ SPECIAL: lost&found → lost-and-found                                        │
+│   OLD: /pages/lost&found/lost&found.php                                    │
+│   NEW: /public_html/lost-and-found/lost-and-found.php                     │
+│                                                                              │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ SUBDIRECTORY DEPTH RULE (IMPORTANT!)                                         │
+├──────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│ If file moves DEEPER (e.g., /pages/ → /public_html/auth/):                 │
+│   ADD ONE MORE "../" to all relative paths                                   │
+│                                                                              │
+│ Example:                                                                     │
+│   FROM: /pages/auth/login.php                                               │
+│   TO:   /public_html/auth/login.php                                         │
+│                                                                              │
+│   OLD (in /pages/auth/):  include __DIR__ . '/../src/Includes/header.php'  │
+│   NEW (in /public_html/auth/): include __DIR__ . '/../../src/Includes/...' │
+│                                           ↑ ADD ONE MORE ../                │
+│                                                                              │
+│ If file moves to SAME depth (e.g., /pages/ → /public_html/):              │
+│   Relative paths STAY THE SAME                                              │
+│                                                                              │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ 18 EXECUTION PHASES (High Level)                                            │
+├──────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│ Phases 0-3:   Preparation & Setup (45 min)                                  │
+│ Phases 4-5:   Move class files & includes (35 min)                         │
+│ Phase 6:      Consolidate duplicate HTML/PHP (30 min)                      │
+│ Phases 7-9:   UPDATE ALL PATHS (2 hrs) ⚠️ Most error-prone                 │
+│ Phases 10-11: Move page files to /public_html/ (1 hr) ⚠️ Files in transit  │
+│ Phases 12-14: Create entry point, organize JS (40 min)                     │
+│ Phases 15-17: Test, cleanup, verify (1.5 hrs)                             │
+│ Phase 18:     Git commit & document (15 min)                               │
+│                                                                              │
+│ TOTAL: ~5-6 hours                                                            │
+│                                                                              │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ TESTING CHECKLIST (After Each Major Phase)                                  │
+├──────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│ □ Visit home page in browser                                                │
+│ □ Check browser console: NO 404 errors                                      │
+│ □ Check browser console: NO JavaScript errors                               │
+│ □ Open Network tab: ALL CSS/JS/Images load (not 404)                       │
+│ □ Click all navigation links                                                │
+│ □ Try login/signup if you've moved auth                                     │
+│ □ If moved database files: Test auth with credentials                       │
+│ □ Check browser DevTools: No warnings                                       │
+│                                                                              │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ FILE MAPPING (What Goes Where)                                              │
+├──────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│ /class/ → /src/Classes/           (All 11 repository files)                │
+│ /pages/includes/ → /src/Includes/ (header.php, booking-popup.php)          │
+│ /pages/*.php → /public_html/       (All root-level pages)                  │
+│ /pages/auth/ → /public_html/auth/  (Auth pages, same structure)            │
+│ /pages/catalogue/ → /public_html/catalogue/ (Catalog pages)                │
+│ /pages/lost&found/ → /public_html/lost-and-found/ (Renamed!)              │
+│ /pages/search-engine/api/ → /api/  (Consolidate API files)                │
+│                                                                              │
+│ DELETE (Deprecated):                                                        │
+│ □ /pages/*.html (duplicates)       [community.html, equipment.html, etc]   │
+│ □ /pages/lost-and-found/           [empty folder - duplicate]              │
+│ □ /pages/search-engine/            [API moved to /api/]                    │
+│                                                                              │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ TROUBLESHOOTING QUICK FIXES                                                 │
+├──────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│ SYMPTOM: Page loads but NO CSS/JS                                           │
+│ FIX: Check /src/Includes/header.php has correct paths                      │
+│      Verify /projet-web-gl21-chabiba/ prefix in asset paths                │
+│                                                                              │
+│ SYMPTOM: "Class not found" error                                            │
+│ FIX: Check /autoloader.php exists at root                                   │
+│      Verify /src/Classes/ folder exists with files                          │
+│                                                                              │
+│ SYMPTOM: Login fails / redirects wrong                                      │
+│ FIX: Update /public_html/auth/processLogin.php redirect URL                │
+│      Should point to /public_html/index.php not /pages/                     │
+│                                                                              │
+│ SYMPTOM: Lost & Found link broken                                           │
+│ FIX: Ensure navigation uses /public_html/lost-and-found/                  │
+│      NOT /pages/lost&found/ (with ampersand)                               │
+│                                                                              │
+│ SYMPTOM: Multiple pages broken at once                                      │
+│ FIX: Likely issue in /src/Includes/header.php                              │
+│      Check all paths are correct there                                      │
+│                                                                              │
+│ EMERGENCY: Need to rollback?                                                │
+│ FIX: git checkout backup/pre-refactor                                       │
+│      (Created before you started)                                           │
+│                                                                              │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ GIT COMMANDS YOU'LL NEED                                                     │
+├──────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│ # Create backup before starting:                                            │
+│ git checkout -b backup/pre-refactor                                         │
+│ git checkout main                                                            │
+│                                                                              │
+│ # After each phase:                                                         │
+│ git add -A                                                                   │
+│ git commit -m "Phase X: [description]"                                      │
+│                                                                              │
+│ # If you need to rollback to last phase:                                    │
+│ git reset --hard HEAD~1                                                     │
+│                                                                              │
+│ # Or rollback to backup:                                                    │
+│ git checkout backup/pre-refactor                                            │
+│ git reset --hard                                                             │
+│                                                                              │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ DOCUMENTATION REFERENCE                                                      │
+├──────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│ PLANNING:       REFACTORING_EXECUTIVE_SUMMARY.md (10 min read)             │
+│ QUICK LOOKUP:   REFACTORING_QUICK_REFERENCE.md (bookmark this)             │
+│ STEP-BY-STEP:   REFACTORING_PLAN.md Part 4 (follow phases 0-18)           │
+│ CODE EXAMPLES:  REFACTORING_CODE_EXAMPLES.md (bookmark this too)           │
+│ VISUAL HELP:    REFACTORING_VISUAL_SUMMARY.md (troubleshooting, diagrams) │
+│ INDEX/NAV:      REFACTORING_INDEX.md (you are here)                        │
+│                                                                              │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║ REMEMBER: Test after each major phase. Don't batch multiple phases without   ║
+║ testing. Catch errors early. If something breaks, see troubleshooting above. ║
+║                                                                              ║
+║ ESTIMATED TIME: 5-6 hours to complete all 18 phases                        ║
+║ CONFIDENCE: High (with provided guides)                                     ║
+║                                                                              ║
+║ Status: Ready to execute. Good luck! 🚀                                      ║
+╚══════════════════════════════════════════════════════════════════════════════╝
