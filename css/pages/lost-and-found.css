@@ -177,7 +177,6 @@ body {
 
 .add-btn:hover {
   background-color: var(--leaf-green);
-  transform: translateY(-1px);
 }
 
 .add-btn :active {
