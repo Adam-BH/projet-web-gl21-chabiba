@@ -1,0 +1,44 @@
+<nav class="navbar navbar-dark" role="navigation" aria-label="Main navigation">
+    <div class="container d-flex align-items-center justify-content-between">
+        <div class="d-flex align-items-center" style="gap: 2rem;">
+            <a href="{{ path('app_home') }}" class="navbar-brand">HIKI</a>
+            <ul class="navbar-nav nav-links flex-row m-0">
+                <li class="nav-item">
+                    <a href="{{ path('app_home') }}" class="nav-link{{ app.request.attributes.get('_route') == 'app_home' ? ' active' : '' }}">home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ path('app_weather') }}" class="nav-link{{ app.request.attributes.get('_route') starts with 'app_weather' ? ' active' : '' }}">weather</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ path('app_hiking_guide') }}" class="nav-link{{ app.request.attributes.get('_route') == 'app_hiking_guide' ? ' active' : '' }}">hiking guide</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ path('app_equipment') }}" class="nav-link{{ app.request.attributes.get('_route') == 'app_equipment' ? ' active' : '' }}">equipment</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ path('app_moon') }}" class="nav-link{{ app.request.attributes.get('_route') starts with 'app_moon' ? ' active' : '' }}">moon</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ path('app_catalogue') }}" class="nav-link{{ app.request.attributes.get('_route') starts with 'app_catalogue' ? ' active' : '' }}">camping sites</a>
+                </li>
+                {% if is_granted('ROLE_USER') %}
+                <li class="nav-item">
+                    <a href="{{ path('app_bookings') }}" class="nav-link{{ app.request.attributes.get('_route') starts with 'app_booking' ? ' active' : '' }}">my bookings</a>
+                </li>
+                {% endif %}
+                <li class="nav-item">
+                    <a href="{{ path('app_lost_found') }}" class="nav-link{{ app.request.attributes.get('_route') starts with 'app_lost' ? ' active' : '' }}">Lost &amp; found</a>
+                </li>
+            </ul>
+        </div>
+        <div class="nav-auth ms-3 d-flex align-items-center">
+            {% if is_granted('ROLE_USER') %}
+                <span class="text-light me-3">Hi, {{ app.user.username ?? app.user.userIdentifier }}</span>
+                <a href="{{ path('app_logout') }}" class="nav-btn outline">Logout</a>
+            {% else %}
+                <a href="{{ path('app_login') }}" class="nav-btn outline me-2">Login</a>
+                <a href="{{ path('app_register') }}" class="nav-btn primary">Sign Up</a>
+            {% endif %}
+        </div>
+    </div>
+</nav>

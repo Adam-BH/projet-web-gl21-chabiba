@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+{% block title %}HIKI - Tent Setup Manual{% endblock %}
+{% block body %}
+    <div class="content-page">
+        <nav class="mb-3" style="display:flex;gap:12px;">
+            <a href="{{ path('app_manual_hiking') }}" class="site-card-button">Hiking</a>
+            <a href="{{ path('app_manual_fire') }}" class="site-card-button">Fire Safety</a>
+            <a href="{{ path('app_manual_tent') }}" class="site-card-button active">Tent Setup</a>
+        </nav>
+        <div class="content-card">
+            <h1 class="page-title">Tent Setup Manual</h1>
+            <p class="page-subtitle">Step-by-step guide to pitching your tent correctly.</p>
+            <div style="margin-top:1.5rem;line-height:1.8;color:var(--text-muted);">
+                <h2 style="color:var(--text-primary);font-family:'Righteous',sans-serif;">Choosing Your Spot</h2>
+                <ul>
+                    <li>Find flat, dry ground away from water runoff paths.</li>
+                    <li>Clear rocks and sticks from the ground before laying the footprint.</li>
+                    <li>Face the door away from prevailing wind.</li>
+                </ul>
+                <h2 style="color:var(--text-primary);font-family:'Righteous',sans-serif;margin-top:1.5rem;">Pitching Steps</h2>
+                <ol>
+                    <li>Lay out the tent footprint (groundsheet) to protect the floor.</li>
+                    <li>Unfold the tent body and stake the four corners loosely.</li>
+                    <li>Assemble and thread the poles through their sleeves or clips.</li>
+                    <li>Raise the tent body onto the poles and tension the stakes.</li>
+                    <li>Attach the rain fly, starting from the top and clipping down.</li>
+                    <li>Stake the fly guylines at 45° angles from the tent for stability.</li>
+                </ol>
+                <h2 style="color:var(--text-primary);font-family:'Righteous',sans-serif;margin-top:1.5rem;">Tips</h2>
+                <ul>
+                    <li>Practice at home before your first trip.</li>
+                    <li>In wet conditions, set up the rain fly first to keep the interior dry.</li>
+                    <li>Store your tent dry — never pack it wet if you can avoid it.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}

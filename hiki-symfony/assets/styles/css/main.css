@@ -1,0 +1,13 @@
+@import url("./base/reset.css");
+@import url("./base/typography.css");
+@import url("./layout/header.css");
+@import url("./layout/footer.css");
+@import url("./layout/navigation.css");
+@import url("./pages/home.css");
+@import url("./pages/sites.css");
+@import url("./pages/manual.css");
+@import url("./pages/weather.css");
+@import url("./pages/auth.css");
+@import url("./pages/catalogue.css");
+/* import shared shell so pages receive the unified variables */
+@import url("./site-shell.css");

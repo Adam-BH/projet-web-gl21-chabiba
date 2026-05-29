@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}HIKI — Weather{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('styles/pages/weather.css') }}">
+{% endblock %}
+
+{% block body %}
+    <main class="weather-main">
+        <h1 class="weather-title">The Weather</h1>
+
+        <div class="weather-grid">
+            <section class="weather-card" aria-label="Selected day">
+                <img class="weather-card__moon" src="{{ asset('images/moon.png') }}" alt="">
+                <div class="weather-card__info">
+                    <p class="weather-card__temp">{{ selectedDay.temp }}&deg;</p>
+                    <p class="weather-card__country">{{ forecast.country }}</p>
+                    <p class="weather-card__city">{{ forecast.city }}</p>
+                    <p class="weather-card__wind">{{ selectedDay.wind }} km/h Wind</p>
+                </div>
+            </section>
+
+            <section class="weather-panel">
+                <ul class="forecast-row" aria-label="7-day forecast">
+                    {% for day in forecast.days %}
+                        <li class="forecast-pill {{ day.short == selectedDay.short ? 'is-active' : '' }}">
+                            <a class="forecast-pill__link"
+                               href="{{ path('app_weather', {city: forecast.city, day: day.short}) }}"
+                               title="{{ day.label }}">
+                                <span class="forecast-pill__day">{{ day.short }}</span>
+                                <img class="forecast-pill__icon"
+                                     src="{{ asset('images/' ~ day.icon) }}" alt="{{ day.label }}">
+                                <span class="forecast-pill__rain">{{ day.rain }}%</span>
+                                <span class="forecast-pill__temp">{{ day.temp }}&deg;</span>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+
+                <form class="weather-search" method="get" action="{{ path('app_weather') }}" role="search">
+                    <input class="weather-search__input"
+                           type="text" name="city" placeholder="Your Location ...."
+                           value="{{ city }}" autocomplete="off">
+                    <button class="weather-search__btn" type="submit" aria-label="Search">
+                        <img src="{{ asset('images/search-icon.svg') }}" alt="">
+                    </button>
+                </form>
+            </section>
+        </div>
+    </main>
+{% endblock %}

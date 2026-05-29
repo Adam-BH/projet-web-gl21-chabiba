@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}HIKI - My Bookings{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('styles/pages/catalogue.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="catalogue-shell bookings-page">
+        <h1 class="page-title" style="font-family:'Righteous',sans-serif;font-size:clamp(2rem,5vw,4rem);margin-bottom:2rem;">My Bookings</h1>
+
+        {% if bookings is empty %}
+            <div class="empty-state">
+                <h2>No bookings yet</h2>
+                <p>You haven't booked any camping sites. <a href="{{ path('app_catalogue') }}" style="color:var(--catalogue-accent);">Browse sites</a></p>
+            </div>
+        {% else %}
+            {% for booking in bookings %}
+                <div class="booking-card">
+                    <h3>{{ booking.site.name }}</h3>
+                    <p><strong style="color:var(--catalogue-accent);">Check-in:</strong> {{ booking.startDate|date('D, d M Y') }}</p>
+                    <p><strong style="color:var(--catalogue-accent);">Check-out:</strong> {{ booking.endDate|date('D, d M Y') }}</p>
+                    <p><strong style="color:var(--catalogue-accent);">People:</strong> {{ booking.people }}</p>
+                    <p><strong style="color:var(--catalogue-accent);">Location:</strong> {{ booking.site.city }}</p>
+                    <p style="color:var(--catalogue-muted);font-size:0.8rem;">Booked on {{ booking.createdAt|date('Y-m-d') }}</p>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endblock %}

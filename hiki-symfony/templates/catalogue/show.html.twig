@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}HIKI - {{ site.name }}{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('styles/pages/catalogue.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="catalogue-shell">
+        <a href="{{ path('app_catalogue') }}" class="site-card-button" style="display:inline-block;margin-bottom:16px;">&larr; Back to catalogue</a>
+
+        {% if app.request.query.get('booked') %}
+            <div class="alert-success">Your booking was confirmed!</div>
+        {% endif %}
+        {% if app.request.query.get('error') == 'not_available' %}
+            <div class="alert-error">This site is not available for the selected dates.</div>
+        {% elseif app.request.query.get('error') == 'invalid_dates' %}
+            <div class="alert-error">Please enter valid dates (start must be today or later, end must be after start).</div>
+        {% endif %}
+
+        <div class="site-detail">
+            <h1 style="font-family:'Righteous',sans-serif;margin:0 0 6px;color:var(--catalogue-text);">{{ site.name }}</h1>
+            <p style="color:var(--catalogue-accent);margin:0 0 18px;">{{ site.city }} · Capacity: {{ site.capacity }}</p>
+
+            <div style="display:flex;gap:24px;flex-wrap:wrap;">
+                <div style="flex:1;min-width:260px;">
+                    {% if site.images is not empty %}
+                        <img id="mainImage"
+                             src="{{ asset(site.images.first.path) }}"
+                             alt="{{ site.name }}"
+                             style="width:100%;border-radius:12px;border:1px solid var(--catalogue-border);">
+                        <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap;">
+                            {% for img in site.images %}
+                                <button class="thumb" type="button" data-src="{{ asset(img.path) }}"
+                                        style="border:0;background:transparent;padding:0;cursor:pointer;">
+                                    <img src="{{ asset(img.path) }}" alt=""
+                                         style="width:80px;height:60px;object-fit:cover;border-radius:6px;border:1px solid var(--catalogue-border);">
+                                </button>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <div style="padding:36px;border-radius:12px;border:1px solid var(--catalogue-border);color:var(--catalogue-muted);text-align:center;">No images available</div>
+                    {% endif %}
+                </div>
+
+                <div style="flex:1;min-width:260px;color:var(--catalogue-text);">
+                    <h2 style="font-family:'Righteous',sans-serif;">Description</h2>
+                    <p style="color:var(--catalogue-muted);line-height:1.7;">{{ site.description }}</p>
+
+                    <h3 style="font-family:'Righteous',sans-serif;margin-top:18px;">Location</h3>
+                    <p style="color:var(--catalogue-muted);">
+                        {{ site.city }}
+                        {% if site.lat and site.lon %}
+                            <br><small>{{ site.lat|round(3) }}, {{ site.lon|round(3) }}</small>
+                        {% endif %}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        {% if is_granted('ROLE_USER') %}
+            <div class="booking-form" id="book">
+                <h2>Book This Site</h2>
+                <form action="{{ path('app_catalogue_book', {id: site.id}) }}" method="POST">
+                    <label for="start_date">Check-in</label>
+                    <input type="date" id="start_date" name="start_date"
+                           min="{{ 'today'|date('Y-m-d') }}" required>
+
+                    <label for="end_date">Check-out</label>
+                    <input type="date" id="end_date" name="end_date"
+                           min="{{ 'today'|date('Y-m-d') }}" required>
+
+                    <label for="people">Number of people</label>
+                    <input type="number" id="people" name="people" min="1"
+                           max="{{ site.capacity }}" value="1">
+
+                    <button class="btn-login" type="submit" style="margin-top:8px;">Confirm Booking</button>
+                </form>
+            </div>
+        {% else %}
+            <div class="booking-form" id="book" style="text-align:center;">
+                <p style="color:var(--catalogue-muted);margin-bottom:14px;">Please log in to book this site.</p>
+                <a href="{{ path('app_login') }}" class="site-card-button">Login to Book</a>
+            </div>
+        {% endif %}
+    </div>
+
+    <script>
+        (function(){
+            const main = document.getElementById('mainImage');
+            document.querySelectorAll('.thumb').forEach(btn => {
+                btn.addEventListener('click', function(){ if(main) main.src = this.dataset.src; });
+            });
+        })();
+    </script>
+{% endblock %}

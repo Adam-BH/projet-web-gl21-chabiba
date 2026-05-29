@@ -1,0 +1,300 @@
+@import url('../style.css');
+
+:root {
+    --guide-bg: radial-gradient(circle at top, rgba(40, 58, 92, 0.26), transparent 42%), linear-gradient(180deg, #08101e 0%, #04070f 100%);
+    --guide-surface: rgba(10, 15, 25, 0.82);
+    --guide-surface-soft: rgba(255, 255, 255, 0.05);
+    --guide-border: rgba(160, 215, 255, 0.16);
+    --guide-text: #eef5ff;
+    --guide-muted: rgba(238, 245, 255, 0.72);
+    --guide-accent: #8fd3ff;
+    --guide-accent-strong: #ffe08a;
+    --guide-radius: 22px;
+    --guide-shadow: 0 24px 70px rgba(0, 0, 0, 0.38);
+}
+
+html,
+body {
+    min-height: 100%;
+}
+
+#starCanvas {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.guide-shell {
+    position: relative;
+    z-index: 1;
+    width: min(1180px, calc(100vw - 32px));
+    margin: 0 auto;
+    padding: 48px 0 64px;
+}
+
+.hero {
+    padding: 42px 36px;
+    border: 1px solid var(--guide-border);
+    border-radius: var(--guide-radius);
+    background: linear-gradient(180deg, rgba(11, 18, 32, 0.94), rgba(6, 10, 18, 0.86));
+    box-shadow: var(--guide-shadow);
+    backdrop-filter: blur(14px);
+}
+
+.eyebrow,
+.section-label {
+    margin: 0 0 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 0.76rem;
+    color: var(--guide-accent);
+}
+
+.hero h1 {
+    margin: 0;
+    font-family: 'Righteous', sans-serif;
+    font-size: clamp(3rem, 8vw, 6.4rem);
+    line-height: 0.95;
+    letter-spacing: 0.02em;
+}
+
+.lead {
+    max-width: 760px;
+    margin: 18px 0 0;
+    color: var(--guide-muted);
+    font-size: clamp(1.02rem, 1.35vw, 1.18rem);
+    line-height: 1.75;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 28px;
+}
+
+
+.intro-grid,
+.summary-grid,
+.content-grid,
+.activity-grid {
+    display: grid;
+    gap: 18px;
+}
+
+.intro-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-top: 20px;
+}
+
+.highlight-card,
+.panel,
+.activity-card {
+    border: 1px solid var(--guide-border);
+    border-radius: var(--guide-radius);
+    background: var(--guide-surface);
+    box-shadow: var(--guide-shadow);
+    backdrop-filter: blur(14px);
+}
+
+.highlight-card {
+    padding: 22px;
+}
+
+.highlight-card h2,
+.panel h2,
+.activity-card h3,
+.summary-grid h3 {
+    margin: 0 0 10px;
+    font-family: 'Righteous', sans-serif;
+    letter-spacing: 0.01em;
+}
+
+.highlight-card p,
+.panel p,
+.activity-card p,
+.summary-grid p,
+.rule-list li,
+.check-list li,
+.accordion-item li {
+    color: var(--guide-muted);
+    line-height: 1.7;
+}
+
+.content-grid {
+    grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+    margin-top: 18px;
+}
+
+.panel {
+    padding: 24px;
+}
+
+.panel.wide {
+    min-height: 100%;
+}
+
+.panel-heading {
+    margin-bottom: 18px;
+}
+
+.copy-grid {
+    display: grid;
+    gap: 14px;
+}
+
+.rule-list,
+.check-list {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.side-note {
+    background: linear-gradient(180deg, rgba(19, 32, 52, 0.9), rgba(9, 15, 24, 0.86));
+}
+
+.accordion-list {
+    display: grid;
+    gap: 12px;
+}
+
+.accordion-item {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+    background: var(--guide-surface-soft);
+    overflow: hidden;
+}
+
+.accordion-item summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 16px 18px;
+    font-weight: 700;
+}
+
+.accordion-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.accordion-item[open] .accordion-icon {
+    transform: rotate(45deg);
+}
+
+.accordion-icon {
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    transition: transform 0.2s ease;
+}
+
+.accordion-item ul {
+    margin: 0;
+    padding: 0 18px 18px 36px;
+}
+
+.activity-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 18px;
+}
+
+
+.activity-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.activity-card {
+    padding: 20px;
+    min-height: 180px;
+}
+
+.badge {
+    display: inline-flex;
+    width: fit-content;
+    margin-bottom: 14px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: rgba(255, 224, 138, 0.12);
+    color: var(--guide-accent-strong);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+.activity-card.is-hidden {
+    display: none;
+}
+
+.tip-stack {
+    display: grid;
+    gap: 10px;
+}
+
+.tip-pill {
+    padding: 14px 16px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--guide-muted);
+}
+
+.summary-panel {
+    margin-top: 18px;
+}
+
+.summary-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.summary-grid > div {
+    padding: 18px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+@media (max-width: 1024px) {
+    .intro-grid,
+    .activity-grid,
+    .summary-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 700px) {
+    .guide-shell {
+        width: min(100vw - 20px, 1180px);
+        padding-top: 18px;
+        padding-bottom: 36px;
+    }
+
+    .hero,
+    .panel,
+    .highlight-card {
+        padding: 18px;
+    }
+
+    .intro-grid,
+    .activity-grid,
+    .summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: clamp(2.5rem, 13vw, 4rem);
+    }
+}

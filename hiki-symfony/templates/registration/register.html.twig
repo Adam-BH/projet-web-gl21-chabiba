@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}HIKI - Sign Up{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('styles/pages/auth.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="auth-wrap">
+        <div class="auth-card">
+            <p class="login-title">Welcome</p>
+            <p class="login-sub">Create your account</p>
+
+            {% if error %}
+                <p class="error">{{ error }}</p>
+            {% endif %}
+
+            <form class="auth-form" action="{{ path('app_register') }}" method="POST">
+                <div class="input-box">
+                    <input type="email" id="email" name="email" placeholder=" " required autocomplete="email">
+                    <label for="email">Email</label>
+                </div>
+                <div class="input-box">
+                    <input type="text" id="username" name="username" placeholder=" " required autocomplete="username">
+                    <label for="username">Username</label>
+                </div>
+                <div class="input-box">
+                    <input type="tel" id="phone" name="phone" placeholder=" " required autocomplete="tel">
+                    <label for="phone">Phone Number</label>
+                </div>
+                <div class="input-box">
+                    <input type="password" id="password" name="password" placeholder=" " required autocomplete="new-password">
+                    <label for="password">Password</label>
+                </div>
+                <div class="input-box">
+                    <input type="password" id="password2" name="password2" placeholder=" " required autocomplete="new-password">
+                    <label for="password2">Confirm Password</label>
+                </div>
+                <button class="btn-login" type="submit">Create an account</button>
+            </form>
+
+            <div class="signup-row">
+                Already have an account? <a href="{{ path('app_login') }}">Sign in</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

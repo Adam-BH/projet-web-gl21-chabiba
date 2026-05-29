@@ -1,0 +1,216 @@
+/* Moon page — featured phase + 7-day forecast row. */
+
+:root {
+    --moon-bright: #f4f1e6;
+    --moon-shadow: #1a1240;
+}
+
+.moon-main {
+    position: relative;
+    z-index: 1;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 18px 4vw 0;
+}
+
+.moon-title {
+    text-align: center;
+    font-family: 'Righteous', sans-serif;
+    font-size: clamp(56px, 7.2vw, 112px);
+    line-height: 1;
+    margin: 14px 0 28px;
+    letter-spacing: 1px;
+}
+
+.moon-grid {
+    display: grid;
+    grid-template-columns: minmax(280px, 1fr) minmax(440px, 1.4fr);
+    gap: clamp(20px, 4vw, 64px);
+    align-items: center;
+}
+
+/* ── Featured phase block ── */
+
+.moon-feature {
+    display: flex;
+    align-items: center;
+    gap: clamp(16px, 2.4vw, 32px);
+    padding: 24px;
+    background: var(--hiki-panel);
+    border: 1px solid var(--hiki-panel-border);
+    border-radius: 28px;
+}
+
+.moon-feature__info p {
+    margin: 0;
+}
+
+.moon-feature__day {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1.4px;
+    color: var(--hiki-muted);
+}
+
+.moon-feature__name {
+    font-family: 'Righteous', sans-serif;
+    font-size: clamp(28px, 3vw, 40px);
+    line-height: 1.1;
+    margin: 6px 0 12px !important;
+}
+
+.moon-feature__illum {
+    font-size: 16px;
+    color: var(--hiki-accent);
+    font-weight: 700;
+}
+
+.moon-feature__age {
+    font-size: 13px;
+    color: var(--hiki-muted);
+    margin-top: 4px !important;
+}
+
+.moon-feature__hint {
+    font-size: 13px;
+    color: var(--hiki-muted);
+    margin-top: 10px !important;
+    font-style: italic;
+}
+
+/* ── Moon disc rendering ──
+   Astronomically correct terminator: a full-disc-sized ellipse centered on
+   the disc, scaled horizontally based on illumination.
+   1. Bright disc base.
+   2. .moon-disc__half : an opaque rectangle covering the shadowed half.
+   3. .moon-disc__ellipse : a full-width, centred ellipse the JS scales
+      horizontally.
+        - Crescent (illum < 50%) : ellipse is SHADOW-coloured and extends
+          the shadow into the bright half along an elliptical terminator.
+        - Gibbous  (illum > 50%) : ellipse is BRIGHT-coloured and restores
+          light into the shadowed half along an elliptical terminator.
+   4. ::after overlay: soft highlight + edge shadow so the disc reads as 3D
+      regardless of phase. */
+
+.moon-disc {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    background: var(--moon-bright);
+    overflow: hidden;
+    box-shadow: 0 0 28px rgba(244, 241, 230, 0.18);
+}
+
+.moon-disc::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    pointer-events: none;
+    background: radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.35) 0%, transparent 45%);
+    box-shadow: inset -8px -6px 22px rgba(0, 0, 0, 0.28);
+}
+
+.moon-disc--large { width: clamp(180px, 18vw, 240px); }
+.moon-disc--small { width: clamp(46px, 4.2vw, 60px); display: inline-block; }
+
+.moon-disc__half {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background: var(--moon-shadow);
+}
+
+.moon-disc__half--left { left: 0; }
+.moon-disc__half--right { right: 0; }
+
+.moon-disc__ellipse {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    transform-origin: center center;
+    transform: scaleX(0);
+    /* JS sets per-card: background colour (bright/shadow) and scaleX */
+}
+
+/* ── 7-day forecast row (right side) ── */
+
+.moon-panel {
+    display: flex;
+    flex-direction: column;
+}
+
+.moon-week {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: clamp(6px, 0.8vw, 12px);
+    justify-content: flex-end;
+}
+
+.moon-pill {
+    flex: 0 0 auto;
+}
+
+.moon-pill__link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    width: clamp(72px, 6.6vw, 96px);
+    min-height: 168px;
+    padding: 12px 6px;
+    border-radius: 42px;
+    background: var(--hiki-panel);
+    border: 1px solid var(--hiki-panel-border);
+    color: var(--hiki-text);
+    text-decoration: none;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.moon-pill__link:hover {
+    transform: translateY(-3px);
+    background: rgba(40, 18, 90, 0.7);
+}
+
+.moon-pill__day {
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+
+.moon-pill__name {
+    font-size: 11px;
+    color: var(--hiki-muted);
+    text-align: center;
+}
+
+.moon-pill__illum {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--hiki-accent);
+    margin-top: auto;
+}
+
+.moon-pill.is-active .moon-pill__link {
+    background: linear-gradient(160deg, rgba(252, 180, 21, 0.95), rgba(252, 180, 21, 0.65));
+    color: #2a1300;
+    border-color: transparent;
+    box-shadow: 0 12px 26px rgba(252, 180, 21, 0.3);
+}
+
+.moon-pill.is-active .moon-pill__name,
+.moon-pill.is-active .moon-pill__illum {
+    color: #2a1300;
+}
+
+@media (max-height: 760px) {
+    .moon-title { font-size: clamp(46px, 6vw, 88px); margin: 6px 0 16px; }
+    .moon-pill__link { min-height: 148px; }
+    .moon-disc--large { width: clamp(150px, 15vw, 200px); }
+}

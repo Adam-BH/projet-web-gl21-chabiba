@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+{% block title %}HIKI - Hiking Manual{% endblock %}
+{% block body %}
+    <div class="content-page">
+        <nav class="mb-3" style="display:flex;gap:12px;">
+            <a href="{{ path('app_manual_hiking') }}" class="site-card-button {{ app.request.attributes.get('_route') == 'app_manual_hiking' ? 'active' : '' }}">Hiking</a>
+            <a href="{{ path('app_manual_fire') }}" class="site-card-button">Fire Safety</a>
+            <a href="{{ path('app_manual_tent') }}" class="site-card-button">Tent Setup</a>
+        </nav>
+        <div class="content-card">
+            <h1 class="page-title">Hiking Manual</h1>
+            <p class="page-subtitle">Everything you need to know for a safe and enjoyable hike.</p>
+            <div style="margin-top:1.5rem;line-height:1.8;color:var(--text-muted);">
+                <h2 style="color:var(--text-primary);font-family:'Righteous',sans-serif;">Before You Go</h2>
+                <ul>
+                    <li>Research the trail difficulty and length in advance.</li>
+                    <li>Check the weather forecast for the entire day.</li>
+                    <li>Tell someone your planned route and expected return time.</li>
+                    <li>Charge your phone and download offline maps.</li>
+                </ul>
+                <h2 style="color:var(--text-primary);font-family:'Righteous',sans-serif;margin-top:1.5rem;">Essential Gear</h2>
+                <ul>
+                    <li>Sturdy hiking boots with ankle support.</li>
+                    <li>At least 2L of water per person.</li>
+                    <li>High-energy snacks (nuts, energy bars, dried fruit).</li>
+                    <li>First aid kit and emergency whistle.</li>
+                    <li>Sun protection: hat, sunscreen SPF 50+, sunglasses.</li>
+                </ul>
+                <h2 style="color:var(--text-primary);font-family:'Righteous',sans-serif;margin-top:1.5rem;">On the Trail</h2>
+                <ul>
+                    <li>Start early — most accidents happen in the afternoon when hikers are tired.</li>
+                    <li>Pace yourself; rest every 45–60 minutes.</li>
+                    <li>Stay on marked paths. Shortcuts cause erosion and lead people astray.</li>
+                    <li>Yield to uphill hikers and pack animals.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}

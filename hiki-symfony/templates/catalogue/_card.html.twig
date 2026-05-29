@@ -1,0 +1,42 @@
+<article class="site-card {{ listView ? 'list-view' : '' }}"
+         data-name="{{ site.name }}"
+         data-city="{{ site.city }}"
+         data-description="{{ site.description }}"
+         data-capacity="{{ site.capacity }}"
+         data-lat="{{ site.lat }}"
+         data-lon="{{ site.lon }}">
+
+    <div class="site-card-image">
+        {% set thumb = site.images.first %}
+        {% if thumb %}
+            <img src="{{ asset(thumb.path) }}" alt="{{ site.name }}">
+        {% elseif site.image %}
+            <img src="{{ asset(site.image) }}" alt="{{ site.name }}">
+        {% else %}
+            <span>No image available</span>
+        {% endif %}
+    </div>
+
+    <div class="site-card-content">
+        <div class="site-card-header">
+            <h2 class="site-card-title">{{ site.name }}</h2>
+            <p class="site-card-city">{{ site.city }}</p>
+            <p class="site-distance" aria-hidden="true"></p>
+        </div>
+        <div class="site-card-meta">
+            <div class="site-meta-item">
+                <span class="site-meta-label">Capacity:</span>
+                <span>{{ site.capacity }}</span>
+            </div>
+        </div>
+        <p class="site-card-description">{{ site.description }}</p>
+        <div class="site-card-actions">
+            <a href="{{ path('app_catalogue_show', {id: site.id}) }}" class="site-card-button">View Details</a>
+            {% if is_granted('ROLE_USER') %}
+                <a href="{{ path('app_catalogue_show', {id: site.id}) }}#book" class="site-card-button">Book Now</a>
+            {% else %}
+                <a href="{{ path('app_login') }}" class="site-card-button">Book Now</a>
+            {% endif %}
+        </div>
+    </div>
+</article>

@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}HIKI — Moon{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('styles/pages/moon.css') }}">
+{% endblock %}
+
+{% block body %}
+    <main class="moon-main">
+        <h1 class="moon-title">The Moon</h1>
+
+        <div class="moon-grid">
+            <section class="moon-feature" aria-label="Featured phase">
+                <div class="moon-disc moon-disc--large js-moon-disc"
+                     data-shadow-side="{{ selected.shadow_side }}"
+                     data-ellipse-scale="{{ selected.ellipse_scale }}"
+                     data-ellipse-fill="{{ selected.ellipse_fill }}">
+                    <span class="moon-disc__half moon-disc__half--{{ selected.shadow_side }}"></span>
+                    <span class="moon-disc__ellipse"></span>
+                </div>
+                <div class="moon-feature__info">
+                    <p class="moon-feature__day">{{ selectedIndex == 0 ? 'Tonight' : selected.long }}</p>
+                    <p class="moon-feature__name">{{ selected.name }}</p>
+                    <p class="moon-feature__illum">{{ selected.illumination }}% illuminated</p>
+                    <p class="moon-feature__age">Lunar age: {{ selected.age_days }} days</p>
+                    <p class="moon-feature__hint">{{ selected.visibility }}</p>
+                </div>
+            </section>
+
+            <section class="moon-panel" aria-label="7-day forecast">
+                <ul class="moon-week">
+                    {% for i, phase in week %}
+                        <li class="moon-pill {{ i == selectedIndex ? 'is-active' : '' }}">
+                            <a class="moon-pill__link" href="{{ path('app_moon', {d: i}) }}">
+                                <span class="moon-pill__day">{{ i == 0 ? 'TODAY' : phase.short }}</span>
+                                <span class="moon-disc moon-disc--small js-moon-disc"
+                                      data-shadow-side="{{ phase.shadow_side }}"
+                                      data-ellipse-scale="{{ phase.ellipse_scale }}"
+                                      data-ellipse-fill="{{ phase.ellipse_fill }}">
+                                    <span class="moon-disc__half moon-disc__half--{{ phase.shadow_side }}"></span>
+                                    <span class="moon-disc__ellipse"></span>
+                                </span>
+                                <span class="moon-pill__name">{{ phase.short_name }}</span>
+                                <span class="moon-pill__illum">{{ phase.illumination }}%</span>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </section>
+        </div>
+    </main>
+
+    {% block javascripts %}
+        {{ parent() }}
+        <script src="{{ asset('javascript/pages/moon.js') }}" defer></script>
+    {% endblock %}
+{% endblock %}

@@ -1,0 +1,139 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Equipment Catalogue - HIKI{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('styles/pages/equipment.css') }}">
+{% endblock %}
+
+{% block body %}
+    <main class="equipment-shell">
+        <section class="hero text-center">
+            <p class="eyebrow">Gear Up</p>
+            <h1>Equipment Catalogue</h1>
+            <p class="lead">Find the best gear for your next adventure. High-quality recommendations with links to trusted retailers.</p>
+        </section>
+
+        <div class="category-filters" id="categoryFilters">
+            <button class="filter-chip is-active" data-cat="all">All</button>
+            <button class="filter-chip" data-cat="footwear">Footwear</button>
+            <button class="filter-chip" data-cat="bags">Bags &amp; Packs</button>
+            <button class="filter-chip" data-cat="accessories">Accessories</button>
+            <button class="filter-chip" data-cat="safety">Safety</button>
+            <button class="filter-chip" data-cat="hydration">Hydration</button>
+        </div>
+
+        <section class="catalogue-section">
+            <div class="equipment-grid" id="equipmentGrid">
+
+                <article class="equipment-card glass-panel" data-category="footwear">
+                    <div class="card-img-wrap">
+                        <img src="{{ asset('images/hiking_boots.png') }}" alt="All-Terrain Hiking Boots" class="equipment-img" loading="lazy">
+                        <span class="cat-badge">Footwear</span>
+                    </div>
+                    <div class="equipment-info">
+                        <h3>All-Terrain Hiking Boots</h3>
+                        <div class="rating">★★★★★ <span class="review-count">(2,431)</span></div>
+                        <p class="price">$120 <span class="price-note">from</span></p>
+                        <p class="desc">Waterproof and breathable boots with ankle support for maximum comfort on rough terrain.</p>
+                        <div class="buy-links">
+                            <a href="https://www.amazon.com/s?k=hiking+boots+waterproof" target="_blank" rel="noopener" class="buy-btn amazon">Buy on Amazon</a>
+                            <a href="https://www.decathlon.com/search?q=hiking+boots" target="_blank" rel="noopener" class="buy-btn decathlon">Buy on Decathlon</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="equipment-card glass-panel" data-category="bags">
+                    <div class="card-img-wrap">
+                        <img src="{{ asset('images/hiking_backpack.png') }}" alt="40L Expedition Backpack" class="equipment-img" loading="lazy">
+                        <span class="cat-badge">Bags</span>
+                    </div>
+                    <div class="equipment-info">
+                        <h3>40L Expedition Backpack</h3>
+                        <div class="rating">★★★★☆ <span class="review-count">(1,847)</span></div>
+                        <p class="price">$85 <span class="price-note">from</span></p>
+                        <p class="desc">Lightweight pack with multiple compartments, hydration bladder support and rain cover.</p>
+                        <div class="buy-links">
+                            <a href="https://www.amazon.com/s?k=hiking+backpack+40L" target="_blank" rel="noopener" class="buy-btn amazon">Buy on Amazon</a>
+                            <a href="https://www.decathlon.com/search?q=hiking+backpack" target="_blank" rel="noopener" class="buy-btn decathlon">Buy on Decathlon</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="equipment-card glass-panel" data-category="accessories">
+                    <div class="card-img-wrap">
+                        <img src="{{ asset('images/trekking_poles.png') }}" alt="Carbon Fiber Trekking Poles" class="equipment-img" loading="lazy">
+                        <span class="cat-badge">Accessories</span>
+                    </div>
+                    <div class="equipment-info">
+                        <h3>Carbon Fiber Trekking Poles</h3>
+                        <div class="rating">★★★★★ <span class="review-count">(963)</span></div>
+                        <p class="price">$45 <span class="price-note">from</span></p>
+                        <p class="desc">Ultra-light collapsible poles with ergonomic cork grips, adjustable length.</p>
+                        <div class="buy-links">
+                            <a href="https://www.amazon.com/s?k=trekking+poles+carbon+fiber" target="_blank" rel="noopener" class="buy-btn amazon">Buy on Amazon</a>
+                            <a href="https://www.decathlon.com/search?q=trekking+poles" target="_blank" rel="noopener" class="buy-btn decathlon">Buy on Decathlon</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="equipment-card glass-panel" data-category="safety">
+                    <div class="card-img-wrap">
+                        <img src="{{ asset('images/first_aid_kit.png') }}" alt="Compact First Aid Kit" class="equipment-img" loading="lazy">
+                        <span class="cat-badge">Safety</span>
+                    </div>
+                    <div class="equipment-info">
+                        <h3>Compact First Aid Kit</h3>
+                        <div class="rating">★★★★★ <span class="review-count">(3,102)</span></div>
+                        <p class="price">$25 <span class="price-note">from</span></p>
+                        <p class="desc">Complete 200-piece kit with bandages, antiseptics, and emergency tools for trail accidents.</p>
+                        <div class="buy-links">
+                            <a href="https://www.amazon.com/s?k=hiking+first+aid+kit" target="_blank" rel="noopener" class="buy-btn amazon">Buy on Amazon</a>
+                            <a href="https://www.decathlon.com/search?q=first+aid+kit" target="_blank" rel="noopener" class="buy-btn decathlon">Buy on Decathlon</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="equipment-card glass-panel" data-category="accessories">
+                    <div class="card-img-wrap">
+                        <img src="{{ asset('images/headlamp.png') }}" alt="LED Headlamp 500lm" class="equipment-img" loading="lazy">
+                        <span class="cat-badge">Accessories</span>
+                    </div>
+                    <div class="equipment-info">
+                        <h3>LED Headlamp 500lm</h3>
+                        <div class="rating">★★★★☆ <span class="review-count">(1,256)</span></div>
+                        <p class="price">$30 <span class="price-note">from</span></p>
+                        <p class="desc">Rechargeable headlamp with red night-vision mode, 8-hour battery life, IPX4 water-resistant.</p>
+                        <div class="buy-links">
+                            <a href="https://www.amazon.com/s?k=led+headlamp+500+lumen" target="_blank" rel="noopener" class="buy-btn amazon">Buy on Amazon</a>
+                            <a href="https://www.decathlon.com/search?q=headlamp" target="_blank" rel="noopener" class="buy-btn decathlon">Buy on Decathlon</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="equipment-card glass-panel" data-category="hydration">
+                    <div class="card-img-wrap">
+                        <img src="{{ asset('images/water_bottle.png') }}" alt="Insulated Water Bottle 1L" class="equipment-img" loading="lazy">
+                        <span class="cat-badge">Hydration</span>
+                    </div>
+                    <div class="equipment-info">
+                        <h3>Insulated Water Bottle 1L</h3>
+                        <div class="rating">★★★★★ <span class="review-count">(4,788)</span></div>
+                        <p class="price">$28 <span class="price-note">from</span></p>
+                        <p class="desc">Double-wall stainless steel keeps drinks cold 24h or hot 12h. BPA-free, leak-proof lid.</p>
+                        <div class="buy-links">
+                            <a href="https://www.amazon.com/s?k=insulated+water+bottle+hiking" target="_blank" rel="noopener" class="buy-btn amazon">Buy on Amazon</a>
+                            <a href="https://www.decathlon.com/search?q=insulated+water+bottle" target="_blank" rel="noopener" class="buy-btn decathlon">Buy on Decathlon</a>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+    </main>
+
+    {% block javascripts %}
+        {{ parent() }}
+        <script src="{{ asset('javascript/equipment.js') }}" defer></script>
+    {% endblock %}
+{% endblock %}

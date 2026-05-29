@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+{% block title %}HIKI - Fire Safety Manual{% endblock %}
+{% block body %}
+    <div class="content-page">
+        <nav class="mb-3" style="display:flex;gap:12px;">
+            <a href="{{ path('app_manual_hiking') }}" class="site-card-button">Hiking</a>
+            <a href="{{ path('app_manual_fire') }}" class="site-card-button active">Fire Safety</a>
+            <a href="{{ path('app_manual_tent') }}" class="site-card-button">Tent Setup</a>
+        </nav>
+        <div class="content-card">
+            <h1 class="page-title">Fire Safety Manual</h1>
+            <p class="page-subtitle">How to safely build, maintain, and extinguish a campfire.</p>
+            <div style="margin-top:1.5rem;line-height:1.8;color:var(--text-muted);">
+                <h2 style="color:var(--text-primary);font-family:'Righteous',sans-serif;">Before Lighting</h2>
+                <ul>
+                    <li>Check local fire regulations — fires may be prohibited in dry conditions.</li>
+                    <li>Choose a designated fire ring or clear a 3m area of leaves and debris.</li>
+                    <li>Keep water or sand nearby to extinguish quickly if needed.</li>
+                </ul>
+                <h2 style="color:var(--text-primary);font-family:'Righteous',sans-serif;margin-top:1.5rem;">Building the Fire</h2>
+                <ul>
+                    <li>Start with tinder (dry leaves, paper), then kindling, then larger logs.</li>
+                    <li>Never use accelerants like gasoline.</li>
+                    <li>Keep the fire small and manageable.</li>
+                </ul>
+                <h2 style="color:var(--text-primary);font-family:'Righteous',sans-serif;margin-top:1.5rem;">Extinguishing Safely</h2>
+                <ul>
+                    <li>Pour water on the fire, stir the ashes, and repeat until cold.</li>
+                    <li>Feel the ashes with the back of your hand — they must be cold to touch.</li>
+                    <li>Never leave a fire unattended, even briefly.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}

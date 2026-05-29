@@ -1,0 +1,92 @@
+@import url('https://unpkg.com/leaflet@1.9.4/dist/leaflet.css');
+
+.search-engine-shell {
+    position: relative;
+    z-index: 1;
+    width: min(1180px, calc(100vw - 32px));
+    margin: 0 auto;
+    padding: 48px 0 64px;
+}
+
+#stepper {
+    margin-bottom: 24px;
+}
+
+.step-btn {
+    min-width: 110px;
+}
+
+.step {
+    padding: 22px;
+}
+
+#results {
+    margin-top: 24px;
+}
+
+.result-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 14px;
+}
+
+.book-now-button {
+    min-width: 140px;
+}
+
+.success-message,
+.error-message,
+.info-message {
+    border-radius: 14px;
+    margin-bottom: 16px;
+    padding: 16px;
+}
+
+.success-message {
+    background: #e9f7ef;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+}
+
+.error-message {
+    background: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+}
+
+.info-message {
+    background: #eaf4ff;
+    border: 1px solid #bee5ff;
+    color: #0c5460;
+}
+
+#selected-info {
+    margin-top: 16px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 12px;
+}
+
+.btn-search {
+    min-width: 140px;
+}
+
+#searchPlaceholder {
+    margin-top: 24px;
+}
+
+#map {
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.2);
+}
+
+.form-range {
+    width: 100%;
+}
+
+@media(max-width: 767px) {
+    #map {height: 320px !important;}
+}

@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}HIKI - Camping Sites{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('styles/pages/catalogue.css') }}">
+{% endblock %}
+
+{% block body %}
+    <main class="catalogue-shell">
+        <section class="catalogue-hero">
+            <p class="catalogue-eyebrow">Explore &amp; Discover</p>
+            <h1>Camping Sites</h1>
+            <p class="catalogue-lead">Discover amazing camping sites with detailed information, beautiful locations, and all the facilities you need for your outdoor adventure.</p>
+            <div class="catalogue-hero-actions">
+                <button type="button" class="view-toggle active" data-view="grid">Grid View</button>
+                <button type="button" class="view-toggle" data-view="list">List View</button>
+            </div>
+        </section>
+
+        <div class="catalogue-controls">
+            <input id="siteSearch" type="search" placeholder="Search sites, city, description">
+            <select id="siteSort">
+                <option value="recommended">Recommended</option>
+                <option value="capacity-desc">Capacity: High → Low</option>
+                <option value="capacity-asc">Capacity: Low → High</option>
+                <option value="distance-asc">Distance: Near → Far</option>
+                <option value="distance-desc">Distance: Far → Near</option>
+            </select>
+            <button id="locateBtn" class="view-toggle" type="button">Use my location</button>
+            <button id="clearLocation" class="view-toggle" type="button">Clear location</button>
+        </div>
+
+        {% if sites is empty %}
+            <div class="sites-grid">
+                <div class="empty-state">
+                    <h2>No Sites Available</h2>
+                    <p>No camping sites found. Please try again later.</p>
+                </div>
+            </div>
+        {% else %}
+            <div class="sites-grid" id="sitesContainer">
+                {% for site in sites %}
+                    {% include 'catalogue/_card.html.twig' with {site: site, listView: false} %}
+                {% endfor %}
+            </div>
+            <div class="sites-list hidden" id="sitesListContainer">
+                {% for site in sites %}
+                    {% include 'catalogue/_card.html.twig' with {site: site, listView: true} %}
+                {% endfor %}
+            </div>
+        {% endif %}
+    </main>
+
+    {% block javascripts %}
+        {{ parent() }}
+        <script src="{{ asset('javascript/features/sites.js') }}" defer></script>
+    {% endblock %}
+{% endblock %}

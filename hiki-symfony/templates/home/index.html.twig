@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}HIKI - Home{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('styles/pages/home.css') }}">
+{% endblock %}
+
+{% block body %}
+    <section class="hero-section pt-3 mt-3">
+        <p class="hero-sub">Explore Our website for a</p>
+        <p class="hero-title">Better Experience</p>
+    </section>
+
+    <div class="wrapper">
+        <div class="campfire">
+            <div class="ground-glow"></div>
+            <div class="pillars">
+                {% for p in ['p1','p2','p3','p4','p5','p6','p7'] %}
+                <div class="pillar {{ p }}">
+                    <div class="section bottom"></div>
+                    <div class="section mid2"></div>
+                    <div class="section mid1"></div>
+                    <div class="section top"></div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="logs">
+                <div class="spillar">
+                    <div class="ps1"><div class="section bottom"></div><div class="section mid2"></div><div class="section mid1"></div><div class="section top"></div></div>
+                    <div class="ps2"><div class="section bottom"></div><div class="section mid2"></div><div class="section mid1"></div><div class="section top"></div></div>
+                    <div class="ps3"><div class="section bottom"></div><div class="section mid2"></div><div class="section mid1"></div><div class="section top"></div></div>
+                </div>
+                {% for i in 1..7 %}
+                <img class="log log-{{ i }}" src="{{ asset('images/piecesOfWood.png') }}" alt="log">
+                {% endfor %}
+            </div>
+        </div>
+
+        <a href="{{ is_granted('ROLE_USER') ? path('app_catalogue') : path('app_login') }}" class="glowy-btn">
+            CAMPING SITES NEAR ME
+        </a>
+    </div>
+{% endblock %}

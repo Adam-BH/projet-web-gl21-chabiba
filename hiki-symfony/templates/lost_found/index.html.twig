@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}HIKI - Lost &amp; Found{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('styles/pages/lost-and-found.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="lf-page">
+        <h1 class="lf-hero">
+            {% if is_granted('ROLE_USER') %}
+                Welcome {{ app.user.username }}! Did you find something?
+            {% else %}
+                Lost &amp; Found
+            {% endif %}
+        </h1>
+
+        {% if is_granted('ROLE_USER') %}
+            <a href="{{ path('app_lost_found_new') }}" class="add-btn">+ Post New Item</a>
+        {% endif %}
+
+        <div class="frame">
+            <div class="posts-wrapper">
+                {% if posts is empty %}
+                    <p class="no-posts">No found items here yet.</p>
+                {% else %}
+                    {% for post in posts %}
+                        <div class="post-card">
+                            <img src="{{ post.picture ? asset(post.picture) : asset('images/default.jpg') }}"
+                                 alt="Item picture">
+                            <div class="post-content">
+                                <p class="post-item">Item: {{ post.item|upper }}</p>
+                                {% if post.place %}
+                                    <p class="post-place">Found in: {{ post.place }}</p>
+                                {% endif %}
+                                <p class="post-date">Posted on: {{ post.createdAt|date('Y-m-d') }}</p>
+                                <p class="post-phone">To restore it call: {{ post.phone }}</p>
+
+                                {% if is_granted('ROLE_USER') and app.user.userIdentifier == post.finder.id %}
+                                    <form class="delete-form"
+                                          action="{{ path('app_lost_found_delete', {id: post.id}) }}"
+                                          method="POST"
+                                          onsubmit="return confirm('Delete this post?')">
+                                        <input type="hidden" name="_token"
+                                               value="{{ csrf_token('delete-post-' ~ post.id) }}">
+                                        <button class="btn-delete" type="submit">Remove Post</button>
+                                    </form>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

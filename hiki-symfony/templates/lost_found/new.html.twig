@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}HIKI - Post Item{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('styles/pages/auth.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="auth-wrap">
+        <div class="auth-card">
+            <p class="login-title">New Post</p>
+            <p class="login-sub">Tell us about what you found</p>
+
+            {% if error %}
+                <p class="error">{{ error }}</p>
+            {% endif %}
+
+            <form class="auth-form" action="{{ path('app_lost_found_new') }}"
+                  method="POST" enctype="multipart/form-data">
+                <div class="input-box">
+                    <input type="text" id="item" name="item" maxlength="100" placeholder=" " required>
+                    <label for="item">What did you find?</label>
+                </div>
+                <div class="input-box">
+                    <input type="text" id="place" name="place" maxlength="50" placeholder=" ">
+                    <label for="place">Camping Place</label>
+                </div>
+                <div class="input-box" style="position:static;">
+                    <input type="file" id="image" name="image" accept="image/jpeg,image/png,image/webp"
+                           style="color:var(--text-primary)">
+                </div>
+                <button class="btn-login" type="submit">Submit Post</button>
+            </form>
+
+            <div class="signup-row">
+                <a href="{{ path('app_lost_found') }}">&larr; Back to Lost &amp; Found</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
