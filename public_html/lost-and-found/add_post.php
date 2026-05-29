@@ -13,13 +13,13 @@ $errors = $_SESSION['form_errors'] ?? [];
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>HIKI - Sign Up</title>
-    <link rel="stylesheet" href="/projet-web-gl21-chabiba/node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/projet-web-gl21-chabiba/css/pages/auth.css" />
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/pages/auth.css" />
 </head>
 
 <body>
     <canvas id="starCanvas" style="position:fixed;inset:0;z-index:0;pointer-events:none;"></canvas>
-    <a href="/projet-web-gl21-chabiba/public_html/index.php" class="navbar-brand">HIKI</a>
+    <a href="/public_html/index.php" class="navbar-brand">HIKI</a>
     <div class="container">
         <p class="login-title">Wecome</p>
         <p class="login-sub">Tell Us More About Your Post</p>
@@ -45,8 +45,8 @@ $errors = $_SESSION['form_errors'] ?? [];
             <div class="error"><?= htmlspecialchars($errors['place']) ?></div>
         <?php endif; ?>
     </div>
-    <script src="/projet-web-gl21-chabiba/js/auth.js"></script>
-    <script src="/projet-web-gl21-chabiba/js/main.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/main.js"></script>
 </body>
 
 </html>

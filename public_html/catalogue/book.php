@@ -3,7 +3,7 @@ session_start();
 require_once __DIR__ . '/../../autoloader.php';
 
 if (!isset($_SESSION['user'])){
-    header('Location: /projet-web-gl21-chabiba/public_html/auth/login.php');
+    header('Location: /public_html/auth/login.php');
     exit();
 }
 
@@ -52,7 +52,7 @@ if (!$userRow){
 }
 if (!$userRow){
     // session user invalid — force login
-    header('Location: /projet-web-gl21-chabiba/public_html/auth/login.php');
+    header('Location: /public_html/auth/login.php');
     exit();
 }
 
@@ -86,5 +86,5 @@ $bookingRepo->create([
     'people' => $people
 ]);
 
-header('Location: /projet-web-gl21-chabiba/public_html/catalogue/details.php?id=' . urlencode($siteId) . '&booked=1');
+header('Location: /public_html/catalogue/details.php?id=' . urlencode($siteId) . '&booked=1');
 exit();

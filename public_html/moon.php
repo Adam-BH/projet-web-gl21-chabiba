@@ -68,8 +68,8 @@ include __DIR__ . '/../src/Includes/header.php';
         </label>
     </div>
 
-    <script src="/projet-web-gl21-chabiba/js/main.js"></script>
-    <script src="/projet-web-gl21-chabiba/js/pages/moon.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/pages/moon.js"></script>
     </div>
 </body>
 </html>

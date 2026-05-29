@@ -65,7 +65,7 @@ if ($pwd == $pwd2) {
             ]);
         }
         $_SESSION['is_logged']=true;
-        header('location:/projet-web-gl21-chabiba/public_html/index.php');
+        header('location:/public_html/index.php');
 
         $_SESSION['user'] = $user;
         $_SESSION['email'] = $email;
@@ -77,7 +77,7 @@ if ($pwd == $pwd2) {
             'city' => $cityReference
         ]);
         $_SESSION['is_logged']=true;
-        header('location:/projet-web-gl21-chabiba/public_html/index.php');
+        header('location:/public_html/index.php');
     } else {
         header('location:signup.php?error=existant_account');
         exit();

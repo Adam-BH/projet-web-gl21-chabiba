@@ -87,21 +87,21 @@ include __DIR__ . '/../src/Includes/header.php';
                             <div class="ps2"><div class="section bottom"></div><div class="section mid2"></div><div class="section mid1"></div><div class="section top"></div></div>
                             <div class="ps3"><div class="section bottom"></div><div class="section mid2"></div><div class="section mid1"></div><div class="section top"></div></div>
                         </div>
-                      <img class="log log-1" src="/projet-web-gl21-chabiba/assets/Images/piecesOfWood.png" alt="log"/>
-                      <img class="log log-2" src="/projet-web-gl21-chabiba/assets/Images/piecesOfWood.png" alt="log"/>
-                      <img class="log log-3" src="/projet-web-gl21-chabiba/assets/Images/piecesOfWood.png" alt="log"/>
-                      <img class="log log-4" src="/projet-web-gl21-chabiba/assets/Images/piecesOfWood.png" alt="log"/>
-                      <img class="log log-5" src="/projet-web-gl21-chabiba/assets/Images/piecesOfWood.png" alt="log"/>
-                      <img class="log log-6" src="/projet-web-gl21-chabiba/assets/Images/piecesOfWood.png" alt="log"/>
-                      <img class="log log-7" src="/projet-web-gl21-chabiba/assets/Images/piecesOfWood.png" alt="log"/>
+                      <img class="log log-1" src="/assets/Images/piecesOfWood.png" alt="log"/>
+                      <img class="log log-2" src="/assets/Images/piecesOfWood.png" alt="log"/>
+                      <img class="log log-3" src="/assets/Images/piecesOfWood.png" alt="log"/>
+                      <img class="log log-4" src="/assets/Images/piecesOfWood.png" alt="log"/>
+                      <img class="log log-5" src="/assets/Images/piecesOfWood.png" alt="log"/>
+                      <img class="log log-6" src="/assets/Images/piecesOfWood.png" alt="log"/>
+                      <img class="log log-7" src="/assets/Images/piecesOfWood.png" alt="log"/>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <script src="/projet-web-gl21-chabiba/js/hiking-guide.js"></script>
-    <script src="/projet-web-gl21-chabiba/js/main.js"></script>
+    <script src="/js/hiking-guide.js"></script>
+    <script src="/js/main.js"></script>
 </div>
 </body>
 </html>

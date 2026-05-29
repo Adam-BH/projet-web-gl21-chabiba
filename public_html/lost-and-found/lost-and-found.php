@@ -18,8 +18,8 @@ include __DIR__ . '/../../src/Includes/header.php';
             <?php include_once "itemlist.php"; ?>
         </div>
     </div>
-    <script src="/projet-web-gl21-chabiba/js/pages/lost-and-found.js"></script>
-    <script src="/projet-web-gl21-chabiba/js/main.js"></script>
+    <script src="/js/pages/lost-and-found.js"></script>
+    <script src="/js/main.js"></script>
 </div>
 </body>
 </html>

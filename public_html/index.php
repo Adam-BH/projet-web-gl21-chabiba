@@ -1,7 +1,7 @@
 <?php
 session_start();
-$login_url = '/projet-web-gl21-chabiba/public_html/auth/login.php';
-$search_url = '/projet-web-gl21-chabiba/public_html/search-engine/index.php';
+$login_url = '/public_html/auth/login.php';
+$search_url = '/public_html/search-engine/index.php';
 $is_logged = isset($_SESSION['is_logged']) && $_SESSION['is_logged'] === true;
 $link_url = $is_logged ? $search_url : $login_url;
 
@@ -82,13 +82,13 @@ include __DIR__ . '/../src/Includes/header.php';
         <div class="section top"></div>
             </div>
         </div>
-      <img class="log log-1" src="/projet-web-gl21-chabiba/assets/Images/piecesOfWood.png" alt="log"/>
-      <img class="log log-2" src="/projet-web-gl21-chabiba/assets/Images/piecesOfWood.png" alt="log"/>
-      <img class="log log-3" src="/projet-web-gl21-chabiba/assets/Images/piecesOfWood.png" alt="log"/>
-      <img class="log log-4" src="/projet-web-gl21-chabiba/assets/Images/piecesOfWood.png" alt="log"/>
-      <img class="log log-5" src="/projet-web-gl21-chabiba/assets/Images/piecesOfWood.png" alt="log"/>
-      <img class="log log-6" src="/projet-web-gl21-chabiba/assets/Images/piecesOfWood.png" alt="log"/>
-      <img class="log log-7" src="/projet-web-gl21-chabiba/assets/Images/piecesOfWood.png" alt="log"/>
+      <img class="log log-1" src="/assets/Images/piecesOfWood.png" alt="log"/>
+      <img class="log log-2" src="/assets/Images/piecesOfWood.png" alt="log"/>
+      <img class="log log-3" src="/assets/Images/piecesOfWood.png" alt="log"/>
+      <img class="log log-4" src="/assets/Images/piecesOfWood.png" alt="log"/>
+      <img class="log log-5" src="/assets/Images/piecesOfWood.png" alt="log"/>
+      <img class="log log-6" src="/assets/Images/piecesOfWood.png" alt="log"/>
+      <img class="log log-7" src="/assets/Images/piecesOfWood.png" alt="log"/>
     </div>
 </div>
 <a href="<?= $link_url ?>" class="glowy-btn">
@@ -103,7 +103,7 @@ include __DIR__ . '/../src/Includes/header.php';
             </label>
         </div>
     </footer>
-    <script src="/projet-web-gl21-chabiba/js/main.js"></script>
+    <script src="/js/main.js"></script>
     </div>
 </body>
 </html>

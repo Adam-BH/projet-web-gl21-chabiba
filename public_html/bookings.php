@@ -3,7 +3,7 @@ session_start();
 require_once __DIR__ . '/../autoloader.php';
 
 if (empty($_SESSION['is_logged'])) {
-    header('Location: /projet-web-gl21-chabiba/public_html/auth/login.php');
+    header('Location: /public_html/auth/login.php');
     exit();
 }
 
@@ -51,7 +51,7 @@ include __DIR__ . '/../src/Includes/header.php';
                 <?php if (empty($bookings)): ?>
                     <div class="bookings-empty">
                         <p>You have no bookings yet.</p>
-                        <a class="btn btn-primary" href="/projet-web-gl21-chabiba/public_html/catalogue/index.php">Browse camping sites</a>
+                        <a class="btn btn-primary" href="/public_html/catalogue/index.php">Browse camping sites</a>
                     </div>
                 <?php else: ?>
                     <div class="bookings-list">
@@ -59,7 +59,7 @@ include __DIR__ . '/../src/Includes/header.php';
                             <article class="booking-card">
                                 <div class="booking-card-header">
                                     <h2><?= htmlspecialchars($booking->site_name ?: 'Camping site') ?></h2>
-                                    <form method="POST" action="/projet-web-gl21-chabiba/public_html/bookings.php" onsubmit="return confirm('Delete this booking?');">
+                                    <form method="POST" action="/public_html/bookings.php" onsubmit="return confirm('Delete this booking?');">
                                         <input type="hidden" name="delete_booking_id" value="<?= (int)$booking->id ?>">
                                         <button class="btn btn-sm btn-outline-danger" type="submit">Delete</button>
                                     </form>
