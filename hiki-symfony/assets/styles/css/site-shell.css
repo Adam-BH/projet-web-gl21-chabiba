@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Righteous';
-    src: url('../assets/Fonts/Righteous-Regular.ttf') format('truetype');
+    src: url('../../fonts/Righteous-Regular.ttf') format('truetype');
 }
 
 :root {

@@ -69,7 +69,7 @@ input:focus+label,input:valid+label{
 }
 @font-face {
     font-family: 'Righteous';
-    src: url('../assets/Fonts/Righteous-Regular.ttf') format('truetype');
+    src: url('../../../fonts/Righteous-Regular.ttf') format('truetype');
 }
 .login-title { 
     font:400 40px 'Righteous',sans-serif;

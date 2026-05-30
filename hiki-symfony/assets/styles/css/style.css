@@ -126,7 +126,7 @@ nav {
 
 @font-face {
     font-family: 'Righteous';
-    src: url('../assets/Fonts/Righteous-Regular.ttf') format('truetype');
+    src: url('../../fonts/Righteous-Regular.ttf') format('truetype');
 }
 
 .hero-title{
@@ -434,7 +434,7 @@ nav {
 }
 @font-face {
     font-family: 'Nunito';
-    src: url('../assets/Fonts/Nunito.ttf') format('truetype');
+    src: url('../../fonts/Nunito.ttf') format('truetype');
 }
 @keyframes fadeIn{
     from { opacity: 0; }

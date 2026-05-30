@@ -3,7 +3,7 @@
 {% block title %}HIKI - Activity Suggestion Engine{% endblock %}
 
 {% block stylesheets %}
-<link rel="stylesheet" href="{{ asset('styles/pages/hiking-guide.css') }}">
+<link rel="stylesheet" href="{{ asset('styles/css/pages/hiking-guide.css') }}">
 {% endblock %}
 
 {% block body %}
@@ -68,9 +68,10 @@
         </section>
     </main>
 
-    {% block javascripts %}
-        {{ parent() }}
-        <script>const TRAILS_API = "{{ path('api_trails') }}";</script>
-        <script src="{{ asset('javascript/hiking-guide.js') }}" defer></script>
-    {% endblock %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>const TRAILS_API = "{{ path('api_trails') }}";</script>
+    <script src="{{ asset('javascript/hiking-guide.js') }}" defer></script>
 {% endblock %}

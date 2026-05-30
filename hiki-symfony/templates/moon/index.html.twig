@@ -3,7 +3,7 @@
 {% block title %}HIKI — Moon{% endblock %}
 
 {% block stylesheets %}
-<link rel="stylesheet" href="{{ asset('styles/pages/moon.css') }}">
+<link rel="stylesheet" href="{{ asset('styles/css/pages/moon.css') }}">
 {% endblock %}
 
 {% block body %}
@@ -51,8 +51,9 @@
         </div>
     </main>
 
-    {% block javascripts %}
-        {{ parent() }}
-        <script src="{{ asset('javascript/pages/moon.js') }}" defer></script>
-    {% endblock %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('javascript/pages/moon.js') }}" defer></script>
 {% endblock %}

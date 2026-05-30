@@ -45,7 +45,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: calc(100vh - 64px);
+    min-height: calc(100svh - 146px);
     position: relative;
     z-index: 5;
 }
@@ -67,7 +67,7 @@
     transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
     position: absolute;
     left: 50%;
-    bottom: 8vh;
+    bottom: clamp(28px, 5vh, 52px);
     transform: translateX(-50%);
     z-index: 14;
     box-shadow: 0 8px 34px rgba(0, 0, 0, 0.35);
@@ -195,3 +195,22 @@
 .log-5 { width: 170px; bottom: 20px;  right: 40px;  transform: rotate(-15deg) scaleX(-1); z-index: 5; }
 .log-6 { width: 130px; bottom: 40px;  left: 80%;    transform: translateX(-40%) rotate(8deg); z-index: 5; }
 .log-7 { width: 225px; bottom: -20px; left: 66%;    transform: translateX(-40%) rotate(30deg); z-index: 1; }
+
+@media (max-width: 768px) {
+    .wrapper {
+        min-height: calc(100svh - 132px);
+    }
+
+    .campfire {
+        width: min(360px, 88vw);
+    }
+
+    .logs {
+        width: min(380px, 92vw);
+    }
+
+    .glowy-btn {
+        font-size: 14px;
+        padding-inline: 22px;
+    }
+}

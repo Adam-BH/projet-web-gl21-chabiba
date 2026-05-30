@@ -7,6 +7,8 @@
     --frame-radius: 12px;
     --border-cyan-dim: rgba(240, 255, 255, 0.1);
     --border-cyan-hover: rgba(0, 255, 255, 0.3);
+}
+
 .guide-shell {
     width: min(1180px, calc(100vw - 32px));
     margin: 0 auto;

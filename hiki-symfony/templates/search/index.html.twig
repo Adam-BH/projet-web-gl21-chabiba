@@ -3,8 +3,8 @@
 {% block title %}HIKI - Camping Sites Explorer{% endblock %}
 
 {% block stylesheets %}
-<link rel="stylesheet" href="{{ asset('styles/pages/catalogue.css') }}">
-<link rel="stylesheet" href="{{ asset('styles/pages/search-engine.css') }}">
+<link rel="stylesheet" href="{{ asset('styles/css/pages/catalogue.css') }}">
+<link rel="stylesheet" href="{{ asset('styles/css/pages/search-engine.css') }}">
 {% endblock %}
 
 {% block body %}
@@ -72,11 +72,12 @@
         <div id="searchResults" class="sites-grid mt-4"></div>
     </main>
 
-    {% block javascripts %}
-        {{ parent() }}
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-        <script>const SEARCH_API = "{{ path('api_search') }}";</script>
-        <script src="{{ asset('javascript/search-engine.js') }}" defer></script>
-    {% endblock %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>const SEARCH_API = "{{ path('api_search') }}";</script>
+    <script src="{{ asset('javascript/search-engine.js') }}" defer></script>
 {% endblock %}

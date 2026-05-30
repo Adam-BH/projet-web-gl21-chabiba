@@ -3,7 +3,7 @@
 {% block title %}Equipment Catalogue - HIKI{% endblock %}
 
 {% block stylesheets %}
-<link rel="stylesheet" href="{{ asset('styles/pages/equipment.css') }}">
+<link rel="stylesheet" href="{{ asset('styles/css/pages/equipment.css') }}">
 {% endblock %}
 
 {% block body %}
@@ -132,8 +132,9 @@
         </section>
     </main>
 
-    {% block javascripts %}
-        {{ parent() }}
-        <script src="{{ asset('javascript/equipment.js') }}" defer></script>
-    {% endblock %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('javascript/equipment.js') }}" defer></script>
 {% endblock %}

@@ -2,12 +2,12 @@
 
 @font-face {
     font-family: 'Righteous';
-    src: url('../../assets/Fonts/Righteous-Regular.ttf') format('truetype');
+    src: url('../../../fonts/Righteous-Regular.ttf') format('truetype');
     font-display: swap;
 }
 @font-face {
     font-family: 'Nunito';
-    src: url('../../assets/Fonts/Nunito.ttf') format('truetype');
+    src: url('../../../fonts/Nunito.ttf') format('truetype');
     font-display: swap;
 }
 
@@ -106,7 +106,7 @@ html, body {
     align-items: center;
     width: 78px;
     height: 35px;
-    background-image: url('../../assets/Images/LandSwitch-Dark.png');
+    background-image: url('../../../images/LandSwitch-Dark.png');
     background-size: cover;
     border-radius: 100px;
     cursor: pointer;

@@ -3,7 +3,7 @@
 {% block title %}HIKI - Camping Sites{% endblock %}
 
 {% block stylesheets %}
-<link rel="stylesheet" href="{{ asset('styles/pages/catalogue.css') }}">
+<link rel="stylesheet" href="{{ asset('styles/css/pages/catalogue.css') }}">
 {% endblock %}
 
 {% block body %}
@@ -52,8 +52,9 @@
         {% endif %}
     </main>
 
-    {% block javascripts %}
-        {{ parent() }}
-        <script src="{{ asset('javascript/features/sites.js') }}" defer></script>
-    {% endblock %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('javascript/features/sites.js') }}" defer></script>
 {% endblock %}

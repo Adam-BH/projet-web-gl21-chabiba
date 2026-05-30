@@ -82,6 +82,7 @@ body {
 
 .nav-link {
     color: var(--text-muted);
+    text-decoration: none;
     transition: color 0.2s ease, text-shadow 0.2s ease;
 }
 
