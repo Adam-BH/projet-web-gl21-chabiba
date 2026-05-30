@@ -52,6 +52,7 @@ input:focus+label,input:valid+label{
     border-radius: 4px;
 }
 .container{
+    margin: 5% auto;
     display: flex;
     align-items: center;
     flex-direction: column;
