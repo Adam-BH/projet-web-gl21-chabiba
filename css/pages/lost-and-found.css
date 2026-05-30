@@ -143,12 +143,17 @@ body {
 }
 
 .glowy-btn {
-    margin: 0 auto;
+    margin: 10% auto;
     padding: 5px auto;
     font-size: 0.8rem;
+    position: relative;
+    top: 0%;
+    left: 50%;
+    /* transform: translate(50%); */
 }
 
 .add-btn {
+    position: relative;
   --forest-green: #2d5a27;
   --dirt-brown: #4a3728;
   --leaf-green: #4f772d;
@@ -171,7 +176,7 @@ body {
   text-transform: uppercase;
   transition: all 0.1s ease;
   user-select: none;
-  margin: 2% auto;
+  margin: 4% auto;
   width: 200px;
 }
 
@@ -182,4 +187,9 @@ body {
 .add-btn :active {
   border-bottom-width: 0;
   transform: translateY(5px);
+}
+
+.delete-form {
+    display: block;
+    align-items: center;
 }
