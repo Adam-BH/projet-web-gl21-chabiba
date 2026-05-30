@@ -9,35 +9,37 @@ try {
 }
 
 if (!$posts || count($posts) === 0) {
-    echo '<p class="empty-state-text">No found items yet. Be the first to post!</p>';
+    echo 'No Found Items Here.';
 } else {
     foreach ($posts as $post): ?>
         <div class="post-card">
-            <?php if (!empty($post->picture)): ?>
-                <img src="<?= htmlspecialchars($post->picture) ?>" alt="Item Picture">
-            <?php else: ?>
-                <img src="/projet-web-gl21-chabiba/assets/Images/placeholder.png" alt="No picture">
-            <?php endif; ?>
+            <?php
+            $photoPath =  $post->picture;
+            ?>
+
+            <img src="<?= htmlspecialchars($photoPath) ?>" alt="Item Picture">
             <div class="post-content">
-                <div class="item">
-                    <?= htmlspecialchars(strtoupper($post->item)) ?>
+                <div class="post-content">
+                    <div class="item">
+                        Item: <?= htmlspecialchars(strtoupper($post->item)) ?>
+                    </div>
+                    <div class="place">
+                        Found in: <?= htmlspecialchars($post->place) ?>
+                    </div>
+                    <div class="date">
+                        Posted on: <?= htmlspecialchars(strtoupper($post->created_at)) ?>
+                    </div>
+                    <div class="phone">
+                        To restore it call: <?= htmlspecialchars(strtoupper($post->phone)) ?>
+                    </div>
+                    <?php if (isset($_SESSION["is_logged"]) && $_SESSION['is_logged'] && $post->finder == $_SESSION["user"]): ?>
+                        <form action="delete_post.php" class="delete-form" method="POST"
+                            onsubmit="return confirm('Are you sure you want to delete this post? This cannot be undone.');">
+                            <input type="hidden" name="post_id" value="<?=$post->id ?>">
+                            <button type="submit" class="glowy-btn">Remove Post</button>
+                        </form>
+                    <?php endif; ?>
                 </div>
-                <div class="place">
-                    Found in: <?= htmlspecialchars($post->place) ?>
-                </div>
-                <div class="date">
-                    <?= htmlspecialchars(strtoupper($post->created_at)) ?>
-                </div>
-                <div class="phone">
-                    Call to return: <?= htmlspecialchars($post->phone) ?>
-                </div>
-                <?php if (isset($_SESSION["email"]) && $post->finder == $_SESSION["email"]): ?>
-                    <form action="delete_post.php" class="delete-form" method="POST"
-                        onsubmit="return confirm('Are you sure you want to delete this post? This cannot be undone.');">
-                        <input type="hidden" name="post_id" value="<?= $post->id ?>">
-                        <button type="submit" class="btn-delete">Remove Post</button>
-                    </form>
-                <?php endif; ?>
             </div>
         </div>
     <?php endforeach;

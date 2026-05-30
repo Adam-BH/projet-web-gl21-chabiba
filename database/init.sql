@@ -70,26 +70,19 @@ CREATE TABLE IF NOT EXISTS `bookings` (
 
 -- sample data
 INSERT INTO `camping_sites` (`name`, `description`, `capacity`, `city`, `lat`, `lon`, `image`) VALUES
-('Zitouna Camp', 'Seaside camping near the olive groves of Sahel with easy beach access.', 50, 'Sousse', 35.8288, 10.6405, ''),
-('Dougga Hill Camp', 'Hillside campsite overlooking the Roman ruins of Dougga, ideal for history lovers.', 35, 'Dougga', 36.4214, 9.2197, ''),
-('Ichkeul Lake Camp', 'Lakeside camping near Ichkeul National Park, great for birdwatching.', 40, 'Bizerte', 37.1667, 9.6667, ''),
-('Djerba Palm Camp', 'Palm-shaded pitches on the island of Djerba with coastal trails.', 60, 'Djerba', 33.7833, 10.8833, ''),
-('Chenini Village Camp', 'Berber village campsite in the mountains near Tataouine.', 25, 'Tataouine', 32.9167, 10.3833, ''),
-('Kroumirie Forest Camp', 'Deep forest camping in the Kroumirie mountains with hiking access.', 30, 'Jendouba', 36.5, 8.75, ''),
-('Sidi Saad Dam Camp', 'Lakeside camping near Sidi Saad Dam, popular for fishing and picnics.', 45, 'Kairouan', 35.5, 9.8, ''),
-('Cap Bon Seaside Camp', 'Coastal campsite on Cap Bon with views of the Mediterranean.', 55, 'Nabeul', 36.4561, 10.7378, ''),
-('Matmata underground Camp', 'Unique troglodyte-style camping near the underground homes of Matmata.', 20, 'Gabes', 33.55, 9.9667, ''),
-('Tamerza Canyon Camp', 'Canyon-side camping near Tamerza oasis with waterfall hikes.', 28, 'Tamerza', 34.3833, 7.8667, '');
+('Lake View Camp', 'Nice campsite by the lake.', 60, 'Lakecity', 45.123, 3.123, ''),
+('Pine Forest Camp', 'Shaded tentsites among pines.', 40, 'Forestville', 46.234, 4.234, ''),
+('Riverside Meadow', 'Open meadow sites next to a slow river, great for families.', 80, 'Meadowville', 45.532, 3.432, ''),
+('Highland Ridge', 'Quiet ridge-top sites with panoramic views and wind-sheltered pitches.', 30, 'Ridgeton', 46.001, 4.001, ''),
+('Sunny Glen', 'South-facing glen with easy access to walking trails.', 50, 'Glenburg', 44.981, 3.987, ''),
+('Oak Hollow Camp', 'Under oak canopy with picnic areas and fire rings.', 35, 'Oaktown', 45.221, 3.554, '');
 
 -- sample images (paths are examples; place images in assets/Images and update paths accordingly)
 INSERT INTO `camping_site_images` (`site_id`, `path`, `sort_order`) VALUES
-(1, 'assets/Images/zitouna-1.jpg', 0),
-(2, 'assets/Images/dougga-1.jpg', 0),
-(3, 'assets/Images/ichkeul-1.jpg', 0),
-(4, 'assets/Images/djerba-1.jpg', 0),
-(5, 'assets/Images/chenini-1.jpg', 0),
-(6, 'assets/Images/kroumirie-1.jpg', 0),
-(7, 'assets/Images/sidi-saad-1.jpg', 0),
-(8, 'assets/Images/capbon-1.jpg', 0),
-(9, 'assets/Images/matmata-1.jpg', 0),
-(10, 'assets/Images/tamerza-1.jpg', 0);
+(1, 'assets/Images/lakeview-1.jpg', 0),
+(1, 'assets/Images/lakeview-2.jpg', 1),
+(2, 'assets/Images/pine-1.jpg', 0),
+(3, 'assets/Images/river-1.jpg', 0),
+(4, 'assets/Images/highland-1.jpg', 0),
+(5, 'assets/Images/sunny-1.jpg', 0),
+(6, 'assets/Images/oak-1.jpg', 0);

@@ -33,7 +33,7 @@ include __DIR__ . '/../../src/Includes/header.php';
 			</form>
 			<div class="signup-row">
 	  <?php if (isset($_GET['error'])): ?>
-		  <p class="form-error"><?php echo htmlspecialchars($_GET['error']) ?></p>
+		  <p style="color:red;"><?php echo $_GET['error'] ?></p>
 	  <?php endif; ?>
 	    	</div>
 		</div>

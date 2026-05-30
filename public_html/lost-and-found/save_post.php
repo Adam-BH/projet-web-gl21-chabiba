@@ -1,41 +1,39 @@
 <?php
 session_start();
 include_once(__DIR__ . "/../../autoloader.php");
-
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
     die('Method not allowed.');
 }
-
 $userRepository = new UserRepository();
 $postRepository = new PostRepository();
 
-$finder = $_SESSION['email'];
-$item   = trim($_POST['item'] ?? '');
-$place  = trim($_POST['place'] ?? '');
-$phone  = $userRepository->findById($_SESSION['email'])->phone ?? '';
+$finder   = $_SESSION['user'];
+$item       = trim($_POST['item']       ?? '');
+$phone = $userRepository->findById($_SESSION['email'])->phone;
+$place    = trim($_POST['place']    ?? '');
 
 $errors = [];
 
+
 if ($item === '') {
-    $errors['item'] = 'Item description is required.';
-}
-if ($place === '') {
-    $errors['place'] = 'Please select a camping site.';
+    $errors['title'] = 'Title is required.';
 }
 $image_path = '';
 
 $has_file = isset($_FILES['image']) && $_FILES['image']['error'] !== UPLOAD_ERR_NO_FILE;
 
 if ($has_file) {
-    $file = $_FILES['image'];
-    $max  = 5 * 1024 * 1024;
+    $file  = $_FILES['image'];
+    $max   = 5 * 1024 * 1024;
 
     if ($file['error'] !== UPLOAD_ERR_OK) {
         $errors['image'] = 'Upload failed (error code ' . $file['error'] . ').';
-    } elseif ($file['size'] > $max) {
+    }
+    elseif ($file['size'] > $max) {
         $errors['image'] = 'Image must be 5 MB or smaller.';
-    } else {
+    }
+    else {
         $allowed_mime = ['image/jpeg', 'image/png', 'image/webp'];
         $finfo        = new finfo(FILEINFO_MIME_TYPE);
         $mime         = $finfo->file($file['tmp_name']);
@@ -46,11 +44,13 @@ if ($has_file) {
     }
 }
 
+
 if (!empty($errors)) {
     $_SESSION['form_errors'] = $errors;
     header('Location: add_post.php');
     exit;
 }
+
 
 if ($has_file) {
     $ext_map   = ['image/jpeg' => 'jpg', 'image/png' => 'png', 'image/webp' => 'webp'];
@@ -60,6 +60,7 @@ if ($has_file) {
     $filename  = date('Ymd_His') . '_' . bin2hex(random_bytes(6)) . '.' . $ext;
     $upload_dir = __DIR__ . '/uploads/';
 
+    // Create uploads/ if it doesn't exist
     if (!is_dir($upload_dir)) {
         mkdir($upload_dir, 0755, true);
     }
@@ -72,20 +73,20 @@ if ($has_file) {
 
     $image_path = 'uploads/' . $filename;
     $postRepository->create([
-        'finder'  => $finder,
-        'item'    => $item,
-        'place'   => $place,
-        'phone'   => $phone,
+        'finder' => $finder,
+        'item' =>$item,
+        'place' => $place,
+        'phone' => $phone,
         'picture' => $image_path
     ]);
-} else {
+    }else {
     $postRepository->create([
         'finder' => $finder,
-        'item'   => $item,
-        'place'  => $place,
-        'phone'  => $phone
+        'item' =>$item,
+        'place' => $place,
+        'phone' => $phone
     ]);
-}
 
+}
 header('Location: lost-and-found.php');
 exit;

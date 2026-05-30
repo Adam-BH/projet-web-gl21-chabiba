@@ -4,59 +4,49 @@ if (!isset($_SESSION['user'])) {
     header('Location: login.php');
     exit;
 }
-require_once __DIR__ . '/../../autoloader.php';
 $errors = $_SESSION['form_errors'] ?? [];
-unset($_SESSION['form_errors']);
-
-$campingSiteRepository = new CampingSiteRepository();
-$campingSites = $campingSiteRepository->findAll();
-
-$pageTitle = 'HIKI - Add Post';
-$pageActive = 'lostfound';
-$extraStyles = ['css/pages/lost-and-found.css'];
-include __DIR__ . '/../../src/Includes/header.php';
 ?>
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
 
-<main class="lost-found-shell">
-    <section class="hero text-center">
-        <p class="eyebrow">Lost &amp; Found</p>
-        <h1>Post a Found Item</h1>
-        <p class="lead">Found something at a campsite? Fill out the form below so the owner can get it back.</p>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>HIKI - Sign Up</title>
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/pages/auth.css" />
+</head>
 
-        <form action="save_post.php" enctype="multipart/form-data" method="POST" class="glass-panel add-post-form mt-4">
-            <div class="form-group">
-                <label for="itemInput">What did you find?</label>
-                <input type="text" id="itemInput" name="item" maxlength="50" required class="form-input" placeholder="e.g. Water bottle, backpack...">
-                <?php if (!empty($errors['item'])): ?>
-                    <div class="form-error"><?= htmlspecialchars($errors['item']) ?></div>
-                <?php endif; ?>
+<body>
+    <canvas id="starCanvas" style="position:fixed;inset:0;z-index:0;pointer-events:none;"></canvas>
+    <a href="/public_html/index.php" class="navbar-brand">HIKI</a>
+    <div class="container">
+        <p class="login-title">Wecome</p>
+        <p class="login-sub">Tell Us More About Your Post</p>
+        <form action="save_post.php" enctype="multipart/form-data" method="POST">
+            <div class="input-box">
+                <input type="text" name="item" maxlength="50" required>
+                <label>What did you find?</label>
             </div>
-
-            <div class="form-group">
-                <label for="placeSelect">Camping Site</label>
-                <select id="placeSelect" name="place" required class="form-input">
-                    <option value="" disabled selected>Select a camping site</option>
-                    <?php foreach ($campingSites as $site): ?>
-                        <option value="<?= htmlspecialchars($site->name) ?>"><?= htmlspecialchars($site->name) ?></option>
-                    <?php endforeach; ?>
-                </select>
-                <?php if (!empty($errors['place'])): ?>
-                    <div class="form-error"><?= htmlspecialchars($errors['place']) ?></div>
-                <?php endif; ?>
+            <div class="input-box">
+                <input type="text" name="place" maxlength="20" required>
+                <!-- we should turn this into a list of places that the webste has once we figure to link our work -->
+                <label>Camping Place</label>
             </div>
-
-            <div class="form-group">
-                <label for="imageInput">Photo (optional)</label>
-                <input type="file" id="imageInput" name="image" accept="image/jpeg,image/png,image/webp" class="form-input">
+            <div>
+                <input type="file" name="image" accept="image/jpeg,image/png,image/webp" onchange="previewImage(this)">
             </div>
-
-            <button type="submit" class="btn btn-primary w-100">Submit Post</button>
+            <button type="submit" class="btn-login">Submit Post</button>
         </form>
-    </section>
-</main>
-
-<script src="/projet-web-gl21-chabiba/js/pages/lost-and-found.js"></script>
-<script src="/projet-web-gl21-chabiba/js/main.js"></script>
-</div>
+        <?php if (!empty($errors['item'])): ?>
+            <div class="error"><?= htmlspecialchars($errors['item']) ?></div>
+        <?php endif;
+        if (!empty($errors['place'])): ?>
+            <div class="error"><?= htmlspecialchars($errors['place']) ?></div>
+        <?php endif; ?>
+    </div>
+    <script src="/js/auth.js"></script>
+    <script src="/js/main.js"></script>
 </body>
+
 </html>

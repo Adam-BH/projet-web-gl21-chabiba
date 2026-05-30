@@ -15,15 +15,15 @@ include __DIR__ . '/../src/Includes/header.php';
                 <div class="form-row">
                     <div class="form-group">
                         <label for="ageInput">Youngest Member's Age</label>
-                        <input type="number" id="ageInput" name="age" min="1" max="99" placeholder="e.g. 10" class="form-input">
+                        <input type="number" id="ageInput" name="age" min="1" max="99" placeholder="e.g. 10" class="glass-input">
                     </div>
                     <div class="form-group">
                         <label for="groupSizeInput">Group Size</label>
-                        <input type="number" id="groupSizeInput" name="group_size" min="1" max="50" placeholder="e.g. 4" class="form-input">
+                        <input type="number" id="groupSizeInput" name="group_size" min="1" max="50" placeholder="e.g. 4" class="glass-input">
                     </div>
                     <div class="form-group">
                         <label for="difficultySelect">Preferred Difficulty</label>
-                        <select id="difficultySelect" name="difficulty" class="form-input">
+                        <select id="difficultySelect" name="difficulty" class="glass-input">
                             <option value="all">Any</option>
                             <option value="Easy">Easy</option>
                             <option value="Moderate">Moderate</option>
@@ -31,7 +31,7 @@ include __DIR__ . '/../src/Includes/header.php';
                         </select>
                     </div>
                     <div class="form-group align-bottom">
-                        <button type="submit" class="btn btn-primary w-100">Find Activities</button>
+                        <button type="submit" class="button primary w-100">Find Activities</button>
                     </div>
                 </div>
             </form>
@@ -45,8 +45,8 @@ include __DIR__ . '/../src/Includes/header.php';
 
         <!-- General Hiking Tips -->
         <section class="general-tips-section mt-5 glass-panel text-left">
-            <h2 class="tips-heading">General Hiking Guidelines</h2>
-            <div class="info-grid">
+            <h2 class="hero-title" style="font-size: 2rem; margin-bottom: 24px;">General Hiking Guidelines</h2>
+            <div class="info-grid" style="border-top: none; padding-top: 0; margin-top: 0;">
                 <div class="tips-section">
                     <p class="section-label">Safety First</p>
                     <ul>
@@ -68,8 +68,8 @@ include __DIR__ . '/../src/Includes/header.php';
             </div>
         </section>
 
-        <section class="campfire-section">
-            <div class="campfire-wrapper">
+        <section class="campfire-section" style="margin-top: 50px; display: flex; justify-content: center;">
+            <div class="wrapper" style="position: relative; width: 100%; display: flex; justify-content: center; transform: scale(0.6);">
                 <div class="campfire">
                     <div class="ground-glow"></div>
                     <div class="pillars">

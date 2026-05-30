@@ -1,53 +1,28 @@
 @import url('../style.css');
 
-/* Lost & Found page styles */
-
-.lost-found-shell {
-    width: min(1180px, calc(100vw - 32px));
-    margin: 0 auto;
-    padding: 24px 0 64px;
+:root {
+    --cyan: #00ffff;
+    --azure: #f0ffff;
+    --card-radius: 8px;
+    --frame-radius: 12px;
+    --border-cyan-dim: rgba(240, 255, 255, 0.1);
+    --border-cyan-hover: rgba(0, 255, 255, 0.3);
+    --bg-card: #121212;
 }
 
-/* Hero section (shared with hiking-guide pattern) */
-.hero {
-    border: 1px solid var(--surface-border);
-    border-radius: 22px;
-    background: rgba(10, 15, 25, 0.82);
-    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.38);
-    backdrop-filter: blur(14px);
-    padding: 42px 36px;
-}
-
-.hero h1 {
+* {
     margin: 0;
-    font-family: 'Righteous', sans-serif;
-    font-size: clamp(3rem, 8vw, 6.4rem);
-    line-height: 0.95;
-    letter-spacing: 0.02em;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.hero .eyebrow {
-    margin: 0 0 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.16em;
-    font-size: 0.76rem;
-    color: var(--accent-cool);
-}
-
-.hero .lead {
-    max-width: 760px;
-    margin: 18px auto 0;
-    color: rgba(238, 245, 255, 0.72);
-    font-size: clamp(1.02rem, 1.35vw, 1.18rem);
-    line-height: 1.75;
-}
-
-.hero .hero-actions {
-    display: flex;
-    gap: 14px;
-    flex-wrap: wrap;
-    margin-top: 28px;
-    justify-content: center;
+html,
+body {
+    color: var(--azure);
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    overflow-x: hidden;
+    overflow-y: visible;
 }
 
 .hero-title {
@@ -58,7 +33,8 @@
     padding-top: 2rem;
     margin-bottom: 1.5rem;
     text-align: center;
-    color: var(--text-primary);
+    color: var(--azure);
+    text-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
 }
 
 .hero-title span {
@@ -69,29 +45,33 @@
 }
 
 .frame {
-    border: 1px solid var(--surface-border);
+    border: 1px solid var(--border-cyan-dim);
     padding: 1.5rem;
     margin: 1rem auto 3rem auto;
-    width: 100%;
-    background: var(--surface-bg);
-    backdrop-filter: blur(12px);
-    border-radius: 18px;
-    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+    width: 75%;
+    background: rgba(255, 255, 255, 0.01);
+    backdrop-filter: blur(10px);
+    border-radius: var(--frame-radius);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .posts-wrapper {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, 250px); 
+    gap: 2rem;
+    justify-content: start; 
     width: 100%;
 }
 
 .post-card {
+    width: 18vw;
+    height: 1050px;
+    flex-shrink: 0;
     display: flex;
     flex-direction: column;
-    background: rgba(10, 15, 25, 0.82);
-    border: 1px solid var(--surface-border);
-    border-radius: 18px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-cyan-dim);
+    border-radius: var(--card-radius);
     overflow: hidden;
     transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
     height: 100%;
@@ -99,16 +79,16 @@
 
 .post-card:hover {
     transform: translateY(-5px);
-    border-color: rgba(143, 211, 255, 0.4);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    border-color: var(--border-cyan-hover);
+    box-shadow: 0 8px 20px rgba(0, 255, 255, 0.15);
 }
 
 .post-card img {
     width: 100%;
-    height: 180px;
+    height: 160px;
     object-fit: cover;
     filter: brightness(0.85);
-    border-bottom: 1px solid var(--surface-border);
+    border-bottom: 1px solid var(--border-cyan-dim);
     transition: filter 0.3s ease;
 }
 
@@ -116,91 +96,100 @@
     filter: brightness(1);
 }
 
+.post-card img {
+    height: 150px;
+    width: 100%;
+    object-fit: cover;
+}
+
 .post-content {
     overflow: hidden;
     display: flex;
     flex-direction: column;
     flex: 1;
-    padding: 16px;
 }
 
 .item {
     font-family: 'Righteous', sans-serif;
     font-size: 0.85rem;
-    color: var(--accent-cool);
+    color: var(--cyan);
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.2rem;
 }
 
 .place, .date {
     font-size: 0.8rem;
-    color: var(--text-muted);
-    margin-bottom: 0.2rem;
+    color: #b0b0b0;
+    display: flex;
+    align-items: center;
 }
 
 .phone {
-    margin-top: auto;
+    margin-top: auto; 
     padding-top: 12px;
     font-size: 0.85rem;
     font-weight: 600;
-    color: var(--text-primary);
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--azure);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.delete-form {
-    margin-top: 10px;
-}
-
-.delete-form .btn-delete {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 38px;
-    padding: 0 14px;
-    border-radius: 999px;
-    border: 1px solid rgba(220, 38, 38, 0.3);
-    background: rgba(220, 38, 38, 0.1);
-    color: #fca5a5;
-    cursor: pointer;
-    font-size: 0.78rem;
-    font-weight: 700;
-    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
-}
-
-.delete-form .btn-delete:hover {
-    background: rgba(220, 38, 38, 0.2);
-    border-color: rgba(220, 38, 38, 0.5);
-    transform: translateY(-1px);
-}
-
-.error {
-    color: #fca5a5;
-    font-size: 0.82rem;
-    margin-top: 6px;
-}
-
-.empty-state-text {
-    text-align: center;
-    color: var(--text-muted);
-    padding: 40px 0;
-}
-
-.add-post-form {
-    max-width: 560px;
-    text-align: left;
-}
-
-.add-post-form .form-group {
-    margin-bottom: 18px;
-}
-
-.add-post-form .form-group:last-of-type {
-    margin-bottom: 22px;
-}
+.text-center { text-align: center; }
 
 @media (max-width: 480px) {
     .posts-wrapper {
         grid-template-columns: 1fr;
     }
+}
+
+.glowy-btn {
+    margin: 10% auto;
+    padding: 5px auto;
+    font-size: 0.8rem;
+    position: relative;
+    top: 0%;
+    left: 50%;
+    /* transform: translate(50%); */
+}
+
+.add-btn {
+    position: relative;
+  --forest-green: #2d5a27;
+  --dirt-brown: #4a3728;
+  --leaf-green: #4f772d;
+  
+  appearance: none;
+  background-color: var(--forest-green);
+  border: none;
+  border-radius: 12px;
+  
+  border-bottom: 5px solid var(--dirt-brown);
+  
+  color: #f1f1e6;
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.9rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  padding: 12px 24px;
+  text-transform: uppercase;
+  transition: all 0.1s ease;
+  user-select: none;
+  margin: 4% auto;
+  width: 200px;
+}
+
+.add-btn:hover {
+  background-color: var(--leaf-green);
+}
+
+.add-btn :active {
+  border-bottom-width: 0;
+  transform: translateY(5px);
+}
+
+.delete-form {
+    display: block;
+    align-items: center;
 }

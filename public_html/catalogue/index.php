@@ -76,17 +76,17 @@ if (!file_exists($gridPartial) || !file_exists($listPartial)) {
             </div>
         </section>
 
-        <div class="catalogue-controls">
-            <input id="siteSearch" type="search" placeholder="Search sites, city, description" class="form-input catalogue-search">
-            <select id="siteSort" class="form-input catalogue-sort">
+        <div class="catalogue-controls" style="width:min(1180px,calc(100vw - 32px));margin:18px auto 0;display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
+            <input id="siteSearch" type="search" placeholder="Search sites, city, description" style="flex:1;min-width:200px;padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);color:var(--catalogue-text);">
+            <select id="siteSort" style="padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);color:var(--catalogue-text);">
                 <option value="recommended">Recommended</option>
                 <option value="capacity-desc">Capacity: High → Low</option>
                 <option value="capacity-asc">Capacity: Low → High</option>
                 <option value="distance-asc">Distance: Near → Far</option>
                 <option value="distance-desc">Distance: Far → Near</option>
             </select>
-            <button id="locateBtn" class="btn" type="button">Use my location</button>
-            <button id="clearLocation" class="btn" type="button">Clear location</button>
+            <button id="locateBtn" class="view-toggle" type="button" style="padding:10px 14px;">Use my location</button>
+            <button id="clearLocation" class="view-toggle" type="button" style="padding:10px 14px;">Clear location</button>
         </div>
 
         <?php if (!empty($error)): ?>

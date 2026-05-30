@@ -24,7 +24,7 @@ if (!$post) {
     die('Post not found.');
 }
 
-if ($_SESSION['email'] !== $post->finder) {
+if ($_SESSION['user'] !==  $post->finder) {
     http_response_code(403);
     die('You are not authorized to delete this post.');
 }

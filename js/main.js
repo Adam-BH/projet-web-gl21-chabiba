@@ -39,25 +39,6 @@ window.addEventListener('resize', () => { resize(); initStars(); });
 /* HIKI Website - Global Interactions */
 
 document.addEventListener("DOMContentLoaded", () => {
-    // Navbar hamburger toggle
-    const toggler = document.querySelector('.navbar-toggler');
-    const collapse = document.querySelector('.navbar-collapse');
-    if (toggler && collapse) {
-        toggler.addEventListener('click', () => {
-            const isOpen = collapse.classList.toggle('is-open');
-            toggler.classList.toggle('is-open', isOpen);
-            toggler.setAttribute('aria-expanded', isOpen);
-        });
-        // Close on link click
-        collapse.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                collapse.classList.remove('is-open');
-                toggler.classList.remove('is-open');
-                toggler.setAttribute('aria-expanded', 'false');
-            });
-        });
-    }
-
     const sparkyMascot = document.querySelector('.sparky-mascot');
     
     // Array of helpful hiking tips from Sparky(better be replaced later by tips that comes from a database that can be fetched using PHP to flex a bit xd)

@@ -7,8 +7,6 @@
     --frame-radius: 12px;
     --border-cyan-dim: rgba(240, 255, 255, 0.1);
     --border-cyan-hover: rgba(0, 255, 255, 0.3);
-}
-
 .guide-shell {
     width: min(1180px, calc(100vw - 32px));
     margin: 0 auto;
@@ -343,7 +341,13 @@
     }
 }
 
-/* Campfire Adjustments & Glassmorphism Form & Feed Styles */
+/* Campfire Adjustments */
+.campfire-section {
+    position: relative;
+    z-index: 2; /* keep above starCanvas */
+}
+
+/* Glassmorphism Form & Feed Styles */
 .glass-panel {
     background: rgba(10, 15, 25, 0.7);
     border: 1px solid rgba(160, 215, 255, 0.15);
@@ -353,35 +357,6 @@
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
     max-width: 900px;
     margin: 0 auto;
-}
-
-.tips-heading {
-    font-family: 'Righteous', sans-serif;
-    font-size: 2rem;
-    margin-bottom: 24px;
-    color: #fff;
-}
-
-.info-grid {
-    border-top: none;
-    padding-top: 0;
-    margin-top: 0;
-}
-
-.campfire-section {
-    position: relative;
-    z-index: 2;
-    margin-top: 50px;
-    display: flex;
-    justify-content: center;
-}
-
-.campfire-wrapper {
-    position: relative;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    transform: scale(0.6);
 }
 
 .form-row {
@@ -522,4 +497,5 @@
     width: 18px;
     height: 18px;
     cursor: pointer;
+}
 }

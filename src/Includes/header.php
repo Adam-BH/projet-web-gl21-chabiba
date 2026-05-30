@@ -38,30 +38,25 @@ $navItems[] = ['key' => 'lostfound', 'label' => 'Lost & found', 'href' => '/publ
     <canvas id="starCanvas" aria-hidden="true"></canvas>
     <?php if (!isset($hideNavbar) || !$hideNavbar): ?>
     <nav class="navbar navbar-dark" role="navigation" aria-label="Main navigation">
-        <div class="navbar-inner">
-            <a href="/projet-web-gl21-chabiba/public_html/index.php" class="navbar-brand">HIKI</a>
-            <button class="navbar-toggler" type="button" aria-label="Toggle navigation" aria-expanded="false">
-                <span class="navbar-toggler-bar"></span>
-                <span class="navbar-toggler-bar"></span>
-                <span class="navbar-toggler-bar"></span>
-            </button>
-            <div class="navbar-collapse">
-                <ul class="nav-links">
+        <div class="container d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center" style="gap: 2rem;">
+                <a href="/public_html/index.php" class="navbar-brand">HIKI</a>
+                <ul class="navbar-nav nav-links flex-row m-0">
                     <?php foreach ($navItems as $item): ?>
                         <li class="nav-item">
                             <a href="<?= htmlspecialchars($item['href']) ?>" class="nav-link<?= $pageActive === $item['key'] ? ' active' : '' ?>"><?= htmlspecialchars($item['label']) ?></a>
                         </li>
                     <?php endforeach; ?>
                 </ul>
-                <div class="nav-auth">
-                    <?php if (isset($_SESSION['is_logged']) && $_SESSION['is_logged'] === true): ?>
-                        <span class="nav-user">Hi, <?= htmlspecialchars($_SESSION['user'] ?? 'User') ?></span>
-                        <a href="/projet-web-gl21-chabiba/public_html/auth/logout.php" class="nav-btn outline">Logout</a>
-                    <?php else: ?>
-                        <a href="/projet-web-gl21-chabiba/public_html/auth/login.php" class="nav-btn outline">Login</a>
-                        <a href="/projet-web-gl21-chabiba/public_html/auth/signup.php" class="nav-btn primary">Sign Up</a>
-                    <?php endif; ?>
-                </div>
+            </div>
+            <div class="nav-auth ms-3 d-flex align-items-center">
+                <?php if (isset($_SESSION['is_logged']) && $_SESSION['is_logged'] === true): ?>
+                    <span class="text-light me-3">Hi, <?= htmlspecialchars($_SESSION['user'] ?? 'User') ?></span>
+                    <a href="/public_html/auth/logout.php" class="nav-btn outline">Logout</a>
+                <?php else: ?>
+                    <a href="/public_html/auth/login.php" class="nav-btn outline me-2">Login</a>
+                    <a href="/public_html/auth/signup.php" class="nav-btn primary">Sign Up</a>
+                <?php endif; ?>
             </div>
         </div>
     </nav>
