@@ -11,7 +11,7 @@
 
 .hero-section {
   position: absolute;
-  top: 52%;
+  top: 25%;
   left: 50%;
   transform: translate(-50%, -56%);
   z-index: 2;
@@ -73,7 +73,7 @@
   align-items: center;
   width: 66px;
   height: 34px;
-  background: linear-gradient(140deg, rgba(26, 26, 46, 0.95), rgba(11, 0, 27, 0.95));
+  background-image: url('../../assets/Images/LandSwitch-Dark.png');
   border: 1px solid rgba(157, 231, 243, 0.35);
   border-radius: 999px;
   cursor: pointer;

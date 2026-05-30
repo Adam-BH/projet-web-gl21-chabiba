@@ -3,7 +3,6 @@
 body{
     margin: 0;
     min-height: 100vh;
-    display:flex;
     justify-content: center;
     align-items: center;
     font-family: 'Rethink Sans', sans-serif;
@@ -76,6 +75,7 @@ select option {
     color: var(--text-primary);
 }
 .container{
+    margin: 5% auto;
     display: flex;
     align-items: center;
     flex-direction: column;

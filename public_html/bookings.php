@@ -3,7 +3,7 @@ session_start();
 require_once __DIR__ . '/../autoloader.php';
 
 if (empty($_SESSION['is_logged'])) {
-    header('Location: /projet-web-gl21-chabiba/public_html/auth/login.php');
+    header('Location: /public_html/auth/login.php');
     exit();
 }
 

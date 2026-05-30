@@ -7,7 +7,7 @@ $loggedIn = isset($_SESSION['user']);
     <div class="booking-modal-backdrop"></div>
     <div class="booking-modal-panel">
         <h3 id="bookingModalTitle">Book site</h3>
-        <form id="bookingForm" method="POST" action="/projet-web-gl21-chabiba/public_html/catalogue/book.php">
+        <form id="bookingForm" method="POST" action="/public_html/catalogue/book.php">
             <input type="hidden" name="site_id" id="bookingSiteId" value="">
             <div class="form-group">
                 <label for="bookingStart">Start date</label>
@@ -27,7 +27,7 @@ $loggedIn = isset($_SESSION['user']);
                 <?php if ($loggedIn): ?>
                     <button type="submit" id="bookingConfirm" class="btn btn-primary">Confirm booking</button>
                 <?php else: ?>
-                    <a href="/projet-web-gl21-chabiba/public_html/auth/login.php" id="bookingLogin" class="btn btn-primary">Log in to book</a>
+                    <a href="/public_html/auth/login.php" id="bookingLogin" class="btn btn-primary">Log in to book</a>
                 <?php endif; ?>
             </div>
         </form>

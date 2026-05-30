@@ -34,7 +34,7 @@ include __DIR__ . '/../src/Includes/header.php';
                 <!-- 1 – Hiking Boots -->
                 <article class="equipment-card glass-panel" data-category="footwear">
                     <div class="card-img-wrap">
-                        <img src="/projet-web-gl21-chabiba/assets/Images/hiking_boots.png" alt="All-Terrain Hiking Boots" class="equipment-img" loading="lazy">
+                        <img src="/assets/Images/hiking_boots.png" alt="All-Terrain Hiking Boots" class="equipment-img" loading="lazy">
                         <span class="cat-badge">Footwear</span>
                     </div>
                     <div class="equipment-info">
@@ -52,7 +52,7 @@ include __DIR__ . '/../src/Includes/header.php';
                 <!-- 2 – Backpack -->
                 <article class="equipment-card glass-panel" data-category="bags">
                     <div class="card-img-wrap">
-                        <img src="/projet-web-gl21-chabiba/assets/Images/hiking_backpack.png" alt="40L Expedition Backpack" class="equipment-img" loading="lazy">
+                        <img src="/assets/Images/hiking_backpack.png" alt="40L Expedition Backpack" class="equipment-img" loading="lazy">
                         <span class="cat-badge">Bags</span>
                     </div>
                     <div class="equipment-info">
@@ -70,7 +70,7 @@ include __DIR__ . '/../src/Includes/header.php';
                 <!-- 3 – Trekking Poles -->
                 <article class="equipment-card glass-panel" data-category="accessories">
                     <div class="card-img-wrap">
-                        <img src="/projet-web-gl21-chabiba/assets/Images/trekking_poles.png" alt="Carbon Fiber Trekking Poles" class="equipment-img" loading="lazy">
+                        <img src="/assets/Images/trekking_poles.png" alt="Carbon Fiber Trekking Poles" class="equipment-img" loading="lazy">
                         <span class="cat-badge">Accessories</span>
                     </div>
                     <div class="equipment-info">
@@ -88,7 +88,7 @@ include __DIR__ . '/../src/Includes/header.php';
                 <!-- 4 – Headlamp -->
                 <article class="equipment-card glass-panel" data-category="accessories">
                     <div class="card-img-wrap">
-                        <img src="/projet-web-gl21-chabiba/assets/Images/headlamp.png" alt="Rechargeable LED Headlamp" class="equipment-img" loading="lazy">
+                        <img src="/assets/Images/headlamp.png" alt="Rechargeable LED Headlamp" class="equipment-img" loading="lazy">
                         <span class="cat-badge">Accessories</span>
                     </div>
                     <div class="equipment-info">
@@ -106,7 +106,7 @@ include __DIR__ . '/../src/Includes/header.php';
                 <!-- 5 – Water Bottle -->
                 <article class="equipment-card glass-panel" data-category="hydration">
                     <div class="card-img-wrap">
-                        <img src="/projet-web-gl21-chabiba/assets/Images/water_bottle.png" alt="Insulated Water Bottle" class="equipment-img" loading="lazy">
+                        <img src="/assets/Images/water_bottle.png" alt="Insulated Water Bottle" class="equipment-img" loading="lazy">
                         <span class="cat-badge">Hydration</span>
                     </div>
                     <div class="equipment-info">
@@ -124,7 +124,7 @@ include __DIR__ . '/../src/Includes/header.php';
                 <!-- 6 – First Aid Kit -->
                 <article class="equipment-card glass-panel" data-category="safety">
                     <div class="card-img-wrap">
-                        <img src="/projet-web-gl21-chabiba/assets/Images/first_aid_kit.png" alt="Compact First Aid Kit" class="equipment-img" loading="lazy">
+                        <img src="/assets/Images/first_aid_kit.png" alt="Compact First Aid Kit" class="equipment-img" loading="lazy">
                         <span class="cat-badge">Safety</span>
                     </div>
                     <div class="equipment-info">
@@ -198,8 +198,8 @@ include __DIR__ . '/../src/Includes/header.php';
         </section>
     </main>
 
-    <script src="/projet-web-gl21-chabiba/js/equipment.js"></script>
-    <script src="/projet-web-gl21-chabiba/js/main.js"></script>
+    <script src="/js/equipment.js"></script>
+    <script src="/js/main.js"></script>
 </div>
 </body>
 </html>

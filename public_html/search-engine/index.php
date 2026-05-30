@@ -82,7 +82,7 @@ include __DIR__ . '/../../src/Includes/header.php';
 </main>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script src="/projet-web-gl21-chabiba/js/search-engine.js"></script>
+<script src="/js/search-engine.js"></script>
 
 </div>
 </body>

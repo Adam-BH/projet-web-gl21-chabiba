@@ -37,8 +37,8 @@ include __DIR__ . '/../../src/Includes/header.php';
 	  <?php endif; ?>
 	    	</div>
 		</div>
-		<script src="/projet-web-gl21-chabiba/js/auth.js"></script>
-		<script src="/projet-web-gl21-chabiba/js/main.js"></script>
+		<script src="/js/auth.js"></script>
+		<script src="/js/main.js"></script>
 	</div>
 </body>
 </html>

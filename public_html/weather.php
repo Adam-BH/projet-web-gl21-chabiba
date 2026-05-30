@@ -65,7 +65,7 @@ include __DIR__ . '/../src/Includes/header.php';
 
         <div class="weather-grid">
             <section class="weather-card" aria-label="Selected day">
-                <img class="weather-card__moon" src="/projet-web-gl21-chabiba/assets/Images/night-moon-component.png" alt="">
+                <img class="weather-card__moon" src="/assets/Images/night-moon-component.png" alt="">
                 <div class="weather-card__info">
                     <p class="weather-card__temp"><?= htmlspecialchars((string)$selectedDay['temp']) ?>&deg;</p>
                     <p class="weather-card__country"><?= htmlspecialchars($forecastCountry ?: 'Tunisia') ?></p>
@@ -95,7 +95,7 @@ include __DIR__ . '/../src/Includes/header.php';
                                title="<?= htmlspecialchars($day['label']) ?>">
                                 <span class="forecast-pill__day"><?= htmlspecialchars($day['short']) ?></span>
                                 <img class="forecast-pill__icon"
-                                     src="/projet-web-gl21-chabiba/assets/Images/<?= htmlspecialchars($day['icon']) ?>" alt="">
+                                     src="/assets/Images/<?= htmlspecialchars($day['icon']) ?>" alt="">
                                 <span class="forecast-pill__rain"><?= htmlspecialchars((string)$day['rain']) ?>%</span>
                                 <span class="forecast-pill__temp"><?= htmlspecialchars((string)$day['temp']) ?>&deg;</span>
                             </a>
@@ -144,7 +144,7 @@ include __DIR__ . '/../src/Includes/header.php';
         </label>
     </div>
 
-    <script src="/projet-web-gl21-chabiba/js/main.js"></script>
+    <script src="/js/main.js"></script>
     </div>
 </body>
 </html>

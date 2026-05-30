@@ -20,14 +20,14 @@ include __DIR__ . '/../../src/Includes/header.php';
 				<button class="btn-login">Sign in</button>
 			</form>
 			<div class="signup-row">
-      Don't have an account? <a href="/projet-web-gl21-chabiba/public_html/auth/signup.php">Sign up</a>
+      Don't have an account? <a href="/public_html/auth/signup.php">Sign up</a>
 	  <?php if (isset($_GET['error'])): ?>
 		  <p class="error">Invalid username or password.</p>
 	  <?php endif; ?>
 	    	</div>
 		</div>
-		<script src="/projet-web-gl21-chabiba/js/auth.js"></script>
-		<script src="/projet-web-gl21-chabiba/js/main.js"></script>
+		<script src="/js/auth.js"></script>
+		<script src="/js/main.js"></script>
 	</div>
 </body>
 </html>

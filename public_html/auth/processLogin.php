@@ -11,7 +11,7 @@ if(isset($db_pwd) && (password_verify($pwd, $db_pwd))){
     $_SESSION['user']=$user->username;
     $_SESSION['email']=$email;
     $_SESSION['is_logged']=true;
-    header('location:/projet-web-gl21-chabiba/public_html/index.php');
+    header('location:/public_html/index.php');
 } else {
     header('location:login.php?error=invalid_credentials');
     exit();
