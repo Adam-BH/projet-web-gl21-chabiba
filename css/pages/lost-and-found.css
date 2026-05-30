@@ -8,6 +8,48 @@
     padding: 24px 0 64px;
 }
 
+/* Hero section (shared with hiking-guide pattern) */
+.hero {
+    border: 1px solid var(--surface-border);
+    border-radius: 22px;
+    background: rgba(10, 15, 25, 0.82);
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.38);
+    backdrop-filter: blur(14px);
+    padding: 42px 36px;
+}
+
+.hero h1 {
+    margin: 0;
+    font-family: 'Righteous', sans-serif;
+    font-size: clamp(3rem, 8vw, 6.4rem);
+    line-height: 0.95;
+    letter-spacing: 0.02em;
+}
+
+.hero .eyebrow {
+    margin: 0 0 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 0.76rem;
+    color: var(--accent-cool);
+}
+
+.hero .lead {
+    max-width: 760px;
+    margin: 18px auto 0;
+    color: rgba(238, 245, 255, 0.72);
+    font-size: clamp(1.02rem, 1.35vw, 1.18rem);
+    line-height: 1.75;
+}
+
+.hero .hero-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 28px;
+    justify-content: center;
+}
+
 .hero-title {
     font-family: 'Righteous', sans-serif;
     font-size: clamp(20px, 2.5vw, 32px);
@@ -136,6 +178,25 @@
     color: #fca5a5;
     font-size: 0.82rem;
     margin-top: 6px;
+}
+
+.empty-state-text {
+    text-align: center;
+    color: var(--text-muted);
+    padding: 40px 0;
+}
+
+.add-post-form {
+    max-width: 560px;
+    text-align: left;
+}
+
+.add-post-form .form-group {
+    margin-bottom: 18px;
+}
+
+.add-post-form .form-group:last-of-type {
+    margin-bottom: 22px;
 }
 
 @media (max-width: 480px) {

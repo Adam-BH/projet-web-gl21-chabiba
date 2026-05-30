@@ -1,6 +1,13 @@
 @font-face {
     font-family: 'Righteous';
     src: url('../assets/Fonts/Righteous-Regular.ttf') format('truetype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('../assets/Fonts/Nunito.ttf') format('truetype');
+    font-display: swap;
 }
 
 :root {
@@ -18,6 +25,11 @@
     --button-hover: rgba(143, 211, 255, 0.12);
     --button-accent: linear-gradient(135deg, #8fd3ff 0%, #ffa86d 100%);
     --button-accent-hover: linear-gradient(135deg, #a1e0ff 0%, #ffbc87 100%);
+    --space-xs: 6px;
+    --space-sm: 12px;
+    --space-md: 20px;
+    --space-lg: 32px;
+    --card-radius: 18px;
 }
 
 html, body {
@@ -42,26 +54,102 @@ body {
     pointer-events: none;
 }
 
+/* ── Navbar ── */
+
 .navbar {
-    background: linear-gradient(180deg, rgba(10, 4, 24, 0.72) 0%, rgba(10, 4, 24, 0.24) 100%);
+    background: linear-gradient(180deg, rgba(10, 4, 24, 0.88) 0%, rgba(10, 4, 24, 0.64) 100%);
     border-bottom: 1px solid var(--surface-border);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(14px);
     position: relative;
     z-index: 20;
+    padding: 0 4vw;
+}
+
+.navbar-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+}
+
+.navbar-brand {
+    flex-shrink: 0;
+    font: 800 clamp(24px, 3.8vw, 44px) 'Righteous', sans-serif;
+    letter-spacing: 0.03em;
+    color: var(--text-primary);
+    text-decoration: none;
+    background: linear-gradient(180deg, #ffffff 0%, #f6e6cb 58%, #f9b86b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ── Hamburger Toggler ── */
+
+.navbar-toggler {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+}
+
+.navbar-toggler:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.navbar-toggler-bar {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--text-primary);
+    border-radius: 2px;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.navbar-toggler.is-open .navbar-toggler-bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.navbar-toggler.is-open .navbar-toggler-bar:nth-child(2) {
+    opacity: 0;
+}
+
+.navbar-toggler.is-open .navbar-toggler-bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ── Navbar Collapse ── */
+
+.navbar-collapse {
+    display: flex;
+    align-items: center;
+    gap: 24px;
 }
 
 .nav-links {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    gap: clamp(6px, 2vw, 40px);
+    gap: clamp(6px, 2vw, 32px);
     list-style: none;
-    margin-left: auto;
+    margin: 0;
+    padding: 0;
 }
 
 .nav-links a {
-    font: 600 clamp(0.72rem, 0.9vw, 0.92rem) "Rethink Sans", sans-serif;
+    font: 600 clamp(0.72rem, 0.9vw, 0.88rem) 'Rethink Sans', sans-serif;
     letter-spacing: 0.02em;
+    text-decoration: none;
 }
 
 .nav-link {
@@ -81,16 +169,30 @@ body {
     padding-bottom: 4px;
 }
 
+.nav-auth {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nav-user {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
 .nav-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     padding: 8px 18px;
     border-radius: 999px;
-    font: 600 0.85rem "Rethink Sans", sans-serif;
+    font: 600 0.85rem 'Rethink Sans', sans-serif;
     text-decoration: none;
     transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
     cursor: pointer;
+    white-space: nowrap;
 }
 
 .nav-btn.primary {
@@ -118,11 +220,58 @@ body {
     border-color: rgba(255, 255, 255, 0.4);
 }
 
-.navbar-brand {
-    flex-shrink: 0;
-    font: 800 clamp(22px, 3.8vw, 44px) "Rethink Sans", sans-serif;
-    letter-spacing: 0.03em;
+/* ── Mobile Navbar ── */
+
+@media (max-width: 900px) {
+    .navbar-toggler {
+        display: flex;
+    }
+
+    .navbar-collapse {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: rgba(10, 4, 24, 0.96);
+        backdrop-filter: blur(16px);
+        border-bottom: 1px solid var(--surface-border);
+        padding: 16px 4vw 20px;
+        gap: 16px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.35s ease, padding 0.35s ease, opacity 0.3s ease;
+        opacity: 0;
+    }
+
+    .navbar-collapse.is-open {
+        max-height: 600px;
+        padding: 16px 4vw 20px;
+        opacity: 1;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 4px;
+        width: 100%;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 10px 0;
+        font-size: 1rem;
+    }
+
+    .nav-auth {
+        width: 100%;
+        justify-content: flex-start;
+        gap: 12px;
+        padding-top: 12px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
 }
+
+/* ── Page Shell ── */
 
 .page-shell {
     position: relative;
@@ -137,7 +286,7 @@ body {
 
 .content-card {
     border: 1px solid var(--surface-border);
-    border-radius: 18px;
+    border-radius: var(--card-radius);
     background: rgba(12, 8, 22, 0.7);
     backdrop-filter: blur(12px);
     box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
@@ -150,11 +299,14 @@ body {
 .content-card,
 .site-card {
     border: 1px solid var(--surface-border);
-    border-radius: 18px;
+    border-radius: var(--card-radius);
     background: var(--surface-bg);
     backdrop-filter: blur(12px);
     box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
 }
+
+/* ── Buttons ── */
+
 .btn,
 .button,
 .step-btn,
@@ -174,6 +326,8 @@ body {
     cursor: pointer;
     text-decoration: none;
     font-weight: 700;
+    font-family: inherit;
+    font-size: 0.9rem;
     transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
 }
 .btn:hover,
@@ -220,15 +374,31 @@ body {
     color: var(--text-primary);
 }
 
+.btn-danger {
+    border-color: rgba(220, 38, 38, 0.3);
+    background: rgba(220, 38, 38, 0.1);
+    color: #fca5a5;
+}
+
+.btn-danger:hover {
+    background: rgba(220, 38, 38, 0.2);
+    border-color: rgba(220, 38, 38, 0.5);
+}
+
+/* ── Content Grid ── */
+
 .content-grid {
     display: grid;
     gap: 18px;
 }
 
+/* ── Typography ── */
+
 .page-title {
     font-family: 'Righteous', sans-serif;
     letter-spacing: 0.02em;
     margin: 0 0 8px;
+    font-size: clamp(2rem, 5vw, 3.5rem);
 }
 
 .page-subtitle {
@@ -237,16 +407,174 @@ body {
     line-height: 1.7;
 }
 
-@media (max-width: 768px) {
-    .nav-links {
-        gap: 8px;
-        overflow-x: auto;
-        padding-bottom: 2px;
-    }
+/* ── Responsive ── */
 
+@media (max-width: 768px) {
     .content-page {
         width: min(100vw - 20px, 1180px);
         padding-top: 18px;
         padding-bottom: 36px;
     }
+}
+
+/* ── Shared Form Inputs ── */
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--accent-cool);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+}
+
+.form-input {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    color: var(--text-primary);
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 15px;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%239de7f3' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--accent-cool);
+    background-color: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 10px rgba(157, 231, 243, 0.15);
+}
+
+.form-input::placeholder {
+    color: rgba(255, 255, 255, 0.35);
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: flex-end;
+}
+
+.form-row .form-group {
+    flex: 1;
+    min-width: 180px;
+}
+
+/* ── Shared Alert / Error ── */
+
+.alert {
+    padding: 14px 18px;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}
+
+.alert-success {
+    background: rgba(34, 197, 94, 0.12);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    color: #86efac;
+}
+
+.alert-danger {
+    background: rgba(220, 38, 38, 0.12);
+    border: 1px solid rgba(220, 38, 38, 0.3);
+    color: #fca5a5;
+}
+
+.form-error {
+    color: #fca5a5;
+    font-size: 0.82rem;
+    margin-top: 6px;
+}
+
+/* ── Utility ── */
+
+.align-bottom {
+    display: flex;
+    align-items: flex-end;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+/* ── Horizontal Rule ── */
+
+hr {
+    border: none;
+    border-top: 1px solid var(--surface-border);
+    margin: 24px 0;
+}
+
+/* ── Checkbox ── */
+
+input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--accent-cool);
+    cursor: pointer;
+}
+
+/* ── Booking Popup Modal ── */
+
+.booking-modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1200;
+}
+
+.booking-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.booking-modal-panel {
+    position: relative;
+    background: var(--bg-night);
+    padding: 24px;
+    border-radius: var(--card-radius);
+    min-width: 300px;
+    max-width: 520px;
+    border: 1px solid var(--surface-border);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(12px);
+}
+
+.booking-modal-panel h3 {
+    margin: 0 0 16px;
+    font-family: 'Righteous', sans-serif;
+}
+
+.booking-modal-panel .form-group {
+    margin-bottom: 14px;
+}
+
+.booking-availability {
+    margin-top: 8px;
+    color: var(--text-muted);
+}
+
+.booking-actions {
+    margin-top: 16px;
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
 }

@@ -35,9 +35,29 @@ class WeatherService
             return $this->fallbackForecast($city);
         }
 
+        return $this->fetchForecast($location['lat'], $location['lon'], $location['name'], $location['country'], $cacheKey);
+    }
+
+    /**
+     * Fetch forecast by direct coordinates (skips geocoding).
+     * Used when a camping site with known lat/lon is selected.
+     */
+    public function getForecastByCoords(float $lat, float $lon, string $label = ''): array
+    {
+        $cacheKey = 'forecast_' . round($lat, 4) . '_' . round($lon, 4);
+        $cached   = $this->cacheGet($cacheKey);
+        if ($cached !== null) {
+            return $cached;
+        }
+
+        return $this->fetchForecast($lat, $lon, $label ?: 'Location', '', $cacheKey);
+    }
+
+    private function fetchForecast(float $lat, float $lon, string $name, string $country, string $cacheKey): array
+    {
         $params = http_build_query([
-            'latitude'   => $location['lat'],
-            'longitude'  => $location['lon'],
+            'latitude'   => $lat,
+            'longitude'  => $lon,
             'daily'      => implode(',', [
                 'weather_code',
                 'temperature_2m_max',
@@ -51,7 +71,7 @@ class WeatherService
 
         $data = $this->fetchJson(self::FORECAST_URL . '?' . $params);
         if ($data === null || !isset($data['daily']['time'])) {
-            return $this->fallbackForecast($city);
+            return $this->fallbackForecast($name);
         }
 
         $days  = [];
@@ -77,8 +97,8 @@ class WeatherService
         }
 
         $result = [
-            'city'    => $location['name'],
-            'country' => $location['country'],
+            'city'    => $name,
+            'country' => $country ?: 'Tunisia',
             'days'    => $days,
             'source'  => 'open-meteo',
         ];
