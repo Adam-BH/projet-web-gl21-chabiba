@@ -1,20 +1,9 @@
 /* Shared chrome for non-home HIKI pages: dark background, stars, nav, theme toggle. */
 
-@font-face {
-    font-family: 'Righteous';
-    src: url('../../assets/Fonts/Righteous-Regular.ttf') format('truetype');
-    font-display: swap;
-}
-@font-face {
-    font-family: 'Nunito';
-    src: url('../../assets/Fonts/Nunito.ttf') format('truetype');
-    font-display: swap;
-}
-
+/* Design tokens are in site-shell.css. Page-local tokens only: */
 :root {
-    --hiki-bg: #0b001b;
-    --hiki-text: #ffffff;
     --hiki-accent: #fcb415;
+    --hiki-text: #ffffff;
     --hiki-muted: rgba(255, 255, 255, 0.6);
     --hiki-panel: rgba(28, 12, 70, 0.55);
     --hiki-panel-border: rgba(255, 255, 255, 0.08);
@@ -26,9 +15,9 @@ html, body {
 }
 
 .hiki-page {
-    background-color: var(--hiki-bg);
-    color: var(--hiki-text);
-    font-family: 'Nunito', system-ui, sans-serif;
+    background-color: var(--bg-night);
+    color: var(--text-primary);
+    font-family: 'Rethink Sans', system-ui, sans-serif;
     min-height: 100vh;
     overflow: hidden;
     position: relative;
@@ -43,85 +32,12 @@ html, body {
     pointer-events: none;
 }
 
-/* Navigation */
-.hiki-nav {
-    position: relative;
-    z-index: 2;
-    padding: 28px 4vw 0;
-}
-
-.hiki-nav .container {
-    display: flex;
-    align-items: center;
-    flex-wrap: nowrap;
-    max-width: 1280px;
-}
-
-.hiki-nav .navbar-brand {
-    flex-shrink: 0;
-    font: bold clamp(32px, 4.2vw, 56px) 'Righteous', sans-serif;
-    color: var(--hiki-text);
-    letter-spacing: 1px;
-    text-decoration: none;
-}
-
-.hiki-nav .nav-links {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    gap: clamp(12px, 2.2vw, 38px);
-    list-style: none;
-    margin: 0 0 0 auto;
-    padding: 0;
-    align-items: center;
-}
-
-.hiki-nav .nav-link {
-    color: var(--hiki-text);
-    font: 500 clamp(14px, 1.4vw, 22px) 'Nunito', sans-serif;
-    text-decoration: none;
-    padding: 4px 2px;
-    transition: color 0.2s ease;
-}
-
-.hiki-nav .nav-link:hover {
-    color: var(--hiki-accent);
-}
-
-.hiki-nav .nav-link.is-active {
-    color: var(--hiki-accent);
-    font-weight: 700;
-}
+/* Navigation — uses site-shell.css .navbar and .nav-link classes */
 
 /* Theme toggle (matches home page placement) */
 .theme-toggle {
     position: fixed;
-    bottom: 28px;
-    right: 32px;
-    z-index: 5;
-}
-
-.toggle-track {
-    display: flex;
-    align-items: center;
-    width: 78px;
-    height: 35px;
-    background-image: url('../../assets/Images/LandSwitch-Dark.png');
-    background-size: cover;
-    border-radius: 100px;
-    cursor: pointer;
-    padding: 4px;
-    backdrop-filter: blur(16px);
-}
-
-.toggle-thumb {
-    width: 28px;
-    height: 28px;
-    background: #fff;
-    border-radius: 50%;
-    transition: transform 0.3s ease;
-}
-
-#toggle:checked + .toggle-track .toggle-thumb {
-    transform: translateX(40px);
+    bottom: 18px;
+    right: 18px;
+    z-index: 120;
 }

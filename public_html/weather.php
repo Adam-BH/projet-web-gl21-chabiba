@@ -1,8 +1,43 @@
 <?php
 require_once __DIR__ . '/../src/Classes/WeatherService.php';
+require_once __DIR__ . '/../autoloader.php';
 
-$requestedCity = trim((string)($_GET['city'] ?? 'Tunis'));
-$forecast = (new WeatherService())->getForecast($requestedCity);
+$campingSiteRepo = new CampingSiteRepository();
+$campingSites = $campingSiteRepo->findAll();
+
+$weatherService = new WeatherService();
+
+// Determine if a camping site was selected
+$selectedSiteId = (int)($_GET['site_id'] ?? 0);
+$requestedCity = trim((string)($_GET['city'] ?? ''));
+$forecast = null;
+$forecastCity = '';
+$forecastCountry = '';
+
+if ($selectedSiteId > 0) {
+    $site = null;
+    foreach ($campingSites as $cs) {
+        if ((int)$cs->id === $selectedSiteId) {
+            $site = $cs;
+            break;
+        }
+    }
+    if ($site && $site->lat && $site->lon) {
+        $forecast = $weatherService->getForecastByCoords((float)$site->lat, (float)$site->lon, $site->name);
+        $forecastCity = $site->name;
+        $forecastCountry = $site->city ?: 'Tunisia';
+    }
+}
+
+if ($forecast === null) {
+    if ($requestedCity !== '') {
+        $forecast = $weatherService->getForecast($requestedCity);
+    } else {
+        $forecast = $weatherService->getForecast('Tunis');
+    }
+    $forecastCity = $forecast['city'];
+    $forecastCountry = $forecast['country'];
+}
 
 $todayShort = strtoupper(date('D'));
 $selectedShort = strtoupper((string)($_GET['day'] ?? $todayShort));
@@ -17,6 +52,7 @@ foreach ($forecast['days'] as $day) {
 if ($selectedDay === null) {
     $selectedDay = $forecast['days'][0];
 }
+
 $pageTitle = 'HIKI — Weather';
 $pageActive = 'weather';
 $bodyClass = 'hiki-page';
@@ -32,8 +68,8 @@ include __DIR__ . '/../src/Includes/header.php';
                 <img class="weather-card__moon" src="/assets/Images/night-moon-component.png" alt="">
                 <div class="weather-card__info">
                     <p class="weather-card__temp"><?= htmlspecialchars((string)$selectedDay['temp']) ?>&deg;</p>
-                    <p class="weather-card__country"><?= htmlspecialchars($forecast['country'] ?: 'Tunisia') ?></p>
-                    <p class="weather-card__city">CUN, <?= htmlspecialchars($forecast['city']) ?></p>
+                    <p class="weather-card__country"><?= htmlspecialchars($forecastCountry ?: 'Tunisia') ?></p>
+                    <p class="weather-card__city"><?= htmlspecialchars($forecastCity) ?></p>
                     <p class="weather-card__wind">
                         <?= htmlspecialchars($selectedDay['wind']) ?> km/h Wind
                     </p>
@@ -43,10 +79,19 @@ include __DIR__ . '/../src/Includes/header.php';
             <section class="weather-panel">
                 <ul class="forecast-row" aria-label="7-day forecast">
                     <?php foreach ($forecast['days'] as $day): ?>
-                        <?php $isActive = $day['short'] === $selectedDay['short']; ?>
+                        <?php
+                        $isActive = $day['short'] === $selectedDay['short'];
+                        $linkParams = [];
+                        if ($selectedSiteId > 0) {
+                            $linkParams[] = 'site_id=' . $selectedSiteId;
+                        } elseif ($forecastCity !== 'Tunis') {
+                            $linkParams[] = 'city=' . urlencode($forecastCity);
+                        }
+                        $linkParams[] = 'day=' . urlencode($day['short']);
+                        ?>
                         <li class="forecast-pill <?= $isActive ? 'is-active' : '' ?>">
                             <a class="forecast-pill__link"
-                               href="?city=<?= urlencode($forecast['city']) ?>&amp;day=<?= urlencode($day['short']) ?>"
+                               href="?<?= htmlspecialchars(implode('&amp;', $linkParams)) ?>"
                                title="<?= htmlspecialchars($day['label']) ?>">
                                 <span class="forecast-pill__day"><?= htmlspecialchars($day['short']) ?></span>
                                 <img class="forecast-pill__icon"
@@ -58,15 +103,36 @@ include __DIR__ . '/../src/Includes/header.php';
                     <?php endforeach; ?>
                 </ul>
 
-                <form class="weather-search" method="get" action="weather.php" role="search">
-                    <input class="weather-search__input"
-                           type="text" name="city" placeholder="Your Location ...."
-                           value="<?= htmlspecialchars($requestedCity) ?>"
-                           autocomplete="off">
-                    <button class="weather-search__btn" type="submit" aria-label="Search">
-                        <img src="/assets/Images/search-icon.svg" alt="">
-                    </button>
-                </form>
+                <div class="weather-controls">
+                    <form class="weather-search-form" method="get" action="weather.php" role="search">
+                        <div class="form-group">
+                            <label for="campingSiteSelect">Camping Site</label>
+                            <select id="campingSiteSelect" name="site_id" class="form-input weather-select">
+                                <option value="0">— Choose a site or type a city —</option>
+                                <?php foreach ($campingSites as $site): ?>
+                                    <option value="<?= (int)$site->id ?>" <?= $selectedSiteId === (int)$site->id ? 'selected' : '' ?>>
+                                        <?= htmlspecialchars($site->name) ?> (<?= htmlspecialchars($site->city) ?>)
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="cityInput">Or search by city</label>
+                            <div class="weather-search">
+                                <input class="weather-search__input"
+                                       id="cityInput"
+                                       type="text"
+                                       name="city"
+                                       placeholder="e.g. Sousse, Djerba..."
+                                       value="<?= htmlspecialchars($requestedCity) ?>"
+                                       autocomplete="off">
+                                <button class="weather-search__btn" type="submit" aria-label="Search">
+                                    <img src="/projet-web-gl21-chabiba/assets/Images/search-icon.svg" alt="">
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </section>
         </div>
     </main>

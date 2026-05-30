@@ -1,3 +1,5 @@
+@import url('../style.css');
+
 .page-heading {
     margin-bottom: 1.5rem;
     color: #fff;
@@ -9,11 +11,13 @@
 }
 
 .booking-card {
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 1rem;
+    background: var(--surface-bg);
+    border: 1px solid var(--surface-border);
+    border-radius: var(--card-radius);
     padding: 1.25rem;
     color: #f5f5f5;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
 }
 
 .booking-card-header {
@@ -27,6 +31,7 @@
 .booking-card-header h2 {
     margin: 0;
     font-size: 1.1rem;
+    font-family: 'Righteous', sans-serif;
 }
 
 .booking-details {
@@ -39,7 +44,7 @@
     padding: 2rem;
     background: rgba(255, 255, 255, 0.04);
     border: 1px dashed rgba(255, 255, 255, 0.15);
-    border-radius: 1rem;
+    border-radius: var(--card-radius);
     text-align: center;
 }
 

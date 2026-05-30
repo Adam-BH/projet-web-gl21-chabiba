@@ -24,17 +24,17 @@ include __DIR__ . '/../../src/Includes/header.php';
     <div id="step-1" class="step">
         <div class="row">
             <div class="col-lg-8">
-                <div id="map" style="height:480px;border:1px solid #ddd;border-radius:18px;"></div>
+                <div id="map" class="search-map"></div>
             </div>
             <div class="col-lg-4 mt-3 mt-lg-0">
-                <div class="mb-3">
-                    <label class="form-label">Use my location</label>
+                <div class="form-group mb-3">
+                    <label class="form-label" for="use-location">Use my location</label>
                     <div>
                         <input type="checkbox" id="use-location" checked>
                     </div>
                 </div>
-                <div class="mb-3">
-                    <label class="form-label">Radius (km)</label>
+                <div class="form-group mb-3">
+                    <label class="form-label" for="radius">Radius (km)</label>
                     <div class="d-flex align-items-center gap-3">
                         <input type="range" id="radius" class="form-range" min="0" max="50" step="5" value="0">
                         <span id="radiusValue" class="fw-semibold">No preference</span>
@@ -46,22 +46,28 @@ include __DIR__ . '/../../src/Includes/header.php';
         </div>
     </div>
 
-    <div id="step-2" class="step" style="display:none">
+    <div id="step-2" class="step step-hidden">
         <div class="row gy-3">
             <div class="col-md-6">
-                <label class="form-label">Start date (optional)</label>
-                <input type="date" id="start-date" class="form-control">
+                <div class="form-group">
+                    <label class="form-label" for="start-date">Start date (optional)</label>
+                    <input type="date" id="start-date" class="form-input">
+                </div>
             </div>
             <div class="col-md-6">
-                <label class="form-label">End date (optional)</label>
-                <input type="date" id="end-date" class="form-control">
+                <div class="form-group">
+                    <label class="form-label" for="end-date">End date (optional)</label>
+                    <input type="date" id="end-date" class="form-input">
+                </div>
             </div>
         </div>
     </div>
 
-    <div id="step-3" class="step" style="display:none">
-        <label class="form-label">How many people?</label>
-        <input type="number" id="people" class="form-control" min="1" value="1">
+    <div id="step-3" class="step step-hidden">
+        <div class="form-group">
+            <label class="form-label" for="people">How many people?</label>
+            <input type="number" id="people" class="form-input" min="1" value="1">
+        </div>
     </div>
 
     <div class="mt-3 d-flex flex-wrap gap-2 search-buttons">
@@ -70,9 +76,9 @@ include __DIR__ . '/../../src/Includes/header.php';
         <button id="search" class="btn btn-search">Search</button>
     </div>
 
-    <hr />
+    <hr>
     <div id="searchPlaceholder" class="info-message">Hit Search to display available camping sites.</div>
-    <div id="results" style="display:none"></div>
+    <div id="results" class="step-hidden"></div>
 </main>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>

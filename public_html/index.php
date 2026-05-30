@@ -95,15 +95,13 @@ include __DIR__ . '/../src/Includes/header.php';
     CAMPING SITES NEAR ME
 </a>
     </div>
-    <footer>
-        <div class="theme-toggle">
-            <input type="checkbox" id="toggle" hidden>
-            <label for="toggle" class="toggle-track">
-                <div class="toggle-thumb"></div>
-            </label>
-        </div>
-    </footer>
-    <script src="/js/main.js"></script>
+    <div class="theme-toggle">
+        <input type="checkbox" id="toggle" hidden>
+        <label for="toggle" class="toggle-track">
+            <div class="toggle-thumb"></div>
+        </label>
+    </div>
+    <script src="/projet-web-gl21-chabiba/js/main.js"></script>
     </div>
 </body>
 </html>
