@@ -44,11 +44,20 @@ body {
     font-weight: 400;
 }
 
+.lost-page-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: min(1180px, calc(100% - 32px));
+    margin: 0 auto;
+}
+
 .frame {
     border: 1px solid var(--border-cyan-dim);
     padding: 1.5rem;
     margin: 1rem auto 3rem auto;
-    width: 75%;
+    width: min(1180px, calc(100% - 32px));
     background: rgba(255, 255, 255, 0.01);
     backdrop-filter: blur(10px);
     border-radius: var(--frame-radius);
@@ -57,16 +66,15 @@ body {
 
 .posts-wrapper {
     display: grid;
-    grid-template-columns: repeat(auto-fill, 250px); 
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     gap: 2rem;
-    justify-content: start; 
+    justify-content: start;
     width: 100%;
 }
 
 .post-card {
-    width: 18vw;
-    height: 1050px;
-    flex-shrink: 0;
+    width: 100%;
+    min-height: 100%;
     display: flex;
     flex-direction: column;
     background: var(--bg-card);
@@ -74,7 +82,6 @@ body {
     border-radius: var(--card-radius);
     overflow: hidden;
     transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-    height: 100%;
 }
 
 .post-card:hover {
@@ -103,10 +110,12 @@ body {
 }
 
 .post-content {
-    overflow: hidden;
     display: flex;
     flex-direction: column;
     flex: 1;
+    gap: 0.45rem;
+    padding: 1rem;
+    min-height: 230px;
 }
 
 .item {
@@ -136,24 +145,7 @@ body {
 
 .text-center { text-align: center; }
 
-@media (max-width: 480px) {
-    .posts-wrapper {
-        grid-template-columns: 1fr;
-    }
-}
-
-.glowy-btn {
-    margin: 10% auto;
-    padding: 5px auto;
-    font-size: 0.8rem;
-    position: relative;
-    top: 0%;
-    left: 50%;
-    /* transform: translate(50%); */
-}
-
 .add-btn {
-    position: relative;
   --forest-green: #2d5a27;
   --dirt-brown: #4a3728;
   --leaf-green: #4f772d;
@@ -176,20 +168,52 @@ body {
   text-transform: uppercase;
   transition: all 0.1s ease;
   user-select: none;
-  margin: 4% auto;
-  width: 200px;
+  width: fit-content;
 }
 
 .add-btn:hover {
   background-color: var(--leaf-green);
 }
 
-.add-btn :active {
+.add-btn:active {
   border-bottom-width: 0;
   transform: translateY(5px);
 }
 
 .delete-form {
-    display: block;
-    align-items: center;
+    display: flex;
+    margin-top: 0.85rem;
+}
+
+.delete-btn {
+    appearance: none;
+    width: 100%;
+    min-height: 40px;
+    border: 1px solid rgba(255, 120, 120, 0.45);
+    border-radius: 8px;
+    background: rgba(130, 28, 28, 0.72);
+    color: var(--azure);
+    cursor: pointer;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.delete-btn:hover,
+.delete-btn:focus-visible {
+    background: rgba(175, 38, 38, 0.86);
+    border-color: rgba(255, 150, 150, 0.75);
+    transform: translateY(-1px);
+}
+
+@media (max-width: 480px) {
+    .frame {
+        padding: 1rem;
+    }
+
+    .posts-wrapper {
+        grid-template-columns: 1fr;
+    }
 }

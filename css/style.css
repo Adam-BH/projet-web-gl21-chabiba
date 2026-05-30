@@ -162,44 +162,43 @@ nav {
 .toggle-track {
   display: flex;
   align-items: center;
-  width: 66px;
-  height: 34px;
-  background: linear-gradient(140deg, rgba(26, 26, 46, 0.95), rgba(11, 0, 27, 0.95));
-  border: 1px solid rgba(157, 231, 243, 0.35);
+  width: 78px;
+  height: 35px;
+  background-image: url('../assets/Images/LandSwitch-Dark.png');
+  background-size: cover;
+  border: 0;
   border-radius: 999px;
   cursor: pointer;
   padding: 4px;
-  transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  transition: box-shadow 0.25s ease;
   box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(16px);
 }
 
 .toggle-track:hover {
-  border-color: rgba(157, 231, 243, 0.58);
   box-shadow: 0 10px 26px rgba(0, 0, 0, 0.45);
 }
 
 .toggle-thumb {
-  width: 24px;
-  height: 24px;
-  background: linear-gradient(160deg, #ffffff 0%, #e7edf7 100%);
+  width: 28px;
+  height: 28px;
+  background: #fff;
   border-radius: 50%;
   transition: transform 0.25s ease;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
 }
 
 #toggle:checked + .toggle-track .toggle-thumb {
-  transform: translateX(32px);
+  transform: translateX(40px);
 }
 
 #toggle:checked + .toggle-track {
-  background: linear-gradient(140deg, rgba(12, 38, 58, 0.95), rgba(16, 28, 46, 0.95));
-  border-color: rgba(157, 231, 243, 0.62);
+  background-image: url('../assets/Images/LandSwitch-Dark.png');
 }
 .theme-toggle{
     position: fixed;
-    bottom: 18px;
-    right: 18px;
+    bottom: 28px;
+    right: 32px;
     z-index: 120;
 }
 
