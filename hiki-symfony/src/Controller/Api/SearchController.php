@@ -47,7 +47,7 @@ class SearchController extends AbstractController
                 }
                 $row['distance_km'] = round($d, 2);
             }
-
+            
             // Availability filter
             if ($startDate && $endDate) {
                 $available = $bookingRepo->isAvailable($site, $startDate, $endDate);

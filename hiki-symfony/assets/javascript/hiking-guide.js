@@ -24,7 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function fetchTrails(queryString = '') {
         try {
-            const url = `/projet-web-gl21-chabiba/api/getTrails.php${queryString ? '?' + queryString : ''}`;
+            const base = typeof TRAILS_API !== 'undefined' ? TRAILS_API : '/api/trails';
+            const url = base + (queryString ? '?' + queryString : '');
             const response = await fetch(url);
             const data = await response.json();
             renderTrails(data);
@@ -72,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             </label>
                         </li>`).join('')}
                     </ul>
-                    <a href="/projet-web-gl21-chabiba/pages/equipment.php" class="button secondary mt-3" style="display: inline-block; width: 100%; text-align: center;">🛒 Buy Equipment</a>
+                    <a href="${typeof EQUIPMENT_URL !== 'undefined' ? EQUIPMENT_URL : '/equipment'}" class="button secondary mt-3" style="display: inline-block; width: 100%; text-align: center;">Buy Equipment</a>
                 </div>` : '';
 
             let videoHtml = '';

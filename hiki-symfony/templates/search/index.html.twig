@@ -78,6 +78,12 @@
     {{ parent() }}
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script>const SEARCH_API = "{{ path('api_search') }}";</script>
+    <script>
+        const SEARCH_API = "{{ path('api_search') }}";
+        const SITES_API = "{{ path('api_sites') }}";
+        const CATALOGUE_BASE = "{{ path('app_catalogue') }}";
+        const LOGIN_URL = "{{ path('app_login') }}";
+        const EQUIPMENT_URL = "{{ path('app_equipment') }}";
+    </script>
     <script src="{{ asset('javascript/search-engine.js') }}" defer></script>
 {% endblock %}

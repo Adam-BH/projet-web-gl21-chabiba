@@ -209,6 +209,33 @@
     color: #2a1300;
 }
 
+.moon-panel {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.moon-week {
+    flex-wrap: nowrap;
+    min-width: max-content;
+}
+
+@media (max-width: 860px) {
+    .moon-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .moon-week {
+        justify-content: flex-start;
+    }
+
+    .moon-feature {
+        flex-direction: row;
+        gap: 16px;
+    }
+
+    .moon-disc--large { width: clamp(120px, 30vw, 180px); }
+}
+
 @media (max-height: 760px) {
     .moon-title { font-size: clamp(46px, 6vw, 88px); margin: 6px 0 16px; }
     .moon-pill__link { min-height: 148px; }

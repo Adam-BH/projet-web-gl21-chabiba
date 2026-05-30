@@ -72,6 +72,9 @@
 
 {% block javascripts %}
     {{ parent() }}
-    <script>const TRAILS_API = "{{ path('api_trails') }}";</script>
+    <script>
+        const TRAILS_API = "{{ path('api_trails') }}";
+        const EQUIPMENT_URL = "{{ path('app_equipment') }}";
+    </script>
     <script src="{{ asset('javascript/hiking-guide.js') }}" defer></script>
 {% endblock %}
